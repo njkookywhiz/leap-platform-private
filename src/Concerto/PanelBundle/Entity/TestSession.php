@@ -7,7 +7,10 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
 use DateTime;
 
 /**
- * @ORM\Table(uniqueConstraints={@UniqueConstraint(name="hash_idx", columns={"hash"})})
+ * @ORM\Table(
+ *     uniqueConstraints={@UniqueConstraint(name="hash_idx", columns={"hash"})},
+ *     indexes={@Index(name="idx", columns={"status","updated"})}
+ * )
  * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\TestSessionRepository")
  * @ORM\HasLifecycleCallbacks
  */
