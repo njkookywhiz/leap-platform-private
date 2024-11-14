@@ -4,6 +4,7 @@ namespace Concerto\PanelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
+use Doctrine\ORM\Mapping\Index;
 use DateTime;
 
 /**
