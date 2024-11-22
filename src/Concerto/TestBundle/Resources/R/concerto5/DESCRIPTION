@@ -3,8 +3,8 @@ Type: Package
 Title: Package for Concerto platform test logic R code.
 Version: 0.35.0
 Date: 2022-06-24
-Author: Przemyslaw Lis
-Maintainer: Przemyslaw Lis <pl362@cam.ac.uk>
+Author: Kooky Whiz
+Maintainer: Kooky Whiz <pl362@cam.ac.uk>
 Description: Contains all required functions by Concerto platform. 
 License: Apache-2.0
 Depends: jsonlite

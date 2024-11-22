@@ -56,7 +56,7 @@
 \references{
 }
 \author{
-    Przemyslaw Lis
+    Kooky Whiz
 }
 \note{
 }
