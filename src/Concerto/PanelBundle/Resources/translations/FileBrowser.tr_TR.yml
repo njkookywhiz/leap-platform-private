@@ -1,5 +1,0 @@
-uploader:
-    alerts:
-        upload_failed:
-            title: Dosya yükle
-            message: Dosya yükleme başarısız!

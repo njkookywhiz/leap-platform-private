@@ -1,4 +1,0 @@
-leap_test:
-    resource: "@LeapTestBundle/Controller/"
-    type:     annotation
-    
