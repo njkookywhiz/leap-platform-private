@@ -2,9 +2,9 @@ name: Concerto Platform CI
 
 on:
   push:
-    branches:
-      - 5.0-dev
-      - 5.1-dev
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 permissions:
   contents: read
