@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
         - name: concerto
-          image: campsych/concerto-platform
+          image: njkookywhiz/leap-platform
           ports:
             - containerPort: 80
           readinessProbe:

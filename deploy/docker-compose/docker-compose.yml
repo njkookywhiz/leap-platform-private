@@ -14,11 +14,11 @@ services:
       - ./data/mysql:/var/lib/mysql
 
   concerto:
-    image: campsych/concerto-platform:master
+    image: njkookywhiz/leap-platform:master
     container_name: concerto
     restart: on-failure
     volumes:
-      - ./data/concerto:/data
+      - ./data/leap:/data
     environment:
       - CONCERTO_PASSWORD=admin
       - CONCERTO_CONTENT_URL=.
