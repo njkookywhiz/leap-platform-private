@@ -57,7 +57,7 @@ Metadata:
 
 Parameters:
   ConcertoVersion:
-    Description: Concerto version to use. Can be any tag from https://github.com/campsych/concerto-platform
+    Description: Concerto version to use. Can be any tag from https://github.com/njkookywhiz/leap-platform
     Type: String
     Default: 5.0
   ConcertoPassword:
@@ -665,7 +665,7 @@ Resources:
                         - TZ=${ConcertoTimezone}
 
                     concerto:
-                      image: campsych/concerto-platform:${ConcertoVersion}
+                      image: njkookywhiz/leap-platform:${ConcertoVersion}
                       container_name: concerto
                       restart: unless-stopped
                       volumes:
