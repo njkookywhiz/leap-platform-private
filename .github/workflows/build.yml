@@ -1,4 +1,4 @@
-name: Concerto Platform CI
+name: Leap Platform CI
 
 on:
   push:
