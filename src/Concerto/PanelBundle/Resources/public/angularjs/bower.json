@@ -1,6 +1,6 @@
 {
   "name": "concerto-platform",
-  "description": "Concerto Platform panel",
+  "description": "LEAP Scores panel",
   "homepage": "http://concertoplatform.com/",
   "license": "Apache-2.0",
   "private": false,

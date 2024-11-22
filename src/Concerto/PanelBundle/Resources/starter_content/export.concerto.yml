@@ -1375,7 +1375,7 @@ collection:
         type: 0
         description: ''
         passableThroughUrl: '0'
-        value: 'Created with <a href="http://www.concertoplatform.com" target="_blank">Concerto Platform</a>'
+        value: 'Created with <a href="http://www.concertoplatform.com" target="_blank">LEAP Scores</a>'
         test: 7
         parentVariable: null
       -
@@ -2446,7 +2446,7 @@ collection:
           -
             class_name: TestNodePort
             id: 36
-            value: 'Created with <a href="http://www.concertoplatform.com" target="_blank">Concerto Platform</a>'
+            value: 'Created with <a href="http://www.concertoplatform.com" target="_blank">LEAP Scores</a>'
             node: 1
             variable: 42
             string: '1'
@@ -9497,7 +9497,7 @@ collection:
             value: |
               Created with 
               <a href="http://www.concertoplatform.com" target="_blank">
-              	Concerto Platform
+              	LEAP Scores
               </a>
               
             testVariable: 42
@@ -9510,7 +9510,7 @@ collection:
               defvalue: |
                 Created with 
                 <a href="http://www.concertoplatform.com" target="_blank">
-                	Concerto Platform
+                	LEAP Scores
                 </a>
                 
               placeholder: 0
@@ -9825,7 +9825,7 @@ collection:
         value: |
           Created with 
           <a href="http://www.concertoplatform.com" target="_blank">
-          	Concerto Platform
+          	LEAP Scores
           </a>
           
         test: 17
@@ -11212,7 +11212,7 @@ collection:
             hideCondition: ''
             type: 2
             passableThroughUrl: '0'
-            value: 'Created with <a href="http://www.concertoplatform.com" target="_blank">Concerto Platform</a>'
+            value: 'Created with <a href="http://www.concertoplatform.com" target="_blank">LEAP Scores</a>'
             testVariable: 119
             name: footer
             wizardStep: 14
@@ -11220,7 +11220,7 @@ collection:
             order: 14
             wizard: 7
             definition:
-              defvalue: 'Created with <a href="http://www.concertoplatform.com" target="_blank">Concerto Platform</a>'
+              defvalue: 'Created with <a href="http://www.concertoplatform.com" target="_blank">LEAP Scores</a>'
               placeholder: 0
           -
             class_name: TestWizardParam
@@ -11864,7 +11864,7 @@ collection:
     visibility: 2
     type: 1
     code: null
-    description: 'Sets templates to use for internal Concerto Platform pages. E.g. loading template.'
+    description: 'Sets templates to use for internal LEAP Scores pages. E.g. loading template.'
     variables:
       -
         class_name: TestVariable
@@ -11979,7 +11979,7 @@ collection:
             value: |
               Created with 
               <a href="http://www.concertoplatform.com" target="_blank">
-              	Concerto Platform
+              	LEAP Scores
               </a>
               
             testVariable: 145
@@ -11992,7 +11992,7 @@ collection:
               defvalue: |
                 Created with 
                 <a href="http://www.concertoplatform.com" target="_blank">
-                	Concerto Platform
+                	LEAP Scores
                 </a>
                 
               placeholder: 0
@@ -12205,7 +12205,7 @@ collection:
         value: |
           Created with 
           <a href="http://www.concertoplatform.com" target="_blank">
-          	Concerto Platform
+          	LEAP Scores
           </a>
           
         test: 26

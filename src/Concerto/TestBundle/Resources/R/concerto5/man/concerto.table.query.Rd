@@ -24,7 +24,7 @@ Table query
     }
 }
 \details{
-    Contains extended function wizard with SQL query builder when used in Concerto platform.
+    Contains extended function wizard with SQL query builder when used in LEAP Scores.
 }
 \value{
     Returns result set.

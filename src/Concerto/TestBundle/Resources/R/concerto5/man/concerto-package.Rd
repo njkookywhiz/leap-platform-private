@@ -2,10 +2,10 @@
 \alias{concerto5-package}
 \docType{package}
 \title{
-    Package for Concerto platform test logic R code.
+    Package for LEAP Scores test logic R code.
 }
 \description{
-    Contains all required functions by Concerto platform.
+    Contains all required functions by LEAP Scores.
 }
 \details{
 \tabular{ll}{

@@ -211,7 +211,7 @@ angular.module('FileManagerApp').config(["fileManagerConfigProvider", function (
     var CKEditorFuncNum = url.searchParams.get("CKEditorFuncNum");
 
     fileManagerConfigProvider.set({
-        appName: 'Concerto Platform',
+        appName: 'LEAP Scores',
         defaultLang: Trans.LANGUAGE,
         multiLang: false,
 
