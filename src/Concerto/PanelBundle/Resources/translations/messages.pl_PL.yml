@@ -83,7 +83,7 @@ errors:
     column.conversion: Wybrana konwersja typu nie jest dostępna przy używanym sterowniku bazy danych.
 
 import:
-  incompatible_version: Plik eksportu jest przestarzały i nie może być używany na tej wersji Concerto Platform!
+  incompatible_version: Plik eksportu jest przestarzały i nie może być używany na tej wersji LEAP Scores!
 
 tasks:
   already_scheduled: Obecnie już trwają lub są zaplanowane zadania.

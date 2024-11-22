@@ -1,4 +1,4 @@
-### Concerto Platform version
+### LEAP Scores version
 
 
 ### Expected behavior

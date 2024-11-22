@@ -70,4 +70,4 @@ errors:
         column.conversion: Seçili dönüştürme, yapılandırılmış veri tabanıyla uyumlu değildir.
 
 import:
-    incompatible_version: Aktarım dosyası eski bir sürümle oluşturulmuş ve bu Concerto Platform sürümüyle kullanılamaz!
+    incompatible_version: Aktarım dosyası eski bir sürümle oluşturulmuş ve bu LEAP Scores sürümüyle kullanılamaz!
