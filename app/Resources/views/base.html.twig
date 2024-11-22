@@ -10,7 +10,7 @@
     </head>
 
     {% if angular_app is not defined %}
-        {% set angular_app = "concertoPanel" %}
+        {% set angular_app = "leapPanel" %}
     {% endif %}
     <body ng-app="{{angular_app}}" ng-cloak>
         {% if controller is defined %}<div ng-controller="{{controller}}">{% endif %}

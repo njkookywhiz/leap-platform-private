@@ -1,0 +1,146 @@
+{% trans_default_domain "Administration" %}
+
+<div ng-controller="AdministrationContentController">
+
+    <div style="display: table; width: 100%;">
+        <div style="display: table-cell; width: 50%; border-right: solid #ddd 1px; padding-right: 16px;">
+            <div class="alert alert-info">
+                <table>
+                    <tr>
+                        <td style="padding-right: 5px;">{{ 'content.last_import_time'|trans }}</td>
+                        <td><strong>{% verbatim %}{{ internalSettingsMap.last_import_time ? internalSettingsMap.last_import_time : "-" }}{% endverbatim %}</strong></td>
+                    </tr>
+                    <tr ng-if="isGitEnabled()">
+                        <td style="padding-right: 5px;">{{ "git.enable.url"|trans }}</td>
+                        <td><strong>{% verbatim %}{{exposedSettingsMap.git_url}}{% endverbatim %}</strong></td>
+                    </tr>
+                    <tr ng-if="isGitEnabled()">
+                        <td style="padding-right: 5px;">{{ "git.enable.branch"|trans }}</td>
+                        <td><strong>{% verbatim %}{{exposedSettingsMap.git_branch}}{% endverbatim %}</strong></td>
+                    </tr>
+                    <tr ng-if="isGitEnabled()">
+                        <td style="padding-right: 5px;">{{ "git.enable.login"|trans }}</td>
+                        <td><strong>{% verbatim %}{{exposedSettingsMap.git_login}}{% endverbatim %}</strong></td>
+                    </tr>
+                    <tr ng-if="isGitEnabled()">
+                        <td style="padding-right: 5px;">{{ "git.status.behind"|trans }}</td>
+                        <td><strong>{% verbatim %}{{gitStatus.behind}}{% endverbatim %}</strong></td>
+                    </tr>
+                    <tr ng-if="isGitEnabled()">
+                        <td style="padding-right: 5px;">{{ "git.status.ahead"|trans }}</td>
+                        <td><strong>{% verbatim %}{{gitStatus.ahead}}{% endverbatim %}</strong></td>
+                    </tr>
+                    <tr ng-if="isGitEnabled()">
+                        <td style="padding-right: 5px;">{{ "git.status.local_changes"|trans }}</td>
+                        <td>
+                            <span ng-if="gitStatus.diff !== '?'">
+                                <strong ng-if="!hasUncommittedChanges()">{{ "git.status.local_changes.no_changes"|trans }}</strong>
+                                <strong ng-if="hasUncommittedChanges()" class="clickable" ng-click="showLocalDiff()">{{ "git.status.local_changes.uncommitted_changes"|trans }}</strong>
+                                {% verbatim %}{{ internalSettingsMap.last_git_update_time ? " (" + internalSettingsMap.last_git_update_time + ")" : "" }}{% endverbatim %}
+                            </span>
+                            <span ng-if="gitStatus.diff === '?'"><strong>?</strong></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                {% embed "LeapPanelBundle::form_v.html.twig" with {'no_header': true} %}
+                    {% trans_default_domain "Administration" %}
+                    {% block elements %}
+
+                        {% embed "LeapPanelBundle::form_v_element.html.twig" %}
+                            {% trans_default_domain "Administration" %}
+                            {% block label %}{{ 'content.url'|trans }}{% endblock %}
+                            {% block tooltip %}{{ 'content.url.tooltip'|trans }}{% endblock %}
+                            {% block control %}
+                                <input ng-disabled="exposedSettingsMap.content_url_overridable === 'false'" type="text" ng-model="exposedSettingsMap.content_url" style="width:100%;" class='form-control' ng-model-options='{ updateOn: "blur" }'/>
+                            {% endblock %}
+                        {% endembed %}
+
+                        {% embed "LeapPanelBundle::form_v_element.html.twig" %}
+                            {% trans_default_domain "Administration" %}
+                            {% block label %}{{ 'content.file'|trans }}{% endblock %}
+                            {% block tooltip %}{{ 'content.file.tooltip'|trans }}{% endblock %}
+                            {% block control %}
+                                <form id="form-file-content-import-url">
+                                    <input type="file" nv-file-select uploader="uploader" ng-show="uploadItem==null && !uploader.isUploading"/></span>
+                                    <uib-progressbar class="progress-striped active" value="uploader.progress" ng-show="uploadItem==null && uploader.isUploading"></uib-progressbar>
+                                    <span ng-show="uploadItem!=null">{% verbatim %}{{ uploadItem.file.name }}{% endverbatim %} <button class="btn btn-xs btn-danger" ng-click="resetFile()">{{ 'content.clear'|trans }}</button></span>
+                                </form>
+                            {% endblock %}
+                        {% endembed %}
+
+                        {% embed "LeapPanelBundle::form_v_element.html.twig" %}
+                            {% trans_default_domain "Administration" %}
+                            {% block label %}{{ "content.transfer_options"|trans }}{% endblock %}
+                            {% block tooltip %}{{ "content.transfer_options.tooltip"|trans }}{% endblock %}
+                            {% block control %}
+                                <textarea ng-disabled="exposedSettingsMap.content_transfer_options_overridable === 'false'" ng-model="exposedSettingsMap.content_transfer_options" style="width:100%; resize: vertical;" class='form-control' ng-model-options='{ updateOn: "blur" }'></textarea>
+                            {% endblock %}
+                        {% endembed %}
+
+                    {% endblock %}
+                {% endembed %}
+            </div>
+
+            <div class="center">
+                <button ng-click="importUrl()" class="btn btn-success btn-sm" ng-disabled="!canImport()">{{ 'content.import'|trans }}</button>
+                <button ng-click="exportUrl()" class="btn btn-default btn-sm">{{ 'content.export'|trans }}</button>
+                <button ng-click="push()" class="btn btn-success btn-sm" ng-if="isGitEnabled()" ng-disabled="!canPush()" style="margin-left: 16px;">{{ "git.push.button"|trans }}</button>
+                <button ng-click="pull()" class="btn btn-success btn-sm" ng-if="isGitEnabled()" ng-disabled="!canPull()">{{ "git.pull.button"|trans }}</button>
+                <button ng-click="commit()" class="btn btn-success btn-sm" ng-if="isGitEnabled()" ng-disabled="!canCommit()">{{ "git.commit.button"|trans }}</button>
+                <button ng-click="reset()" class="btn btn-danger btn-sm" ng-if="isGitEnabled()" ng-disabled="!canReset()">{{ "git.reset.button"|trans }}</button>
+                <button ng-click="update()" class="btn btn-default btn-sm" ng-if="isGitEnabled()" ng-disabled="!canUpdate()">{{ "git.update.button"|trans }}</button>
+                <button ng-click="refreshGitStatus()" class="btn btn-default btn-sm" ng-if="isGitEnabled()">{{ "git.refresh.button"|trans }}</button>
+                <button ng-click="enableGit()" class="btn btn-success btn-sm" ng-if="!isGitEnabled()" ng-disabled="!canEnableGit()">{{ "git.enable.button"|trans }}</button>
+                <button ng-click="disableGit()" class="btn btn-success btn-sm" ng-if="isGitEnabled()" ng-disabled="!canDisableGit()">{{ "git.disable.button"|trans }}</button>
+            </div>
+
+            <div ng-if="isGitEnabled()">
+                <h4 style="text-align: center; margin-top: 32px;">{{ "git.latest_operation"|trans }}</h4>
+
+                <div class="alert alert-warning" ng-if="gitStatus.latestTask == null">{{ "git.no_git_task"|trans }}</div>
+                <table class="table-lite" ng-if="gitStatus.latestTask != null">
+                    <tr>
+                        <th>{{ "git.task.started"|trans }}</th>
+                        <th>{{ "git.task.description"|trans }}</th>
+                        <th>{{ "git.task.output"|trans }}</th>
+                        <th>{{ "git.task.status"|trans }}</th>
+                    </tr>
+                    <tr>
+                        <td ng-bind="gitStatus.latestTask.created"></td>
+                        <td ng-bind="gitStatus.latestTask.description"></td>
+                        <td>
+                            <i class="glyphicon glyphicon-align-justify clickable" ng-click="showLatestTaskOutput()"></i>
+                        </td>
+                        <td>{% verbatim %}{{ gitStatus.latestTask.status|taskStatusLabel }}{% endverbatim %}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div style="display: table-cell; width: 50%; padding-left: 16px;" ng-if="isGitEnabled()">
+            <h4 style="text-align: center;">{{ "git.history.title"|trans }}</h4>
+
+            <div class="alert alert-warning" ng-if="gitStatus.history.length == 0">{{ "git.history.no_commits"|trans }}</div>
+
+            <table class="table-lite" ng-if="gitStatus.history.length > 0">
+                <tr>
+                    <th>{{ "git.history.list.sha"|trans }}</th>
+                    <th>{{ "git.history.list.committer"|trans }}</th>
+                    <th>{{ "git.history.list.time_ago"|trans }}</th>
+                    <th>{{ "git.history.list.subject"|trans }}</th>
+                    <th>{{ "git.history.list.ref"|trans }}</th>
+                </tr>
+                <tr ng-repeat="commit in gitStatus.history track by $index" ng-class="{'git-history-head': commit.ref.indexOf('HEAD -> master') !== -1, 'clickable': canDiff(commit.sha)}" ng-click="showDiff(commit.sha)">
+                    <td ng-bind="commit.sha" class="git-history-commit"></td>
+                    <td ng-bind="commit.committer"></td>
+                    <td ng-bind="commit.timeAgo"></td>
+                    <td ng-bind="commit.subject"></td>
+                    <td ng-bind="commit.ref"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

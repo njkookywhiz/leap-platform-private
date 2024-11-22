@@ -4,12 +4,12 @@
 
 ## 5.0.19
 
-* renamed CONCERTO_SESSION_COOKIE_EXPIRY_TIME to CONCERTO_SESSION_TOKEN_EXPIRY_TIME
+* renamed LEAP_SESSION_COOKIE_EXPIRY_TIME to LEAP_SESSION_TOKEN_EXPIRY_TIME
 * requests to GET protected and session files must now include **token** parameter
 
 ## 5.0.18
 
-* **CONCERTO_API_ENABLED** setting values changed to [true|false]
+* **LEAP_API_ENABLED** setting values changed to [true|false]
 
 ## 5.0.13
 
@@ -27,9 +27,9 @@
 
 ## 5.0.7
 
-* concerto$onTemplateSubmit and concerto$onBeforeTemplateShow are removed and should now be declared through **concerto.event.add** function
+* leap$onTemplateSubmit and leap$onBeforeTemplateShow are removed and should now be declared through **leap.event.add** function
 
 ## 5.0.5
 
-* set **platform_url** configuration parameter (config/paramaters_test_runner.yml or CONCERTO_PLATFORM_URL env variable)
-* depracated **concerto.file.getPublicPath**, use **concerto.file.getPath** instead
+* set **platform_url** configuration parameter (config/paramaters_test_runner.yml or LEAP_PLATFORM_URL env variable)
+* depracated **leap.file.getPublicPath**, use **leap.file.getPath** instead

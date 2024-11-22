@@ -6,7 +6,7 @@ services:
       environment:
         - DB_TEST_HOST=127.0.0.1
         - DB_TEST_PORT=3306
-        - DB_TEST_NAME=concerto_test
+        - DB_TEST_NAME=leap_test
         - DB_TEST_USER=root
         - DB_TEST_PASSWORD=test
         - PHP_FPM_PM=dynamic

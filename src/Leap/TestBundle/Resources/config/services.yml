@@ -1,0 +1,73 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    Leap\TestBundle\:
+        resource: '../../{Command,Service}'
+
+        # controllers are imported separately to make sure they're public
+        # and have a tag that allows actions to type-hint services
+    Leap\TestBundle\Controller\:
+        resource: '../../Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+#repositories
+    Leap\TestBundle\Repository\TestSessionCountRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\TestBundle\Entity\TestSessionCount]
+
+#controller
+    Leap\TestBundle\Controller\TestRunnerController:
+        arguments:
+            $environment: "%kernel.environment%"
+            $projectDir: "%kernel.project_dir%"
+            $testRunnerSettings: "%test_runner_settings%"
+        public: true
+
+#services
+    Leap\TestBundle\Service\TestRunnerService:
+        arguments:
+            $environment: "%kernel.environment%"
+
+    Leap\TestBundle\Service\PersistantSessionRunnerService:
+        public: true
+        arguments:
+            $testRunnerSettings: "%test_runner_settings%"
+            $projectDir: "%kernel.project_dir%"
+            $environment: "%kernel.environment%"
+
+    Leap\TestBundle\Service\SerializedSessionRunnerService:
+        public: true
+        arguments:
+            $testRunnerSettings: "%test_runner_settings%"
+            $projectDir: "%kernel.project_dir%"
+            $environment: "%kernel.environment%"
+
+    Leap\TestBundle\Service\ASessionRunnerService:
+        public: true
+        synthetic: true
+
+    Leap\TestBundle\Service\TestSessionCountService:
+        arguments:
+            $administration: "%administration%"
+
+#commands
+    Leap\TestBundle\Command\StartForkerCommand:
+        arguments:
+            $testRunnerSettings: "%test_runner_settings%"
+            $projectDir: "%kernel.project_dir%"
+
+#event subscribers
+    Leap\PanelBundle\EventSubscriber\LocaleSubscriber:
+        arguments:
+            $defaultLocale: "%kernel.default_locale%"
+        tags:
+            - { name: kernel.event_subscriber }

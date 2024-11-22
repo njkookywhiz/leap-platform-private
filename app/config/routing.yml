@@ -1,13 +1,13 @@
-concerto_api:
-    resource: "@ConcertoAPIBundle/Resources/config/routing.yml"
+leap_api:
+    resource: "@LeapAPIBundle/Resources/config/routing.yml"
     prefix:   /
 
-concerto_panel:
-    resource: "@ConcertoPanelBundle/Resources/config/routing.yml"
+leap_panel:
+    resource: "@LeapPanelBundle/Resources/config/routing.yml"
     prefix:   /
 
-concerto_test:
-    resource: "@ConcertoTestBundle/Resources/config/routing.yml"
+leap_test:
+    resource: "@LeapTestBundle/Resources/config/routing.yml"
     prefix:   /
 
 routing_custom:
@@ -15,7 +15,7 @@ routing_custom:
 
 remove_trailing_slash:
     path: /{url}
-    defaults: { _controller: ConcertoPanelBundle:Redirect:removeTrailingSlash }
+    defaults: { _controller: LeapPanelBundle:Redirect:removeTrailingSlash }
     requirements:
         url: .*/$
     methods: [GET]

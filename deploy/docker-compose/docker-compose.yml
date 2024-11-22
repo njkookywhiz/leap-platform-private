@@ -5,25 +5,25 @@ services:
     container_name: database
     restart: on-failure
     environment:
-      - MYSQL_DATABASE=concerto
-      - MYSQL_USER=concerto
+      - MYSQL_DATABASE=leap
+      - MYSQL_USER=leap
       - MYSQL_PASSWORD=changeme
       - MYSQL_ROOT_PASSWORD=changeme
       - TZ=UTC
     volumes:
       - ./data/mysql:/var/lib/mysql
 
-  concerto:
-    image: campsych/concerto-platform:master
-    container_name: concerto
+  leap:
+    image: campsych/leap-platform:master
+    container_name: leap
     restart: on-failure
     volumes:
-      - ./data/concerto:/data
+      - ./data/leap:/data
     environment:
-      - CONCERTO_PASSWORD=admin
-      - CONCERTO_CONTENT_URL=.
-      - CONCERTO_PLATFORM_URL=/
-      - CONCERTO_GIT_REPOSITORY_PATH=/data/git
+      - LEAP_PASSWORD=admin
+      - LEAP_CONTENT_URL=.
+      - LEAP_PLATFORM_URL=/
+      - LEAP_GIT_REPOSITORY_PATH=/data/git
       - DB_HOST=database
       - DB_PASSWORD=changeme
       - TZ=UTC

@@ -29,11 +29,11 @@ var/git/*
 *.iml
 /.web-server-pid
 /deploy/docker-compose/data
-/src/Concerto/TestBundle/Resources/sessions/*
-!/src/Concerto/TestBundle/Resources/sessions/.gitkeep
-/src/Concerto/PanelBundle/Resources/export/*
-/src/Concerto/PanelBundle/Resources/import/*
-/src/Concerto/TestBundle/Resources/R/fifo
+/src/Leap/TestBundle/Resources/sessions/*
+!/src/Leap/TestBundle/Resources/sessions/.gitkeep
+/src/Leap/PanelBundle/Resources/export/*
+/src/Leap/PanelBundle/Resources/import/*
+/src/Leap/TestBundle/Resources/R/fifo
 /import
 /dev
 /Dockerfile-dev

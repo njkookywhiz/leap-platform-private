@@ -34,7 +34,7 @@ framework:
     session:
         # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id: session.handler.native_file
-        save_path: '%env(CONCERTO_PHP_SESSION_SAVE_PATH)%'
+        save_path: '%env(LEAP_PHP_SESSION_SAVE_PATH)%'
         cookie_samesite: 'strict'
     fragments:       ~
     http_method_override: true
@@ -77,14 +77,14 @@ doctrine:
 
 fos_oauth_server:
     db_driver:           orm
-    client_class:        Concerto\APIBundle\Entity\Client
-    access_token_class:  Concerto\APIBundle\Entity\AccessToken
-    refresh_token_class: Concerto\APIBundle\Entity\RefreshToken
-    auth_code_class:     Concerto\APIBundle\Entity\AuthCode
+    client_class:        Leap\APIBundle\Entity\Client
+    access_token_class:  Leap\APIBundle\Entity\AccessToken
+    refresh_token_class: Leap\APIBundle\Entity\RefreshToken
+    auth_code_class:     Leap\APIBundle\Entity\AuthCode
 
 lexik_jwt_authentication:
-    secret_key: "%env(CONCERTO_JWT_SECRET)%"
-    token_ttl: "%env(CONCERTO_SESSION_TOKEN_EXPIRY_TIME)%"
+    secret_key: "%env(LEAP_JWT_SECRET)%"
+    token_ttl: "%env(LEAP_SESSION_TOKEN_EXPIRY_TIME)%"
     encoder:
         signature_algorithm: HS512
 
@@ -97,4 +97,4 @@ scheb_two_factor:
         window: 1
         #server_name: Server Name
         #issuer: Issuer Name
-        template: ConcertoPanelBundle:Panel:login_mfa.html.twig
+        template: LeapPanelBundle:Panel:login_mfa.html.twig

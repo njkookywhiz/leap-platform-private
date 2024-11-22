@@ -1,0 +1,6 @@
+{% extends "LeapPanelBundle::base_panel.html.twig" %}
+{% set controller = 'FileBrowserController' %}
+
+{% block body %}
+    {{ include("LeapPanelBundle:FileBrowser:file_browser_content.html.twig") }}
+{% endblock %}

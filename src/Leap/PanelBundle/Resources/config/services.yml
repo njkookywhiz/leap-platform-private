@@ -1,0 +1,228 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    Leap\PanelBundle\:
+        resource: '../../{Command,DAO,EventSubscriber,Service}'
+
+        # controllers are imported separately to make sure they're public
+        # and have a tag that allows actions to type-hint services
+    Leap\PanelBundle\Controller\:
+        resource: '../../Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+#event subscribers
+    Leap\PanelBundle\EventSubscriber\LocaleSubscriber:
+        arguments:
+            $defaultLocale: "%kernel.default_locale%"
+        tags:
+            - { name: kernel.event_subscriber }
+      
+    Leap\PanelBundle\EventSubscriber\EntitySubscriber:
+        tags:
+            - { name: doctrine.event_subscriber }
+
+    Leap\PanelBundle\EventSubscriber\AuthenticationSubscriber:
+        tags:
+            - { name: kernel.event_subscriber }
+
+    Leap\PanelBundle\EventSubscriber\ResponseSubscriber:
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, priority: -1001 }
+
+#commands
+    Leap\PanelBundle\Command\LeapScheduledTaskCommand:
+        autoconfigure: false
+
+    Leap\PanelBundle\Command\LeapTaskPackageInstallCommand:
+        arguments:
+            $administration: "%administration%"
+            $testRunnerSettings: "%test_runner_settings%"
+
+    Leap\PanelBundle\Command\LeapTaskGitPullCommand:
+        arguments:
+            $administration: "%administration%"
+
+    Leap\PanelBundle\Command\LeapTaskGitEnableCommand:
+        arguments:
+            $administration: "%administration%"
+
+    Leap\PanelBundle\Command\LeapTaskGitUpdateCommand:
+        arguments:
+            $administration: "%administration%"
+
+    Leap\PanelBundle\Command\LeapTaskGitResetCommand:
+        arguments:
+            $administration: "%administration%"
+
+    Leap\PanelBundle\Command\LeapTaskContentImportCommand:
+        arguments:
+            $administration: "%administration%"
+
+    Leap\PanelBundle\Command\LeapRCacheCommand:
+        arguments:
+            $projectDir: "%kernel.project_dir%"
+            $testRunnerSettings: "%test_runner_settings%"
+
+    Leap\PanelBundle\Command\ContentExportCommand:
+        arguments:
+            $version: "%version%"
+            $projectDir: "%kernel.project_dir%"
+
+    Leap\PanelBundle\Command\ContentImportCommand:
+        arguments:
+            $projectDir: "%kernel.project_dir%"
+            $webUser: "%web_user%"
+
+    Leap\PanelBundle\Command\LeapSetupCommand:
+        arguments:
+            $projectDir: "%kernel.project_dir%"
+
+#repositories
+    Leap\PanelBundle\Repository\AdministrationSettingRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\AdministrationSetting]
+
+    Leap\PanelBundle\Repository\DataTableRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\DataTable]
+
+    Leap\PanelBundle\Repository\MessageRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\Message]
+
+    Leap\PanelBundle\Repository\RoleRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\Role]
+
+    Leap\PanelBundle\Repository\ScheduledTaskRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\ScheduledTask]
+
+    Leap\PanelBundle\Repository\TestRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\Test]
+
+    Leap\PanelBundle\Repository\TestNodeRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\TestNode]
+
+    Leap\PanelBundle\Repository\TestNodeConnectionRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\TestNodeConnection]
+
+    Leap\PanelBundle\Repository\TestNodePortRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\TestNodePort]
+
+    Leap\PanelBundle\Repository\TestWizardRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\TestWizard]
+
+    Leap\PanelBundle\Repository\TestWizardParamRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\TestWizardParam]
+
+    Leap\PanelBundle\Repository\TestWizardStepRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\TestWizardStep]
+
+    Leap\PanelBundle\Repository\TestSessionLogRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\TestSessionLog]
+
+    Leap\PanelBundle\Repository\TestVariableRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\TestVariable]
+
+    Leap\PanelBundle\Repository\TestSessionRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\TestSession]
+
+    Leap\PanelBundle\Repository\UserRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\User]
+
+    Leap\PanelBundle\Repository\ViewTemplateRepository:
+        factory: doctrine.orm.entity_manager:getRepository
+        arguments: [ Leap\PanelBundle\Entity\ViewTemplate]
+
+#services
+    Leap\PanelBundle\Service\AdministrationService:
+        public: true
+        arguments:
+            $configSettings: "%administration%"
+            $version: "%version%"
+            $rootDir: "%kernel.root_dir%"
+            $testRunnerSettings: "%test_runner_settings%"
+
+    Leap\PanelBundle\Service\ExportService:
+        arguments:
+            $version: "%version%"
+
+    Leap\PanelBundle\Service\FileService:
+        arguments:
+            $environment: "%kernel.environment%"
+
+    Leap\PanelBundle\Service\ImportService:
+        arguments:
+            $version: "%version%"
+
+    Leap\PanelBundle\Service\MaintenanceService:
+        arguments:
+            $administration: "%administration%"
+
+    Leap\PanelBundle\Service\TestSessionService:
+        arguments:
+            $environment: "%kernel.environment%"
+            $secret: "%secret%"
+            $testRunnerSettings: "%test_runner_settings%"
+
+    Leap\PanelBundle\Service\UserService:
+        arguments:
+            $uio: "%uio%"
+    
+#controllers
+    Leap\PanelBundle\Controller\DataTableController:
+        arguments:
+            $environment: "%kernel.environment%"
+        public: true
+
+    Leap\PanelBundle\Controller\DialogController:
+        arguments:
+            $rootDir: "%kernel.root_dir%"
+        public: true
+
+    Leap\PanelBundle\Controller\TestController:
+        arguments:
+            $environment: "%kernel.environment%"
+        public: true
+
+    Leap\PanelBundle\Controller\TestWizardController:
+        arguments:
+            $environment: "%kernel.environment%"
+        public: true
+
+    Leap\PanelBundle\Controller\ViewTemplateController:
+        arguments:
+            $environment: "%kernel.environment%"
+        public: true
+    
+#security
+    Leap\PanelBundle\Security\ObjectVoter:
+        tags:
+            - { name: security.voter }
+    Leap\PanelBundle\Security\UserVoter:
+        tags:
+            - { name: security.voter }
+
+#aliases
+    Cocur\Slugify\Slugify: "@cocur_slugify"

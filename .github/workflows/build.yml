@@ -18,7 +18,7 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: test
-          MYSQL_DATABASE: concerto_test
+          MYSQL_DATABASE: leap_test
         ports:
           - '127.0.0.1:3306:3306'
 
@@ -41,10 +41,10 @@ jobs:
         run: npm install -g bower
 
       - name: Install JS dependencies (1/2)
-        run: cd ${{ github.workspace }}/src/Concerto/PanelBundle/Resources/public/angularjs && bower install --allow-root
+        run: cd ${{ github.workspace }}/src/Leap/PanelBundle/Resources/public/angularjs && bower install --allow-root
 
       - name: Install JS dependencies (2/2)
-        run: cd ${{ github.workspace }}/src/Concerto/TestBundle/Resources/public/angularjs && bower install --allow-root
+        run: cd ${{ github.workspace }}/src/Leap/TestBundle/Resources/public/angularjs && bower install --allow-root
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2

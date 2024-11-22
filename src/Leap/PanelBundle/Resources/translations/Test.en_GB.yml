@@ -1,0 +1,288 @@
+breadcrumb:
+    list: All tests
+
+form:
+  title:
+    add: Creating new test
+    edit: 'Editing test #{0}'
+  field:
+    name: Name
+    name.tooltip: Test name
+    accessibility: Accessibility
+    accessibility.tooltip: Accessibility level of test
+    archived: Archived
+    archived.tooltip: Is test archived?
+    protected: Protected
+    protected.tooltip: Does running this test directly requires Leap user authorisation?
+    slug: Url name
+    slug.tooltip: Url name (also called "slug") is a customizable part of URL under which the test will be available; it can be used to make test URLs more descriptive
+    visibility: Visibility
+    visibility.tooltip: Test visibility
+    visibility.subtest: Subtest
+    visibility.regular: Regular
+    visibility.featured: Featured
+    type: Type
+    type.tooltip: Test type
+    type.code: code
+    type.wizard: wizard
+    type.flow: flowchart
+    wizard: Wizard
+    wizard.tooltip: Select a test wizard that this test will be created from
+    wizard.none: <none selected>
+    owner: Owner
+    owner.tooltip: Object owner
+    groups: Groups
+    groups.tooltip: Comma separated list of groups that object is assigned to
+  button:
+      run: Run test
+      debug: Debug test
+    
+list: 
+  field:
+    name: Name
+    slug: URL name
+    wizard: Wizard
+    wizard.source: Source test
+
+templates:
+  fieldset:
+    legend: Templates
+    legend.tooltip: Templates
+  fields:
+    base_template: Base template
+    base_template.tooltip: Skeleton template that will be used when launching this test
+    base_template.none: <none selected>
+    
+variables:
+    form:
+        field:
+            name: Name
+            name.tooltip: Unique name of variable
+            description: Description
+            description.tooltip: Variable description
+            url: URL
+            url.tooltip: Is parameter passable through URL?
+            value: Default value
+            value.tooltip: Variable default value
+    dialog:
+        tooltip: Define test variable
+    
+    input:
+        fieldset:
+            legend: Test input
+            legend.tooltip: Test input variables.
+        parameters:
+            list:
+                add: Add input parameter
+                delete.checked: Remove checked parameters
+                edit: Edit
+                delete: Delete
+                field:
+                    info: Info
+                    name: Name
+                    url: URL
+                    url.yes: Yes
+                    url.no: No
+                    value: Default value
+            dialog:
+                title:
+                    add: Adding new input parameter
+                    edit: Editing input parameter
+                    delete: Removing input parameter
+                message:
+                    delete.confirm: Are you sure you want to delete selected input parameters?
+    output:
+        fieldset:
+            legend: Test output
+            legend.tooltip: Test output variables.
+        returns:
+            legend: Return variables
+            legend.tooltip: Define test return variables
+            list:
+                add: Add return variable
+                delete.checked: Remove checked returns
+                edit: Edit
+                delete: Delete
+                field:
+                    info: Info
+                    name: Name
+                    value: Default value
+            dialog:
+                title:
+                    add: Adding new return variable
+                    edit: Editing return variable
+                    delete: Removing return variable
+                message:
+                    delete.confirm: Are you sure you want to delete selected return variables?
+        branches:
+            legend: Branching
+            legend.tooltip: Define test branching
+            list:
+                add: Add branch
+                delete.checked: Remove checked branches
+                edit: Edit
+                delete: Delete
+                field:
+                    info: Info
+                    name: Name
+                    value: Default value
+            dialog:
+                title:
+                    add: Adding new branch
+                    edit: Editing branch
+                    delete: Removing branch
+                message:
+                    delete.confirm: Are you sure you want to delete selected branch?
+    
+log:
+    dialog:
+        title:
+            delete: Removing log
+            clear: Clearing logs
+        message:
+            delete.confirm: Are you sure you want to remove selected logs?
+            clear.confirm: Are you sure you want to clear all logs?
+    fieldset:
+        legend: Error logs
+        legend.tooltip: Test error logs
+    list:
+        button: 
+            delete.all: Delete all
+            delete.checked: Delete checked
+            delete: Delete
+            refresh: Refresh
+        field:
+            date: Date
+            type: Type
+            type.R: R
+            type.javascript: Javascript
+            message: Message
+            browser: Browser
+            ip: IP
+            
+logic:
+    convert:
+        title: test conversion to R code
+        confirmation: Are you sure you want to convert this test to R code. This operation cannot be reverted.
+        buttons:
+            convert: Convert to R code
+    code:
+        fieldset:
+            legend: Test logic
+            legend.tooltip: Test logic code
+            
+completion:
+    wizard:
+        default:
+            autoformat: Autoformat
+            insertcomments: Insert comments
+    documentation:
+        help:
+            title: R autocompletion documentation - generation instructions
+            intro: Before using R-autocompletion feature in Leap, you need to make sure that R documentation based on R configuration in your system has been generated.
+            info:
+                directory: >
+                    In order to generate this documentation, you need to open a console application (on Windows systems - `cmd`, on Linux `xterm`, `konsole` or `gnome-terminal`) and, inside it navigate into your Leap installation directory:
+                console: From that location, you will be able to use Symfony console. You will need to exacute `leap:r:cache` operation with it
+                console.more: click here for more information about Symfony console
+                output: Running this command will display all R functions which were found in your system, and will prepare needed documentation files. Reload or reopen Leap page in order to start using it when editing R sources.
+
+flow:
+    fieldset:
+        legend: Test flow
+        legend.tooltip: Test flow
+        return_function.tooltip: Return function.
+    nodes:
+        names:
+            test_start: test start
+            test_end: test end
+        descriptions:
+            test_start: This is a test entry node. Test flow execution starts from here. It returns test input parameters.
+            test_end: This is a test node where you can set the values of test return variables.
+        dialog:
+            delete:
+                title: Removing node
+                message: Are you sure you want to remove this node?
+            selection_delete:
+                title: Removing selected nodes
+                message: Are you sure you want to remove selected nodes?
+            title:
+                title: Edit node title
+                tooltip: Node title that will be visible in node header
+            edit:
+                title: Editing node
+    connections:
+        dialog:
+            edit:
+                title: Editing connection
+    ports:
+        names:
+            in: in
+            out: out
+        descriptions:
+            in: Node entry point.
+            out: Node branch point.
+        dialog:
+            titles:
+                input.add: Adding input ports
+                input.add.tooltip: Adding dynamic inputs or exposing/hiding current input parameters
+                input.remove: Removing/hiding input ports
+                branch.add: Adding branch ports
+                branch.add.tooltip: Adding dynamic branches or exposing/hiding current branch ports
+                branch.remove: Removing/hiding branch ports
+                return.add: Adding return ports
+                return.add.tooltip: Adding dynamic returns or exposing/hiding current return variables
+                return.remove: Removing/hiding return ports
+                port.remove_all_connections: Removing port connections
+            content:
+                input.remove: Are you sure you want to remove/hide input port {0}?
+                branch.remove: Are you sure you want to remove/hide branch port {0}?
+                return.remove: Are you sure you want to remove/hide return port {0}?
+                port.remove_all_connections: Are you sure you want to remove all connections of port {0}?
+            fields:
+                string: Default value as text
+                string.tooltip: If checked, port default value will be treated as text, otherwise as a R code.
+                value: Default value
+                value.tooltip: Default variable value in this port. Used when value of port is NULL.
+                exposed.inputs: Exposed inputs
+                exposed.inputs.tooltip: Exposing/hiding inputs parameters
+                dynamic.input: Dynamic input
+                dynamic.input.tooltip: Adding dynamic input
+                exposed.branches: Exposed branches
+                exposed.branches.tooltip: Exposing/hiding branch ports
+                dynamic.branch: Dynamic branch
+                dynamic.branch.tooltip: Adding dynamic branch
+                exposed.returns: Exposed returns
+                exposed.returns.tooltip: Exposing/hiding return ports
+                dynamic.return: Dynamic return
+                dynamic.return.tooltip: Adding dynamic return
+                pointer: Flow variable pointer
+                pointer.tooltip: If checked, this port will use value of flow variable specified
+                pointer_variable: Pointed variable name
+                pointer_variable.tooltip: Name of pointed flow variable
+                name: Name
+                name.tooltip: Dynamic variable name
+        add:
+            input: Add/expose input port
+            branch: Add/expose branch port
+            return: Add/expose return port
+
+    buttons:
+        reset_view: Reset view
+        rename_node: Rename node
+        copy_node: Copy node
+        copy_nodes: Copy nodes
+        paste_nodes: Paste nodes
+        remove_node: Remove node
+        remove_nodes: Remove nodes
+        reset_to_default: Reset to default
+        zoom_in: Zoom in
+        zoom_out: Zoom out
+        maximize: Toggle full-screen view
+        node_menu: Click to open node menu
+        remove_connection: Remove connection
+        hide_port: Hide/Remove port
+        remove_all_connections: Remove all connections
+    tags:
+        all: All
+        
