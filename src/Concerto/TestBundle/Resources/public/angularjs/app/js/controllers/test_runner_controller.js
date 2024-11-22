@@ -4,10 +4,10 @@ testRunner.controller('testRunnerController', [
     '$scope', '$compile',
     function ($scope, $compile) {
 
-        $scope.concertoOptions = {};
+        $scope.leapOptions = {};
         $scope.init = function (platform_url, appUrl, testSlug, testName, params, debug, admin, keepAliveInterval, keepAliveTolerance, existingSessionHash) {
 
-            $scope.concertoOptions = angular.extend($scope.concertoOptions, {
+            $scope.leapOptions = angular.extend($scope.leapOptions, {
                 platformUrl: platform_url,
                 appUrl: appUrl,
                 testSlug: testSlug,
@@ -22,7 +22,7 @@ testRunner.controller('testRunnerController', [
         };
 
         $scope.startTest = function (hash) {
-            let testElement = angular.element("<concerto-test concerto-options='concertoOptions' />");
+            let testElement = angular.element("<leap-test leap-options='leapOptions' />");
             angular.element("#testContainer").html(testElement);
             $compile(testElement)($scope);
         };

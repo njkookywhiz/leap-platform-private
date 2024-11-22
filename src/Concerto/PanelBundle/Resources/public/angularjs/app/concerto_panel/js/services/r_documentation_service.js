@@ -1,6 +1,6 @@
 'use strict';
 
-concertoPanel.factory('RDocumentation', function ($http, $sce, $timeout, $uibModal) {
+leapPanel.factory('RDocumentation', function ($http, $sce, $timeout, $uibModal) {
     return {
         loaded_html: false,
         loaded_name: false,

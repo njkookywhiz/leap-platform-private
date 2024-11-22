@@ -1,13 +1,13 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Concerto\PanelBundle\Service\TestWizardService;
-use Concerto\PanelBundle\Service\TestVariableService;
-use Concerto\PanelBundle\Service\TestWizardParamService;
-use Concerto\PanelBundle\Service\TestWizardStepService;
+use Leap\PanelBundle\Service\TestWizardService;
+use Leap\PanelBundle\Service\TestVariableService;
+use Leap\PanelBundle\Service\TestWizardParamService;
+use Leap\PanelBundle\Service\TestWizardStepService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -64,7 +64,7 @@ class TestWizardParamController extends ASectionController
      */
     public function collectionByWizardAction($wizard_id)
     {
-        return $this->templating->renderResponse('ConcertoPanelBundle::collection.json.twig', array(
+        return $this->templating->renderResponse('LeapPanelBundle::collection.json.twig', array(
             'collection' => $this->service->getByTestWizard($wizard_id)
         ));
     }
@@ -77,7 +77,7 @@ class TestWizardParamController extends ASectionController
      */
     public function collectionByWizardAndTypeAction($wizard_id, $type)
     {
-        return $this->templating->renderResponse('ConcertoPanelBundle::collection.json.twig', array(
+        return $this->templating->renderResponse('LeapPanelBundle::collection.json.twig', array(
             'collection' => $this->service->getByTestWizardAndType($wizard_id, $type)
         ));
     }

@@ -1,14 +1,14 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Service\GitService;
+use Leap\PanelBundle\Service\GitService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
-class ConcertoGitHistoryCommand extends Command
+class LeapGitHistoryCommand extends Command
 {
     private $gitService;
     private $localGitRepoPath;
@@ -24,7 +24,7 @@ class ConcertoGitHistoryCommand extends Command
 
     protected function configure()
     {
-        $this->setName("concerto:git:history")->setDescription("Returns commit history");
+        $this->setName("leap:git:history")->setDescription("Returns commit history");
     }
 
     private function getHistoryCommand()

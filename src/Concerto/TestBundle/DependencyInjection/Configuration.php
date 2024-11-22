@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\TestBundle\DependencyInjection;
+namespace Leap\TestBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('concerto_test');
+        $rootNode = $treeBuilder->root('leap_test');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

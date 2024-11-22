@@ -1,19 +1,19 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Repository\ScheduledTaskRepository;
-use Concerto\PanelBundle\Service\AdministrationService;
-use Concerto\PanelBundle\Service\GitService;
+use Leap\PanelBundle\Repository\ScheduledTaskRepository;
+use Leap\PanelBundle\Service\AdministrationService;
+use Leap\PanelBundle\Service\GitService;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
-use Concerto\PanelBundle\Entity\ScheduledTask;
+use Leap\PanelBundle\Entity\ScheduledTask;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Templating\EngineInterface;
 
-class ConcertoTaskGitResetCommand extends ConcertoScheduledTaskCommand
+class LeapTaskGitResetCommand extends LeapScheduledTaskCommand
 {
     private $templating;
     private $gitService;
@@ -29,7 +29,7 @@ class ConcertoTaskGitResetCommand extends ConcertoScheduledTaskCommand
     protected function configure()
     {
         parent::configure();
-        $this->setName("concerto:task:git:reset")->setDescription("Resets working copy to latest commit");
+        $this->setName("leap:task:git:reset")->setDescription("Resets working copy to latest commit");
         $this->getDefinition()->getOption("content-block")->setDefault(1);
         $this->addOption("instructions", "i", InputOption::VALUE_REQUIRED, "Import instructions", null);
     }
@@ -37,7 +37,7 @@ class ConcertoTaskGitResetCommand extends ConcertoScheduledTaskCommand
     public function getTaskDescription(ScheduledTask $task)
     {
         $info = json_decode($task->getInfo(), true);
-        $desc = $this->templating->render("@ConcertoPanel/Administration/task_git_reset.html.twig", array());
+        $desc = $this->templating->render("@LeapPanel/Administration/task_git_reset.html.twig", array());
         return $desc;
     }
 

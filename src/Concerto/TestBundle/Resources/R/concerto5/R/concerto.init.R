@@ -1,4 +1,4 @@
-concerto.init = function(dbConnectionParams, publicDir, platformUrl, appUrl, maxExecTime, maxIdleTime, keepAliveToleranceTime, sessionStorage, redisConnectionParams, sessionFilesExpiration){
+leap.init = function(dbConnectionParams, publicDir, platformUrl, appUrl, maxExecTime, maxIdleTime, keepAliveToleranceTime, sessionStorage, redisConnectionParams, sessionFilesExpiration){
     options(digits.secs = 6)
     if(Sys.info()['sysname'] != "Windows") {
         options(encoding='UTF-8')
@@ -51,34 +51,34 @@ concerto.init = function(dbConnectionParams, publicDir, platformUrl, appUrl, max
 
     tempdir(T)
 
-    concerto <<- list()
-    concerto$cache <<- list(tests=list(), templates=list(), tables=list())
-    concerto$cacheEnabled <<- T
-    concerto$globals <<- list()
-    concerto$templateParams <<- list()
-    concerto$globalTemplateParams <<- list()
-    concerto$flow <<- list()
-    concerto$flowIndex <<- 0
-    concerto$bgWorkers <<- list()
-    concerto$queuedResponse <<- NULL
-    concerto$skipTemplateOnResume <<- F
-    concerto$response <<- list()
+    leap <<- list()
+    leap$cache <<- list(tests=list(), templates=list(), tables=list())
+    leap$cacheEnabled <<- T
+    leap$globals <<- list()
+    leap$templateParams <<- list()
+    leap$globalTemplateParams <<- list()
+    leap$flow <<- list()
+    leap$flowIndex <<- 0
+    leap$bgWorkers <<- list()
+    leap$queuedResponse <<- NULL
+    leap$skipTemplateOnResume <<- F
+    leap$response <<- list()
 
-    concerto$publicDir <<- publicDir
-    concerto$platformUrl <<- platformUrl
-    concerto$appUrl <<- appUrl
-    concerto$mediaUrl <<- paste0(platformUrl, "/bundles/concertopanel/files")
-    concerto$maxExecTime <<- maxExecTime
-    concerto$maxIdleTime <<- maxIdleTime
-    concerto$keepAliveToleranceTime <<- keepAliveToleranceTime
-    concerto$lastSubmitTime <<- as.numeric(Sys.time())
-    concerto$lastKeepAliveTime <<- as.numeric(Sys.time())
-    concerto$dbConnectionParams <<- dbConnectionParams
-    concerto$sessionStorage <<- sessionStorage
-    concerto$redisConnectionParams <<- redisConnectionParams
-    concerto$sessionFilesExpiration <<- sessionFilesExpiration
+    leap$publicDir <<- publicDir
+    leap$platformUrl <<- platformUrl
+    leap$appUrl <<- appUrl
+    leap$mediaUrl <<- paste0(platformUrl, "/bundles/leappanel/files")
+    leap$maxExecTime <<- maxExecTime
+    leap$maxIdleTime <<- maxIdleTime
+    leap$keepAliveToleranceTime <<- keepAliveToleranceTime
+    leap$lastSubmitTime <<- as.numeric(Sys.time())
+    leap$lastKeepAliveTime <<- as.numeric(Sys.time())
+    leap$dbConnectionParams <<- dbConnectionParams
+    leap$sessionStorage <<- sessionStorage
+    leap$redisConnectionParams <<- redisConnectionParams
+    leap$sessionFilesExpiration <<- sessionFilesExpiration
 
-    concerto$events <<- list(
+    leap$events <<- list(
         onBeforeTemplateShow=NULL,
         onTemplateSubmit=NULL
     )

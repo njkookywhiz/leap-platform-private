@@ -9,4 +9,4 @@ function WizardParamDefiner6Controller($scope, DataTableCollectionService, Admin
   $scope.administrationSettingsService = AdministrationSettingsService;
 };
 
-concertoPanel.controller('WizardParamDefiner6Controller', ["$scope", "DataTableCollectionService", "AdministrationSettingsService", WizardParamDefiner6Controller]);
+leapPanel.controller('WizardParamDefiner6Controller', ["$scope", "DataTableCollectionService", "AdministrationSettingsService", WizardParamDefiner6Controller]);

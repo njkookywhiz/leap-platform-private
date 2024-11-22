@@ -1,5 +1,5 @@
-\name{concerto.event.add}
-\alias{concerto.event.add}
+\name{leap.event.add}
+\alias{leap.event.add}
 \title{
     Events
 }
@@ -7,7 +7,7 @@
     Adding events.
 }
 \usage{
-    concerto.event.add(name, fun)
+    leap.event.add(name, fun)
 }
 \arguments{
     \item{name}{
@@ -30,7 +30,7 @@
 \seealso{
 }
 \examples{
-    concerto.event.add("onTemplateSubmit", function(response) {
+    leap.event.add("onTemplateSubmit", function(response) {
         print(response)
     })
 }

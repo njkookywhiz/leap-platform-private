@@ -38,4 +38,4 @@ function WizardParamDefiner11Controller($scope, RDocumentation) {
     }
 }
 
-concertoPanel.controller('WizardParamDefiner11Controller', ["$scope", "RDocumentation", WizardParamDefiner11Controller]);
+leapPanel.controller('WizardParamDefiner11Controller', ["$scope", "RDocumentation", WizardParamDefiner11Controller]);

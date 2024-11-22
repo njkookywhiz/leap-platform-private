@@ -1,5 +1,5 @@
-\name{concerto.trans}
-\alias{concerto.trans}
+\name{leap.trans}
+\alias{leap.trans}
 \alias{c.trans}
 \title{
     Translations
@@ -8,7 +8,7 @@
     Translate entry using global dictionary
 }
 \usage{
-    concerto.trans(key)
+    leap.trans(key)
 }
 \arguments{
     \item{key}{
@@ -31,7 +31,7 @@
 \seealso{
 }
 \examples{
-    text <- concerto.trans("text")
+    text <- leap.trans("text")
 }
 
 \keyword{translation}

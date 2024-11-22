@@ -1,5 +1,5 @@
-\name{concerto.list.merge}
-\alias{concerto.list.merge}
+\name{leap.list.merge}
+\alias{leap.list.merge}
 \title{
     Merge two lists.
 }
@@ -7,7 +7,7 @@
     Merges two lists
 }
 \usage{
-    concerto.list.merge(list1, list2)
+    leap.list.merge(list1, list2)
 }
 \arguments{
     \item{list1}{
@@ -33,7 +33,7 @@
 \seealso{
 }
 \examples{
-    res <- concerto.list.merge(list1, list2)
+    res <- leap.list.merge(list1, list2)
 }
 
 \keyword{list}

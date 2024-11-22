@@ -1,15 +1,15 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
-use Concerto\PanelBundle\Entity\User;
-use Concerto\PanelBundle\Service\FileService;
-use Concerto\PanelBundle\Service\GitService;
-use Concerto\PanelBundle\Service\ImportService;
+use Leap\PanelBundle\Entity\User;
+use Leap\PanelBundle\Service\FileService;
+use Leap\PanelBundle\Service\GitService;
+use Leap\PanelBundle\Service\ImportService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Concerto\PanelBundle\Service\AdministrationService;
-use Concerto\TestBundle\Service\TestSessionCountService;
+use Leap\PanelBundle\Service\AdministrationService;
+use Leap\TestBundle\Service\TestSessionCountService;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,7 +45,7 @@ class AdministrationController
      */
     public function settingsMapAction()
     {
-        return $this->templating->renderResponse('ConcertoPanelBundle::collection.json.twig', array(
+        return $this->templating->renderResponse('LeapPanelBundle::collection.json.twig', array(
             'collection' => array(
                 "exposed" => $this->service->getExposedSettingsMap(),
                 "internal" => $this->service->getInternalSettingsMap()
@@ -60,7 +60,7 @@ class AdministrationController
      */
     public function messagesCollectionAction()
     {
-        return $this->templating->renderResponse('ConcertoPanelBundle::collection.json.twig', array(
+        return $this->templating->renderResponse('LeapPanelBundle::collection.json.twig', array(
             'collection' => $this->service->getMessagesCollection()
         ));
     }
@@ -89,7 +89,7 @@ class AdministrationController
     public function sessionCountCollectionAction($filter)
     {
         $collection = $this->sessionCountService->getCollection(json_decode($filter, true));
-        return $this->templating->renderResponse('ConcertoPanelBundle::collection.json.twig', array(
+        return $this->templating->renderResponse('LeapPanelBundle::collection.json.twig', array(
             'collection' => $collection
         ));
     }
@@ -142,7 +142,7 @@ class AdministrationController
      */
     public function tasksCollectionAction()
     {
-        return $this->templating->renderResponse('ConcertoPanelBundle::collection.json.twig', array(
+        return $this->templating->renderResponse('LeapPanelBundle::collection.json.twig', array(
             'collection' => $this->service->getTasksCollection()
         ));
     }
@@ -268,7 +268,7 @@ class AdministrationController
      */
     public function apiClientCollectionAction()
     {
-        return $this->templating->renderResponse('ConcertoPanelBundle::collection.json.twig', array(
+        return $this->templating->renderResponse('LeapPanelBundle::collection.json.twig', array(
             'collection' => $this->service->getApiClientsCollection()
         ));
     }
@@ -367,7 +367,7 @@ class AdministrationController
         if ($returnCode === 0) {
             $response = new Response(file_get_contents($zipPath));
             $response->headers->set('Content-Type', 'application/zip');
-            $response->headers->set('Content-Disposition', 'attachment; filename="export.concerto.zip"');
+            $response->headers->set('Content-Disposition', 'attachment; filename="export.leap.zip"');
             return $response;
         } else {
             $response = new Response($output, 500);

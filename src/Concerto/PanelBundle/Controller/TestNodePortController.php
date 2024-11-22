@@ -1,11 +1,11 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Concerto\PanelBundle\Service\TestNodeService;
-use Concerto\PanelBundle\Service\TestNodePortService;
-use Concerto\PanelBundle\Service\TestVariableService;
+use Leap\PanelBundle\Service\TestNodeService;
+use Leap\PanelBundle\Service\TestNodePortService;
+use Leap\PanelBundle\Service\TestVariableService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;

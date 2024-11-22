@@ -11,4 +11,4 @@ function WizardParamSetter8Controller($scope, TestCollectionService, Administrat
     $scope.onPrimitiveValueChange($scope.output);
 }
 
-concertoPanel.controller('WizardParamSetter8Controller', ["$scope", "TestCollectionService", "AdministrationSettingsService", WizardParamSetter8Controller]);
+leapPanel.controller('WizardParamSetter8Controller', ["$scope", "TestCollectionService", "AdministrationSettingsService", WizardParamSetter8Controller]);

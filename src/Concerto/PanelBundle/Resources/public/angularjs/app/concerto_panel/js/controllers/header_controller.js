@@ -41,4 +41,4 @@ function HeaderController($scope, DialogsService, $http, $uibModal) {
     };
 }
 
-concertoPanel.controller('HeaderController', ["$scope", "DialogsService", "$http", "$uibModal", HeaderController]);
+leapPanel.controller('HeaderController', ["$scope", "DialogsService", "$http", "$uibModal", HeaderController]);

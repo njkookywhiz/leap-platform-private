@@ -1,5 +1,5 @@
-\name{concerto.template.loader}
-\alias{concerto.template.loader}
+\name{leap.template.loader}
+\alias{leap.template.loader}
 \title{
     Loader template.
 }
@@ -7,7 +7,7 @@
     Sets a template that will be shown when the proper templates are loaded.
 }
 \usage{
-    concerto.template.loader(templateId=-1, html="", head="", params = list())
+    leap.template.loader(templateId=-1, html="", head="", params = list())
 }
 
 \arguments{
@@ -37,8 +37,8 @@
 \seealso{
 }
 \examples{
-    response1 <- concerto.template.loader(1)
-    response2 <- concerto.template.loader(html="<div align="center">loading ... please wait ...</div>")
+    response1 <- leap.template.loader(1)
+    response2 <- leap.template.loader(html="<div align="center">loading ... please wait ...</div>")
 }
 
 \keyword{template}

@@ -1,5 +1,5 @@
-\name{concerto.table.lastInsertId}
-\alias{concerto.table.lastInsertId}
+\name{leap.table.lastInsertId}
+\alias{leap.table.lastInsertId}
 \title{
     Last insert id
 }
@@ -7,7 +7,7 @@
     Gets last inserted record id
 }
 \usage{
-    concerto.table.lastInsertId(connection)
+    leap.table.lastInsertId(connection)
 }
 \arguments{
     \item{connection}{
@@ -30,7 +30,7 @@
 \seealso{
 }
 \examples{
-    lid <- concerto.table.lastInsertId()
+    lid <- leap.table.lastInsertId()
 }
 
 \keyword{table}

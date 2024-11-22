@@ -1,15 +1,15 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Service\GitService;
+use Leap\PanelBundle\Service\GitService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
-class ConcertoGitPullCommand extends Command
+class LeapGitPullCommand extends Command
 {
     private $gitService;
     private $localGitRepoPath;
@@ -27,7 +27,7 @@ class ConcertoGitPullCommand extends Command
 
     protected function configure()
     {
-        $this->setName("concerto:git:pull")->setDescription("Performs git pull");
+        $this->setName("leap:git:pull")->setDescription("Performs git pull");
         $this->addArgument("username", InputArgument::REQUIRED, "Commit username");
         $this->addArgument("email", InputArgument::REQUIRED, "Commit email");
     }

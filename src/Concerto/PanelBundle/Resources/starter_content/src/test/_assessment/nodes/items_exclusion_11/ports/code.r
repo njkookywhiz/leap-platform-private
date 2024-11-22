@@ -1,5 +1,5 @@
 if(!is.na(settings$itemsExclusionModule) && settings$itemsExclusionModule != "") {
-  excludedItems = concerto.test.run(settings$itemsExclusionModule, params=list(
+  excludedItems = leap.test.run(settings$itemsExclusionModule, params=list(
     excludedItems=excludedItems,
     items=items,
     itemsAdministered=itemsAdministered,
@@ -14,4 +14,4 @@ if(!is.na(settings$itemsExclusionModule) && settings$itemsExclusionModule != "")
     traitTheta = traitTheta
   ))$excludedItems
 }
-concerto.log(excludedItems, "excluded items indices")
+leap.log(excludedItems, "excluded items indices")

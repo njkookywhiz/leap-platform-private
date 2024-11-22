@@ -1,10 +1,10 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Service\AdministrationService;
-use Concerto\PanelBundle\Service\ExportService;
-use Concerto\PanelBundle\Service\ImportService;
+use Leap\PanelBundle\Service\AdministrationService;
+use Leap\PanelBundle\Service\ExportService;
+use Leap\PanelBundle\Service\ImportService;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -42,7 +42,7 @@ class ContentExportCommand extends Command
     {
         $files_dir = realpath(__DIR__ . "/../Resources/export") . "/";
 
-        $this->setName("concerto:content:export")->setDescription("Exports content");
+        $this->setName("leap:content:export")->setDescription("Exports content");
         $this->addArgument("output", InputArgument::OPTIONAL, "Output directory", $files_dir);
         $this->addOption("single", null, InputOption::VALUE_NONE, "Contain export in a single file?");
         $this->addOption("no-hash", null, InputOption::VALUE_NONE, "Do not include hash?");
@@ -83,7 +83,7 @@ class ContentExportCommand extends Command
     private function exportFiles()
     {
         $this->output->writeln("copying files...");
-        $srcDir = "{$this->projectDir}/src/Concerto/PanelBundle/Resources/public/files/";
+        $srcDir = "{$this->projectDir}/src/Leap/PanelBundle/Resources/public/files/";
         $dstDir = realpath($this->input->getArgument("output")) . "/files/";
         $filesystem = new Filesystem();
         $filesystem->mirror($srcDir, $dstDir);
@@ -114,7 +114,7 @@ class ContentExportCommand extends Command
         $normalizedIdsMap = $normIds ? array() : null;
 
         foreach ($classes as $class_name) {
-            $repo = $em->getRepository("ConcertoPanelBundle:" . $class_name);
+            $repo = $em->getRepository("LeapPanelBundle:" . $class_name);
             $content = $repo->findBy(array(), array("id" => "ASC"));
             $class_service = $this->importService->serviceMap[$class_name];
             foreach ($content as $ent) {
@@ -133,7 +133,7 @@ class ContentExportCommand extends Command
                     $json = Yaml::dump($result, 100, 2, Yaml::DUMP_MULTI_LINE_LITERAL_BLOCK);
 
                     $this->saveFile($class_name, $ent->getName(), $json, $this->input->getArgument("output"));
-                    $this->output->writeln("ConcertoPanelBundle:" . $class_name . ":" . $ent->getId() . ":" . $ent->getName() . " exported");
+                    $this->output->writeln("LeapPanelBundle:" . $class_name . ":" . $ent->getId() . ":" . $ent->getName() . " exported");
                 }
             }
         }
@@ -157,7 +157,7 @@ class ContentExportCommand extends Command
         if (strripos($path, DIRECTORY_SEPARATOR) !== strlen($path) - 1) {
             $path .= DIRECTORY_SEPARATOR;
         }
-        $file_path = $path . ($class_name ? ($class_name . "_") : "") . $name . ".concerto.yml";
+        $file_path = $path . ($class_name ? ($class_name . "_") : "") . $name . ".leap.yml";
         $fs->dumpFile($file_path, $content);
     }
 

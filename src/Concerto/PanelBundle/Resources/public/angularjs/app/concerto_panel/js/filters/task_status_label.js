@@ -1,4 +1,4 @@
-angular.module('concertoPanel').filter('taskStatusLabel', [
+angular.module('leapPanel').filter('taskStatusLabel', [
     function () {
         return function (status) {
             switch (status) {

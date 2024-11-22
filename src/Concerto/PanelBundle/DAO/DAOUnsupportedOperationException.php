@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\DAO;
+namespace Leap\PanelBundle\DAO;
 
 class DAOUnsupportedOperationException extends \Exception {
     

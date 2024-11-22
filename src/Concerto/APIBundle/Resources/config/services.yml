@@ -10,33 +10,33 @@ services:
     # if you need to do this, you can override this setting on individual services
     public: false
 
-  Concerto\APIBundle\:
+  Leap\APIBundle\:
     resource: '../../{Command,Service}'
 
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
-  Concerto\APIBundle\Controller\:
+  Leap\APIBundle\Controller\:
     resource: '../../Controller'
     public: true
     tags: ['controller.service_arguments']
 
   #repositories
-  Concerto\APIBundle\Repository\ClientRepository:
+  Leap\APIBundle\Repository\ClientRepository:
     factory: doctrine.orm.entity_manager:getRepository
-    arguments: [ Concerto\APIBundle\Entity\Client]
+    arguments: [ Leap\APIBundle\Entity\Client]
 
-  Concerto\APIBundle\Repository\SamlTokenRepository:
+  Leap\APIBundle\Repository\SamlTokenRepository:
     factory: doctrine.orm.entity_manager:getRepository
-    arguments: [ Concerto\APIBundle\Entity\SamlToken]
+    arguments: [ Leap\APIBundle\Entity\SamlToken]
 
   #services
-  Concerto\APIBundle\Service\SamlService:
+  Leap\APIBundle\Service\SamlService:
     arguments:
       $settings: "%saml%"
       $behindProxy: "%behind_proxy%"
 
   #controller
-  Concerto\APIBundle\Controller\SamlController:
+  Leap\APIBundle\Controller\SamlController:
      arguments:
        $testRunnerSettings: "%test_runner_settings%"
      public: true

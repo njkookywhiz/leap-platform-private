@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\TestBundle\Command;
+namespace Leap\TestBundle\Command;
 
-use Concerto\PanelBundle\Service\TestSessionService;
+use Leap\PanelBundle\Service\TestSessionService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
@@ -22,7 +22,7 @@ class RunTestCommand extends Command
 
     protected function configure()
     {
-        $this->setName("concerto:test:run")->setDescription("Run test");
+        $this->setName("leap:test:run")->setDescription("Run test");
         $this->addArgument("name", InputArgument::REQUIRED, "Test name");
         $this->addArgument("params", InputArgument::OPTIONAL, "{}");
         $this->addOption("debug", null, InputOption::VALUE_NONE, "print debug output?");

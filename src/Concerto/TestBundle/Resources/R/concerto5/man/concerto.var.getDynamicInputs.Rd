@@ -1,5 +1,5 @@
-\name{concerto.var.getDynamicInputs}
-\alias{concerto.var.getDynamicInputs}
+\name{leap.var.getDynamicInputs}
+\alias{leap.var.getDynamicInputs}
 \alias{c.getDynamicInputs}
 \title{
     Dynamic inputs
@@ -8,7 +8,7 @@
     Gets vector of names of dynamic inputs in current context
 }
 \usage{
-    concerto.var.getDynamicInputs()
+    leap.var.getDynamicInputs()
 }
 \arguments{
 }
@@ -28,7 +28,7 @@
 \seealso{
 }
 \examples{
-    names <- concerto.var.getDynamicInputs()
+    names <- leap.var.getDynamicInputs()
 }
 
 \keyword{variable}

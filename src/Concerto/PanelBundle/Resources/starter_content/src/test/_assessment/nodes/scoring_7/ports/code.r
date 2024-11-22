@@ -28,7 +28,7 @@ getScore = function(item, response) {
 
   score = as.numeric(defaultScore)
   if(!is.na(settings$responseScoreModule) && settings$responseScoreModule != "") {
-    score = concerto.test.run(settings$responseScoreModule, params=list(
+    score = leap.test.run(settings$responseScoreModule, params=list(
       item=item,
       response=response,
       score=score,
@@ -241,8 +241,8 @@ if(shouldCalculateSem) {
 
 traitScores = calculateTraitScores(itemsAdministered, responses, scores)
 
-concerto.log(theta, "theta")
-concerto.log(sem, "sem")
-concerto.log(traitScores, "traitScores")
-concerto.log(traitTheta, "traitTheta")
-concerto.log(traitSem, "traitTheta")
+leap.log(theta, "theta")
+leap.log(sem, "sem")
+leap.log(traitScores, "traitScores")
+leap.log(traitTheta, "traitTheta")
+leap.log(traitSem, "traitTheta")

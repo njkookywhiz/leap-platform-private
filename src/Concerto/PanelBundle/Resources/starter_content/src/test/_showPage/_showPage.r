@@ -22,7 +22,7 @@ if(!is.list(cookies)) {
 if(!is.list(bgWorkers)) {
   bgWorkers = list()
 }
-response = concerto5:::concerto.template.show(
+response = leap5:::leap.template.show(
   template=template, 
   html=if(!is.null(html) && !is.na(html) && html != "") {html} else {""},
   params=getTemplateParams(), 
@@ -33,7 +33,7 @@ response = concerto5:::concerto.template.show(
   sessionFilesAccess=sessionFilesAccess == 1
 )
 
-cookies = concerto$lastResponse$cookies
+cookies = leap$lastResponse$cookies
 
 for(.name in .dynamicReturns) {
   if(!is.null(response[[.name]])) {

@@ -7,7 +7,7 @@ for(.name in .dynamicInputs) {
 
 if(is.na(loaderTemplate) || loaderTemplate == "") { loaderTemplate = -1 }
 
-concerto.template.loader(
+leap.template.loader(
   templateId=loaderTemplate, 
   html=loaderTemplateHtml,
   params=params

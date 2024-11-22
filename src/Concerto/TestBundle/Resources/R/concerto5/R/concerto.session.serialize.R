@@ -1,14 +1,14 @@
-concerto.session.serialize <- function(){
-    concerto.log("serializing session...")
+leap.session.serialize <- function(){
+    leap.log("serializing session...")
 
-    if(concerto$sessionStorage == "redis") {
+    if(leap$sessionStorage == "redis") {
         #TODO add comppression
-        serialized = serialize(concerto, NULL)
-        expSeconds = as.numeric(concerto$sessionFilesExpiration) * 24 * 60 * 60
-        concerto$redisConnection$SETEX(concerto$session$hash, expSeconds, serialized)
+        serialized = serialize(leap, NULL)
+        expSeconds = as.numeric(leap$sessionFilesExpiration) * 24 * 60 * 60
+        leap$redisConnection$SETEX(leap$session$hash, expSeconds, serialized)
     } else {
-        save(concerto, file=concerto$sessionFile)
+        save(leap, file=leap$sessionFile)
     }
 
-    concerto.log("session serialized")
+    leap.log("session serialized")
 }

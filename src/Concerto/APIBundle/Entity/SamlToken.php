@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\APIBundle\Entity;
+namespace Leap\APIBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * AccessToken
  *
  * @ORM\Table(indexes={@ORM\Index(name="saml_token_hash_idx", columns={"hash"})})
- * @ORM\Entity(repositoryClass="Concerto\APIBundle\Repository\SamlTokenRepository")
+ * @ORM\Entity(repositoryClass="Leap\APIBundle\Repository\SamlTokenRepository")
  */
 class SamlToken
 {

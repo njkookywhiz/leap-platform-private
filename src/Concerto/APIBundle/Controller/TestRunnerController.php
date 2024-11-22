@@ -1,12 +1,12 @@
 <?php
 
-namespace Concerto\APIBundle\Controller;
+namespace Leap\APIBundle\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Concerto\TestBundle\Service\TestRunnerService;
-use Concerto\PanelBundle\Service\AdministrationService;
+use Leap\TestBundle\Service\TestRunnerService;
+use Leap\PanelBundle\Service\AdministrationService;
 
 /**
  * @Route("/api/runner")

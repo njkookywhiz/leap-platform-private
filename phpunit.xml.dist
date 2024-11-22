@@ -13,7 +13,7 @@
     </php>
 
     <testsuites>
-        <testsuite name="Concerto Platform">
+        <testsuite name="Leap Platform">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

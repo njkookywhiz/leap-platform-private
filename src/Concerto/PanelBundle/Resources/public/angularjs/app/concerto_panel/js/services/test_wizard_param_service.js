@@ -1,6 +1,6 @@
 'use strict';
 
-concertoPanel.service('TestWizardParam', ["$filter",
+leapPanel.service('TestWizardParam', ["$filter",
     function ($filter) {
         this.getTypeName = function (type) {
             switch (parseInt(type)) {

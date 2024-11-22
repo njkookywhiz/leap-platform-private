@@ -13,7 +13,7 @@ form:
     archived: Archived
     archived.tooltip: Is test archived?
     protected: Protected
-    protected.tooltip: Does running this test directly requires Concerto user authorisation?
+    protected.tooltip: Does running this test directly requires Leap user authorisation?
     slug: Url name
     slug.tooltip: Url name (also called "slug") is a customizable part of URL under which the test will be available; it can be used to make test URLs more descriptive
     visibility: Visibility
@@ -179,13 +179,13 @@ completion:
     documentation:
         help:
             title: R autocompletion documentation - generation instructions
-            intro: Before using R-autocompletion feature in Concerto, you need to make sure that R documentation based on R configuration in your system has been generated.
+            intro: Before using R-autocompletion feature in Leap, you need to make sure that R documentation based on R configuration in your system has been generated.
             info:
                 directory: >
-                    In order to generate this documentation, you need to open a console application (on Windows systems - `cmd`, on Linux `xterm`, `konsole` or `gnome-terminal`) and, inside it navigate into your Concerto installation directory:
-                console: From that location, you will be able to use Symfony console. You will need to exacute `concerto:r:cache` operation with it
+                    In order to generate this documentation, you need to open a console application (on Windows systems - `cmd`, on Linux `xterm`, `konsole` or `gnome-terminal`) and, inside it navigate into your Leap installation directory:
+                console: From that location, you will be able to use Symfony console. You will need to exacute `leap:r:cache` operation with it
                 console.more: click here for more information about Symfony console
-                output: Running this command will display all R functions which were found in your system, and will prepare needed documentation files. Reload or reopen Concerto page in order to start using it when editing R sources.
+                output: Running this command will display all R functions which were found in your system, and will prepare needed documentation files. Reload or reopen Leap page in order to start using it when editing R sources.
 
 flow:
     fieldset:

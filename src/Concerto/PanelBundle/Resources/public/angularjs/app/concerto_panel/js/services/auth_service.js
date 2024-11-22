@@ -1,4 +1,4 @@
-concertoPanel.factory('AuthService', function ($http) {
+leapPanel.factory('AuthService', function ($http) {
     return {
         getAuthUserPath: Paths.ADMINISTRATION_GET_AUTH_USER,
         user: null,

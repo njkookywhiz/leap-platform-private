@@ -1,7 +1,7 @@
-concerto.saml.getAuthenticatedUser = function(){
-    hash = concerto$lastResponse$cookies$concertoSamlTokenHash
+leap.saml.getAuthenticatedUser = function(){
+    hash = leap$lastResponse$cookies$leapSamlTokenHash
     if(!is.null(hash)) {
-        idResult = concerto.table.query("
+        idResult = leap.table.query("
                 SELECT max(id) AS id
                 FROM SamlToken
                 WHERE hash='{{hash}}' AND
@@ -13,7 +13,7 @@ concerto.saml.getAuthenticatedUser = function(){
         if(dim(idResult)[1] == 0) { return(NULL) }
         id = idResult$id
 
-        token = concerto.table.query("SELECT * FROM SamlToken WHERE id='{{id}}'", list(
+        token = leap.table.query("SELECT * FROM SamlToken WHERE id='{{id}}'", list(
             id=id
         ))
         if(dim(token)[1] == 0) { return(NULL) }

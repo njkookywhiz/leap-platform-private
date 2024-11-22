@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Concerto\PanelBundle\Controller\FunctionalTests;
+namespace Tests\Leap\PanelBundle\Controller\FunctionalTests;
 
-use Tests\Concerto\PanelBundle\AFunctionalTest;
-use Concerto\PanelBundle\Entity\ATopEntity;
-use Concerto\PanelBundle\Entity\Test;
+use Tests\Leap\PanelBundle\AFunctionalTest;
+use Leap\PanelBundle\Entity\ATopEntity;
+use Leap\PanelBundle\Entity\Test;
 
 class TestNodePortControllerTest extends AFunctionalTest
 {
@@ -14,16 +14,16 @@ class TestNodePortControllerTest extends AFunctionalTest
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
-        self::$repository = static::$entityManager->getRepository("ConcertoPanelBundle:TestNodePort");
+        self::$repository = static::$entityManager->getRepository("LeapPanelBundle:TestNodePort");
     }
 
     protected function setUp()
     {
-        self::truncateClass("ConcertoPanelBundle:Test");
-        self::truncateClass("ConcertoPanelBundle:TestVariable");
-        self::truncateClass("ConcertoPanelBundle:TestNode");
-        self::truncateClass("ConcertoPanelBundle:TestNodePort");
-        self::truncateClass("ConcertoPanelBundle:TestNodeConnection");
+        self::truncateClass("LeapPanelBundle:Test");
+        self::truncateClass("LeapPanelBundle:TestVariable");
+        self::truncateClass("LeapPanelBundle:TestNode");
+        self::truncateClass("LeapPanelBundle:TestNodePort");
+        self::truncateClass("LeapPanelBundle:TestNodeConnection");
 
         $client = self::createLoggedClient();
         $client->request("POST", "/admin/Test/-1/save", array(

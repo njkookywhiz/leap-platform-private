@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\Utils;
+namespace Leap\PanelBundle\Utils;
 
 interface StatusCheckReport {
 

@@ -1,6 +1,6 @@
-concerto.session.get = function(sessionHash){
-  sessionHash <- dbEscapeStrings(concerto$connection,toString(sessionHash))
-  result <- dbSendQuery(concerto$connection,sprintf("SELECT 
+leap.session.get = function(sessionHash){
+  sessionHash <- dbEscapeStrings(leap$connection,toString(sessionHash))
+  result <- dbSendQuery(leap$connection,sprintf("SELECT
                                                     id, 
                                                     test_id,
                                                     timeLimit,

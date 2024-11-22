@@ -1,22 +1,22 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Repository\ScheduledTaskRepository;
-use Concerto\PanelBundle\Service\AdministrationService;
+use Leap\PanelBundle\Repository\ScheduledTaskRepository;
+use Leap\PanelBundle\Service\AdministrationService;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
-use Concerto\PanelBundle\Entity\ScheduledTask;
+use Leap\PanelBundle\Entity\ScheduledTask;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Templating\EngineInterface;
 
-class ConcertoTaskContentImportCommand extends ConcertoScheduledTaskCommand
+class LeapTaskContentImportCommand extends LeapScheduledTaskCommand
 {
     private $templating;
     private $kernel;
@@ -33,7 +33,7 @@ class ConcertoTaskContentImportCommand extends ConcertoScheduledTaskCommand
     {
         parent::configure();
 
-        $this->setName("concerto:task:content:import")->setDescription("Content import");
+        $this->setName("leap:task:content:import")->setDescription("Content import");
         $this->getDefinition()->getOption("content-block")->setDefault(1);
         $this->addArgument("input", InputArgument::OPTIONAL, "Input directory", null);
         $this->addOption("instructions", "i", InputOption::VALUE_REQUIRED, "Import instructions", null);
@@ -41,7 +41,7 @@ class ConcertoTaskContentImportCommand extends ConcertoScheduledTaskCommand
 
     public function getTaskDescription(ScheduledTask $task)
     {
-        return $this->templating->render("@ConcertoPanel/Administration/task_content_import.html.twig", array());
+        return $this->templating->render("@LeapPanel/Administration/task_content_import.html.twig", array());
     }
 
     public function getTaskInfo(InputInterface $input)
@@ -66,7 +66,7 @@ class ConcertoTaskContentImportCommand extends ConcertoScheduledTaskCommand
 
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
-        $command = $app->find("concerto:content:import");
+        $command = $app->find("leap:content:import");
         $arguments = [
             "command" => $command->getName(),
             "input" => $input,

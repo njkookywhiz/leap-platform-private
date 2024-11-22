@@ -8,7 +8,7 @@ if(is.null(requestHeaders) || !is.list(requestHeaders)) {
 }
 config = add_headers(.headers=requestHeaders)
 
-concerto.log(paste0(method, " ", url))
+leap.log(paste0(method, " ", url))
 response = tryCatch({
   response = switch(
     method,
@@ -20,7 +20,7 @@ response = tryCatch({
   )
   response
 }, error = function(e) {
-  concerto.log(e, "error")
+  leap.log(e, "error")
   return(NULL)
 })
 
@@ -29,8 +29,8 @@ responseStatusCode = NULL
 responseBody = NULL
 responseHeaders = NULL
 if(!is.null(response)) {
-  concerto.log(response$status_code, "status code")
-  concerto.log(content(response), "response content")
+  leap.log(response$status_code, "status code")
+  leap.log(content(response), "response content")
   
   responseStatusCode = response$status_code
   responseBody = content(response)

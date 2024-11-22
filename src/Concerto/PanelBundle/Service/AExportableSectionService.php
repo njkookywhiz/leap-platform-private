@@ -1,10 +1,10 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
-use Concerto\PanelBundle\Entity\ATopEntity;
-use Concerto\PanelBundle\Repository\AEntityRepository;
-use Concerto\PanelBundle\Entity\User;
+use Leap\PanelBundle\Entity\ATopEntity;
+use Leap\PanelBundle\Repository\AEntityRepository;
+use Leap\PanelBundle\Entity\User;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -33,10 +33,10 @@ abstract class AExportableSectionService extends ASectionService
         switch ($format) {
             case "yml":
             case "json":
-                $ext = "concerto." . $format;
+                $ext = "leap." . $format;
                 break;
             case "compressed":
-                $ext = "concerto";
+                $ext = "leap";
                 break;
         }
         $name = "";

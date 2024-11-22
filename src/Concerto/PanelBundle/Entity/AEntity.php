@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
-use Concerto\PanelBundle\Entity\User;
+use Leap\PanelBundle\Entity\User;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;

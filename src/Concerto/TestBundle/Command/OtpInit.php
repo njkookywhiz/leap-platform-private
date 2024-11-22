@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\TestBundle\Command;
+namespace Leap\TestBundle\Command;
 
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Google\GoogleAuthenticator;
 use Symfony\Component\Console\Command\Command;

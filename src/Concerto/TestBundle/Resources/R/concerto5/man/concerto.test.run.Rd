@@ -1,13 +1,13 @@
-\name{concerto.test.run}
-\alias{concerto.test.run}
+\name{leap.test.run}
+\alias{leap.test.run}
 \title{
-    Running Concerto test
+    Running Leap test
 }
 \description{
-    Runs Concerto test.
+    Runs Leap test.
 }
 \usage{
-    concerto.test.run(testId, params = list())
+    leap.test.run(testId, params = list())
 }
 \arguments{
     \item{testId}{
@@ -33,6 +33,6 @@
 \seealso{
 }
 \examples{
-    test <- concerto.test.run(1)
+    test <- leap.test.run(1)
 }
 \keyword{test}

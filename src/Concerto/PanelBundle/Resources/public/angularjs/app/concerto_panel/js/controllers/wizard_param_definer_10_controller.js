@@ -7,4 +7,4 @@
 function WizardParamDefiner10Controller($scope) {
 };
 
-concertoPanel.controller('WizardParamDefiner10Controller', ["$scope", WizardParamDefiner10Controller]);
+leapPanel.controller('WizardParamDefiner10Controller', ["$scope", WizardParamDefiner10Controller]);

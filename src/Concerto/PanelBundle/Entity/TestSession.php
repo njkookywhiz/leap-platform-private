@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
@@ -12,7 +12,7 @@ use DateTime;
  *     uniqueConstraints={@UniqueConstraint(name="hash_idx", columns={"hash"})},
  *     indexes={@Index(name="idx", columns={"status","updated"})}
  * )
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\TestSessionRepository")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\TestSessionRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class TestSession

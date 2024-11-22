@@ -1,5 +1,5 @@
-\name{concerto.template.show}
-\alias{concerto.template.show}
+\name{leap.template.show}
+\alias{leap.template.show}
 \title{
     Show template to test participant.
 }
@@ -7,7 +7,7 @@
     Display template to test participant.
 }
 \usage{
-    concerto.template.show(templateId=-1, html="", head="", params = list(), timeLimit = 0, finalize = F)
+    leap.template.show(templateId=-1, html="", head="", params = list(), timeLimit = 0, finalize = F)
 }
 
 \arguments{
@@ -64,8 +64,8 @@
 \seealso{
 }
 \examples{
-    response1 <- concerto.template.show(1)
-    response2 <- concerto.template.show(html="<div align="center">Hello world!</div>")
+    response1 <- leap.template.show(1)
+    response2 <- leap.template.show(html="<div align="center">Hello world!</div>")
 }
 
 \keyword{template}

@@ -1,15 +1,15 @@
-concerto.server.respond = function(response, data=list()){
-  concerto.log("responding to server...")
+leap.server.respond = function(response, data=list()){
+  leap.log("responding to server...")
 
-  port = concerto$initialPort
-  if(!is.null(concerto$session)) {
-      port = concerto$session$submitterPort
+  port = leap$initialPort
+  if(!is.null(leap$session)) {
+      port = leap$session$submitterPort
   }
-  if(concerto$runnerType == RUNNER_SERIALIZED && file.exists("submitter.port")) {
+  if(leap$runnerType == RUNNER_SERIALIZED && file.exists("submitter.port")) {
     while(T) {
         fh = file("submitter.port", open="rt")
         port = readLines(fh)
-        if(!is.null(concerto$session)) { concerto$session$submitterPort <<- port }
+        if(!is.null(leap$session)) { leap$session$submitterPort <<- port }
         close(fh)
         if(length(port) == 0) {
            Sys.sleep(0.1)
@@ -28,5 +28,5 @@ concerto.server.respond = function(response, data=list()){
 
   writeLines(paste0(toJSON(response), "\n"), con)
   close(con)
-  concerto.log("responded to server")
+  leap.log("responded to server")
 }

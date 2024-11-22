@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\PanelBundle\Utils;
+namespace Leap\PanelBundle\Utils;
 
-use Concerto\PanelBundle\Utils\StatusCheckReport;
+use Leap\PanelBundle\Utils\StatusCheckReport;
 
 class SystemExecutableStatus implements StatusCheckReport {
 
@@ -78,9 +78,9 @@ class SystemExecutableStatus implements StatusCheckReport {
         if (empty($errors) && !$this->isVersionOk()
         ) {
             if (is_null($this->detected_version))
-                $errors[] = "Concerto was unable to detect version of required {$this->command} executable. Please verify that its installation and configuration are correct.";
+                $errors[] = "Leap was unable to detect version of required {$this->command} executable. Please verify that its installation and configuration are correct.";
             else
-                $errors[] = "Executable {$this->command} is installed in version {$this->detected_version}, but concerto needs at least version {$this->minimal_required_version} to work properly. Please update it and try again.";
+                $errors[] = "Executable {$this->command} is installed in version {$this->detected_version}, but leap needs at least version {$this->minimal_required_version} to work properly. Please update it and try again.";
         }
         return $errors;
     }

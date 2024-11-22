@@ -1,13 +1,13 @@
 <?php
 
-namespace Concerto\TestBundle\Entity;
+namespace Leap\TestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 
 /**
  * @ORM\Table
- * @ORM\Entity(repositoryClass="Concerto\TestBundle\Repository\TestSessionCountRepository") 
+ * @ORM\Entity(repositoryClass="Leap\TestBundle\Repository\TestSessionCountRepository")
  */
 class TestSessionCount implements \JsonSerializable {
 

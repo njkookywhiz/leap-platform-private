@@ -1,16 +1,16 @@
 <?php
 
-namespace Concerto\TestBundle\Command;
+namespace Leap\TestBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Concerto\TestBundle\Entity\TestSessionCount;
-use Concerto\TestBundle\Service\TestSessionCountService;
+use Leap\TestBundle\Entity\TestSessionCount;
+use Leap\TestBundle\Service\TestSessionCountService;
 
-class ConcertoSessionsLogCommand extends Command {
+class LeapSessionsLogCommand extends Command {
 
     private $sessionCountService;
 
@@ -21,7 +21,7 @@ class ConcertoSessionsLogCommand extends Command {
     }
 
     protected function configure() {
-        $this->setName("concerto:sessions:log")->setDescription("Log session count.");
+        $this->setName("leap:sessions:log")->setDescription("Log session count.");
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {

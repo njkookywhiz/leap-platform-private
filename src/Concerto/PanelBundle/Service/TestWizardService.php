@@ -1,10 +1,10 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
-use Concerto\PanelBundle\Entity\TestWizard;
-use Concerto\PanelBundle\Repository\TestWizardRepository;
-use Concerto\PanelBundle\Entity\User;
+use Leap\PanelBundle\Entity\TestWizard;
+use Leap\PanelBundle\Repository\TestWizardRepository;
+use Leap\PanelBundle\Entity\User;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;

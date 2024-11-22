@@ -1,14 +1,14 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Service\GitService;
+use Leap\PanelBundle\Service\GitService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
-class ConcertoGitAddCommand extends Command
+class LeapGitAddCommand extends Command
 {
     private $gitService;
     private $localGitRepoPath;
@@ -24,7 +24,7 @@ class ConcertoGitAddCommand extends Command
 
     protected function configure()
     {
-        $this->setName("concerto:git:add")->setDescription("Performs git add");
+        $this->setName("leap:git:add")->setDescription("Performs git add");
     }
 
     private function getAddCommand()

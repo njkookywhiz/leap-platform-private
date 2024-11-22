@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\Repository;
+namespace Leap\PanelBundle\Repository;
 
 /**
  * AdministrationSettingRepository

@@ -1,4 +1,4 @@
-concerto.template.show = function(
+leap.template.show = function(
     templateId=-1,
     html="",
     head="",
@@ -12,75 +12,75 @@ concerto.template.show = function(
     protectedFilesAccess=F,
     sessionFilesAccess=F
 ) {
-    concerto$skipTemplateOnResume <<- skipOnResume
-    if (! is.null(concerto$queuedResponse)) {
-        response = concerto$queuedResponse
-        concerto$queuedResponse <<- NULL
+    leap$skipTemplateOnResume <<- skipOnResume
+    if (! is.null(leap$queuedResponse)) {
+        response = leap$queuedResponse
+        leap$queuedResponse <<- NULL
         return(response)
     }
 
     if (! is.list(params)) stop("'params' must be a list!")
     if (templateId == -1 && html == "") stop("templateId or html must be declared")
 
-    params = concerto.template.makeParams(params)
+    params = leap.template.makeParams(params)
 
-    concerto$response$protectedFilesAccess <<- protectedFilesAccess
-    concerto$response$sessionFilesAccess <<- sessionFilesAccess
+    leap$response$protectedFilesAccess <<- protectedFilesAccess
+    leap$response$sessionFilesAccess <<- sessionFilesAccess
     if (html != "") {
-        concerto$response$templateHead <<- concerto.template.insertParams(head, params, removeMissing = removeMissingParams)
-        concerto$response$templateHtml <<- concerto.template.insertParams(html, params, removeMissing = removeMissingParams)
-        concerto$response$templateCss <<- ""
-        concerto$response$templateJs <<- ""
+        leap$response$templateHead <<- leap.template.insertParams(head, params, removeMissing = removeMissingParams)
+        leap$response$templateHtml <<- leap.template.insertParams(html, params, removeMissing = removeMissingParams)
+        leap$response$templateCss <<- ""
+        leap$response$templateJs <<- ""
     } else {
-        template <- concerto.template.get(templateId)
+        template <- leap.template.get(templateId)
         if (is.null(template)) stop(paste("Template #", templateId, " not found!", sep = ''))
-        concerto$response$templateHead <<- concerto.template.insertParams(template$head, params, removeMissing = removeMissingParams)
-        concerto$response$templateCss <<- concerto.template.insertParams(template$css, params, removeMissing = removeMissingParams)
-        concerto$response$templateJs <<- concerto.template.insertParams(template$js, params, removeMissing = removeMissingParams)
-        concerto$response$templateHtml <<- concerto.template.insertParams(template$html, params, removeMissing = removeMissingParams)
+        leap$response$templateHead <<- leap.template.insertParams(template$head, params, removeMissing = removeMissingParams)
+        leap$response$templateCss <<- leap.template.insertParams(template$css, params, removeMissing = removeMissingParams)
+        leap$response$templateJs <<- leap.template.insertParams(template$js, params, removeMissing = removeMissingParams)
+        leap$response$templateHtml <<- leap.template.insertParams(template$html, params, removeMissing = removeMissingParams)
     }
-    concerto$session$timeLimit <<- timeLimit
+    leap$session$timeLimit <<- timeLimit
 
     workers = list(
-        getTemplate = concerto.worker.getTemplate
+        getTemplate = leap.worker.getTemplate
     )
     for(name in ls(bgWorkers)) {
         workers[[name]] = bgWorkers[[name]]
     }
-    concerto$bgWorkers <<- workers
+    leap$bgWorkers <<- workers
 
-    concerto$templateParams <<- params
+    leap$templateParams <<- params
 
-    concerto.event.fire("onBeforeTemplateShow", list(params = concerto$templateParams))
+    leap.event.fire("onBeforeTemplateShow", list(params = leap$templateParams))
 
-    data = concerto$response
-    data$templateParams = concerto$templateParams
+    data = leap$response
+    data$templateParams = leap$templateParams
     data$cookies = cookies
-    if(!is.null(concerto$lastResponse$values$submitId)) {
-        data$lastSubmitId = as.numeric(concerto$lastResponse$values$submitId)
+    if(!is.null(leap$lastResponse$values$submitId)) {
+        data$lastSubmitId = as.numeric(leap$lastResponse$values$submitId)
     }
     if (finalize) {
-        concerto5:::concerto.session.stop(STATUS_FINALIZED, RESPONSE_VIEW_FINAL_TEMPLATE, data)
+        leap5:::leap.session.stop(STATUS_FINALIZED, RESPONSE_VIEW_FINAL_TEMPLATE, data)
     } else {
         repeat {
-            concerto5:::concerto.session.update()
-            concerto$templateParams <<- list()
+            leap5:::leap.session.update()
+            leap$templateParams <<- list()
 
-            concerto$lastSubmitResult <<- data
-            concerto$lastSubmitId <<- data$lastSubmitId
+            leap$lastSubmitResult <<- data
+            leap$lastSubmitId <<- data$lastSubmitId
 
-            if (concerto$runnerType == RUNNER_SERIALIZED) {
-                concerto5:::concerto.session.serialize()
+            if (leap$runnerType == RUNNER_SERIALIZED) {
+                leap5:::leap.session.serialize()
             }
 
-            concerto5:::concerto.server.respond(RESPONSE_VIEW_TEMPLATE, data)
-            concerto$response <<- list()
+            leap5:::leap.server.respond(RESPONSE_VIEW_TEMPLATE, data)
+            leap$response <<- list()
 
-            if (concerto$runnerType == RUNNER_SERIALIZED) {
-                concerto5:::concerto.session.stop(STATUS_RUNNING)
+            if (leap$runnerType == RUNNER_SERIALIZED) {
+                leap5:::leap.session.stop(STATUS_RUNNING)
             }
 
-            response = concerto5:::concerto.server.listen(skipOnResume)
+            response = leap5:::leap.server.listen(skipOnResume)
             if(!is.null(response)) return(response)
         }
     }

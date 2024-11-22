@@ -1,4 +1,4 @@
-concertoPanel.factory('BaseCollectionService', function ($http, $filter, AuthService) {
+leapPanel.factory('BaseCollectionService', function ($http, $filter, AuthService) {
     return {
         collectionInitialized: false,
         userRoleRequired: null,

@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +10,7 @@ use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\TestVariableRepository")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\TestVariableRepository")
  * @UniqueEntity(fields={"name","type","test"}, message="validate.test.variables.unique")
  * @ORM\HasLifecycleCallbacks
  */

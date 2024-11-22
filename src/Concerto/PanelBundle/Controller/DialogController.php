@@ -1,10 +1,10 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
-use Concerto\PanelBundle\Service\AdministrationService;
+use Leap\PanelBundle\Service\AdministrationService;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Concerto\PanelBundle\Service\PanelService;
+use Leap\PanelBundle\Service\PanelService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -54,7 +54,7 @@ class DialogController
     {
         $filtered_template_name = filter_var(basename($template_name), FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
 
-        $template = "ConcertoPanelBundle:Dialog:$filtered_template_name.twig";
+        $template = "LeapPanelBundle:Dialog:$filtered_template_name.twig";
 
         try {
             return $this->templating->renderResponse($template, $params);

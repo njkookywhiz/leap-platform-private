@@ -16,7 +16,7 @@ getTemplateParams = function() {
   return(templateParams)
 }
 
-response = concerto5:::concerto.template.show(
+response = leap5:::leap.template.show(
   templateId=template,
   html=templateHtml,
   params=getTemplateParams()

@@ -1,16 +1,16 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Concerto\PanelBundle\Entity\Test;
-use Concerto\PanelBundle\Entity\TestNodePort;
-use Concerto\PanelBundle\Entity\TestNodeConnection;
+use Leap\PanelBundle\Entity\Test;
+use Leap\PanelBundle\Entity\TestNodePort;
+use Leap\PanelBundle\Entity\TestNodeConnection;
 use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\TestNodeRepository")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\TestNodeRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class TestNode extends AEntity implements \JsonSerializable

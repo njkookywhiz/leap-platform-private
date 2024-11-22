@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Concerto\PanelBundle\Controller\FunctionalTests;
+namespace Tests\Leap\PanelBundle\Controller\FunctionalTests;
 
 use Symfony\Component\Yaml\Yaml;
-use Tests\Concerto\PanelBundle\AFunctionalTest;
-use Concerto\PanelBundle\Entity\ATopEntity;
-use Concerto\PanelBundle\Entity\Test;
+use Tests\Leap\PanelBundle\AFunctionalTest;
+use Leap\PanelBundle\Entity\ATopEntity;
+use Leap\PanelBundle\Entity\Test;
 
 class TestControllerTest extends AFunctionalTest
 {
@@ -16,8 +16,8 @@ class TestControllerTest extends AFunctionalTest
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
-        self::$repository = static::$entityManager->getRepository("ConcertoPanelBundle:Test");
-        self::$varRepository = static::$entityManager->getRepository("ConcertoPanelBundle:TestVariable");
+        self::$repository = static::$entityManager->getRepository("LeapPanelBundle:Test");
+        self::$varRepository = static::$entityManager->getRepository("LeapPanelBundle:TestVariable");
     }
 
     protected function setUp()
@@ -209,7 +209,7 @@ class TestControllerTest extends AFunctionalTest
         $client = self::createLoggedClient();
 
         $client->request("POST", "/admin/Test/import", array(
-            "file" => "Test_1.concerto.json",
+            "file" => "Test_1.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "Test",
@@ -237,7 +237,7 @@ class TestControllerTest extends AFunctionalTest
         $client = self::createLoggedClient();
 
         $client->request("POST", "/admin/Test/import", array(
-            "file" => "Test_1.concerto.json",
+            "file" => "Test_1.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "Test",

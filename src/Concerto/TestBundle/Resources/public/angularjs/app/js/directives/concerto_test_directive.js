@@ -12,7 +12,7 @@ testRunner.settings = {
     timeFormat: "HH:mm:ss"
 };
 
-testRunner.directive('concertoTest', ['$http', '$interval', '$timeout', '$sce', '$compile', '$templateCache', 'dateFilter', 'FileUploader', '$window',
+testRunner.directive('leapTest', ['$http', '$interval', '$timeout', '$sce', '$compile', '$templateCache', 'dateFilter', 'FileUploader', '$window',
     function ($http, $interval, $timeout, $sce, $compile, $templateCache, dateFilter, FileUploader, $window) {
         function link(scope, element, attrs) {
 
@@ -579,21 +579,21 @@ testRunner.directive('concertoTest', ['$http', '$interval', '$timeout', '$sce', 
             }
 
             function addSubmitEvents() {
-                element.find(":button:not(.concerto-nosubmit)").bind("click", function (event) {
+                element.find(":button:not(.leap-nosubmit)").bind("click", function (event) {
                     scope.submitView($(this).attr("name"), false);
                 });
-                element.find("input:image:not(.concerto-nosubmit)").bind("click", function (event) {
+                element.find("input:image:not(.leap-nosubmit)").bind("click", function (event) {
                     scope.submitView($(this).attr("name"), false);
                 });
-                element.find("input:submit:not(.concerto-nosubmit)").bind("click", function (event) {
+                element.find("input:submit:not(.leap-nosubmit)").bind("click", function (event) {
                     scope.submitView($(this).attr("name"), false);
                 });
             }
 
             function removeSubmitEvents() {
-                element.find(":button:not(.concerto-nosubmit)").unbind("click");
-                element.find("input:image:not(.concerto-nosubmit)").unbind("click");
-                element.find("input:submit:not(.concerto-nosubmit)").unbind("click");
+                element.find(":button:not(.leap-nosubmit)").unbind("click");
+                element.find("input:image:not(.leap-nosubmit)").unbind("click");
+                element.find("input:submit:not(.leap-nosubmit)").unbind("click");
             }
 
             var extraControls = {};
@@ -636,11 +636,11 @@ testRunner.directive('concertoTest', ['$http', '$interval', '$timeout', '$sce', 
             };
 
             function getToken() {
-                return sessionStorage.getItem("concertoToken");
+                return sessionStorage.getItem("leapToken");
             }
 
             function setToken(token) {
-                sessionStorage.setItem("concertoToken", token);
+                sessionStorage.setItem("leapToken", token);
             }
 
             testRunner.submitView = scope.submitView;
@@ -666,7 +666,7 @@ testRunner.directive('concertoTest', ['$http', '$interval', '$timeout', '$sce', 
             templateUrl: "test_container.html",
             replace: true,
             scope: {
-                options: "=concertoOptions"
+                options: "=leapOptions"
             },
             link: link
         };

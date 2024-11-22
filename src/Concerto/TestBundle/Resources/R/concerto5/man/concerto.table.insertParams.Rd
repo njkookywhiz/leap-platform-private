@@ -1,5 +1,5 @@
-\name{concerto.table.insertParams}
-\alias{concerto.table.insertParams}
+\name{leap.table.insertParams}
+\alias{leap.table.insertParams}
 \title{
     Table helper function.
 }
@@ -7,7 +7,7 @@
     Fills SQL code with given parameters.
 }
 \usage{
-    concerto.table.insertParams(sql, params, connection)
+    leap.table.insertParams(sql, params, connection)
 }
 \arguments{
     \item{sql}{
@@ -38,7 +38,7 @@
 \examples{
     id <- 123
     sql <- "SELECT * FROM db.table WHERE id={{id_value}}"
-    sql <- concerto.table.insertParams(sql,list(id_value=id))
+    sql <- leap.table.insertParams(sql,list(id_value=id))
 }
 
 \keyword{table}

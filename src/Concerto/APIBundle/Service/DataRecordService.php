@@ -1,11 +1,11 @@
 <?php
 
-namespace Concerto\APIBundle\Service;
+namespace Leap\APIBundle\Service;
 
-use Concerto\PanelBundle\Entity\DataTable;
-use Concerto\PanelBundle\Service\DataTableService;
-use Concerto\PanelBundle\DAO\DBDataDAO;
-use Concerto\PanelBundle\DAO\DBStructureDAO;
+use Leap\PanelBundle\Entity\DataTable;
+use Leap\PanelBundle\Service\DataTableService;
+use Leap\PanelBundle\DAO\DBDataDAO;
+use Leap\PanelBundle\DAO\DBStructureDAO;
 use Symfony\Component\HttpFoundation\Response;
 
 class DataRecordService

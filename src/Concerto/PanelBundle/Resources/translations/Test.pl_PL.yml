@@ -13,7 +13,7 @@ form:
     archived: Zarchiwizowane
     archived.tooltip: Czy test jest zarchiwizowany?
     protected: Chroniony
-    protected.tooltip: Czy uruchomienie test testu bezpośrednio wymaga autoryzacji użytkownika Concerto?
+    protected.tooltip: Czy uruchomienie test testu bezpośrednio wymaga autoryzacji użytkownika Leap?
     slug: Nazwa w URLu
     slug.tooltip: Fragment URL danego testu, modyfikowalny dla każdego testu; może być użyty do uczynienia linków do testów bardziej opisowymi
     visibility: Widoczność
@@ -181,13 +181,13 @@ completion:
     documentation:
         help:
             title: Dokumentacja do autouzupełniania składni R - instrukcja generacji
-            intro: Przed rozpoczęciem użycia autouzupełniania kodu R w Concerto, należy upewnić się, że dokumentacja funkcji języka R dostępnych w systemie została wygenerowana.
+            intro: Przed rozpoczęciem użycia autouzupełniania kodu R w Leap, należy upewnić się, że dokumentacja funkcji języka R dostępnych w systemie została wygenerowana.
             info:
                 directory: >
-                    W celu wygenerowania tej dokumentacji, należy otworzyć aplikację terminala (w systemach Windows jest to `cmd`, na Linuksach `xterm`, `konsole` lub `gnome-terminal`), i za pomocą tej aplikacji przejść do katalogu, gdzie zainstalowane jest Concerto:
-                console: Z tej lokalizacji, będzie można użyć konsoli Symfony, w celu wykonania komendy concerto:r:cache generującej dokumentację 
+                    W celu wygenerowania tej dokumentacji, należy otworzyć aplikację terminala (w systemach Windows jest to `cmd`, na Linuksach `xterm`, `konsole` lub `gnome-terminal`), i za pomocą tej aplikacji przejść do katalogu, gdzie zainstalowane jest Leap:
+                console: Z tej lokalizacji, będzie można użyć konsoli Symfony, w celu wykonania komendy leap:r:cache generującej dokumentację 
                 console.more: więcej informacji na temat konsoli Symfony
-                output: Uruchomienie tej komendy spowoduje wyświetlenie na ekranie wszystkich odnalezionych w systemie funkcji języka R i przygotuje wszystkie potrzebne pliki dokumentacji. Po zakończeniu działania tej komendy należy przeładować stronę Concerto, lub przelogować się aby zacząć używać autouzupełniania składni R.
+                output: Uruchomienie tej komendy spowoduje wyświetlenie na ekranie wszystkich odnalezionych w systemie funkcji języka R i przygotuje wszystkie potrzebne pliki dokumentacji. Po zakończeniu działania tej komendy należy przeładować stronę Leap, lub przelogować się aby zacząć używać autouzupełniania składni R.
                         
 flow:
     fieldset:

@@ -1,9 +1,9 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
-use Concerto\PanelBundle\Entity\ScheduledTask;
-use Concerto\PanelBundle\Repository\ScheduledTaskRepository;
+use Leap\PanelBundle\Entity\ScheduledTask;
+use Leap\PanelBundle\Repository\ScheduledTaskRepository;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -90,7 +90,7 @@ class GitService
     {
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
-        $command = $app->find("concerto:git:position");
+        $command = $app->find("leap:git:position");
         $arguments = [
             "command" => $command->getName(),
             "direction" => "behind"
@@ -110,7 +110,7 @@ class GitService
     {
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
-        $command = $app->find("concerto:git:position");
+        $command = $app->find("leap:git:position");
         $arguments = [
             "command" => $command->getName(),
             "direction" => "ahead"
@@ -130,7 +130,7 @@ class GitService
     {
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
-        $command = $app->find("concerto:git:history");
+        $command = $app->find("leap:git:history");
         $arguments = [
             "command" => $command->getName()
         ];
@@ -170,7 +170,7 @@ class GitService
     {
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
-        $command = $app->find("concerto:git:diff");
+        $command = $app->find("leap:git:diff");
         $arguments = [
             "command" => $command->getName(),
             "--sha" => $sha
@@ -190,7 +190,7 @@ class GitService
     {
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
-        $command = $app->find("concerto:git:fetch");
+        $command = $app->find("leap:git:fetch");
         $arguments = ["command" => $command->getName()];
         $in = new ArrayInput($arguments);
         $out = new BufferedOutput();
@@ -208,7 +208,7 @@ class GitService
 
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
-        $command = $app->find("concerto:content:export");
+        $command = $app->find("leap:content:export");
         $arguments = [
             "command" => $command->getName(),
             "output" => $this->getGitRepoPath(),
@@ -231,7 +231,7 @@ class GitService
     {
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
-        $command = $app->find("concerto:git:add");
+        $command = $app->find("leap:git:add");
         $arguments = ["command" => $command->getName()];
         $in = new ArrayInput($arguments);
         $out = new BufferedOutput();
@@ -255,7 +255,7 @@ class GitService
 
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
-        $command = $app->find("concerto:git:commit");
+        $command = $app->find("leap:git:commit");
         $arguments = [
             "command" => $command->getName(),
             "message" => $message,
@@ -333,7 +333,7 @@ class GitService
     {
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
-        $command = $app->find("concerto:git:reset");
+        $command = $app->find("leap:git:reset");
         $arguments = [
             "command" => $command->getName()
         ];
@@ -354,7 +354,7 @@ class GitService
 
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
-        $command = $app->find("concerto:content:import");
+        $command = $app->find("leap:content:import");
         $arguments = [
             "command" => $command->getName(),
             "input" => $this->getGitRepoPath(),
@@ -376,7 +376,7 @@ class GitService
     {
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
-        $command = $app->find("concerto:git:push");
+        $command = $app->find("leap:git:push");
         $arguments = ["command" => $command->getName()];
         $in = new ArrayInput($arguments);
         $out = new BufferedOutput();
@@ -407,7 +407,7 @@ class GitService
     {
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
-        $command = $app->find("concerto:git:pull");
+        $command = $app->find("leap:git:pull");
         $arguments = [
             "command" => $command->getName(),
             "username" => $username,
@@ -440,7 +440,7 @@ class GitService
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
         $in = new ArrayInput(array(
-            "command" => "concerto:task:git:pull",
+            "command" => "leap:task:git:pull",
             "username" => $user->getUsername(),
             "email" => $user->getEmail(),
             "--instructions" => $exportInstructions
@@ -467,7 +467,7 @@ class GitService
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
         $in = new ArrayInput(array(
-            "command" => "concerto:task:git:enable",
+            "command" => "leap:task:git:enable",
             "--instructions" => $instructions,
             "--instant-run" => $instantRun
         ));
@@ -491,7 +491,7 @@ class GitService
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
         $in = new ArrayInput(array(
-            "command" => "concerto:task:git:update",
+            "command" => "leap:task:git:update",
             "--instructions" => $exportInstructions
         ));
         $out = new BufferedOutput();
@@ -531,7 +531,7 @@ class GitService
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
         $in = new ArrayInput(array(
-            "command" => "concerto:task:git:reset",
+            "command" => "leap:task:git:reset",
             "--instructions" => $exportInstructions
         ));
         $out = new BufferedOutput();

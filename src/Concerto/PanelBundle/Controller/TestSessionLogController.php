@@ -1,11 +1,11 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Concerto\PanelBundle\Service\TestSessionLogService;
+use Leap\PanelBundle\Service\TestSessionLogService;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -43,7 +43,7 @@ class TestSessionLogController extends ASectionController
      */
     public function collectionByTestAction($test_id)
     {
-        return $this->templating->renderResponse('ConcertoPanelBundle::collection.json.twig', array(
+        return $this->templating->renderResponse('LeapPanelBundle::collection.json.twig', array(
                 'collection' => $this->service->getLatestByTest($test_id)
             )
         );

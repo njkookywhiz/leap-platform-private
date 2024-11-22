@@ -1,8 +1,8 @@
-concerto.event.remove = function(name, fun){
+leap.event.remove = function(name, fun){
     indicesToRemove = c()
-    if(length(concerto$events[[name]]) > 0) {
+    if(length(leap$events[[name]]) > 0) {
         i = 0
-        for(currentFun in concerto$events[[name]]) {
+        for(currentFun in leap$events[[name]]) {
             i = i + 1
             if(identical(currentFun, fun)) {
                 indicesToRemove = c(indicesToRemove, i)
@@ -11,6 +11,6 @@ concerto.event.remove = function(name, fun){
     }
 
     if(length(indicesToRemove) > 0) {
-        concerto$events[[name]] <<- concerto$events[[name]][-indicesToRemove]
+        leap$events[[name]] <<- leap$events[[name]][-indicesToRemove]
     }
 }

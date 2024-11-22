@@ -1,17 +1,17 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Concerto\PanelBundle\Entity\TestWizardStep;
-use Concerto\PanelBundle\Entity\TestWizard;
-use Concerto\PanelBundle\Entity\TestVariable;
+use Leap\PanelBundle\Entity\TestWizardStep;
+use Leap\PanelBundle\Entity\TestWizard;
+use Leap\PanelBundle\Entity\TestVariable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Table
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\TestWizardParamRepository")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\TestWizardParamRepository")
  * @UniqueEntity(fields={"wizard", "variable"}, message="validate.test.wizards.params.variable.unique")
  * @ORM\HasLifecycleCallbacks
  */

@@ -1,15 +1,15 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Concerto\PanelBundle\Entity\Test;
-use Concerto\PanelBundle\Entity\TestNode;
-use Concerto\PanelBundle\Entity\TestNodePort;
+use Leap\PanelBundle\Entity\Test;
+use Leap\PanelBundle\Entity\TestNode;
+use Leap\PanelBundle\Entity\TestNodePort;
 
 /**
  * @ORM\Table
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\TestNodeConnectionRepository")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\TestNodeConnectionRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class TestNodeConnection extends AEntity implements \JsonSerializable

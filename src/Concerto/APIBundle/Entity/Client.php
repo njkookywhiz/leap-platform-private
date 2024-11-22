@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\APIBundle\Entity;
+namespace Leap\APIBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\OAuthServerBundle\Entity\Client as BaseClient;
@@ -10,7 +10,7 @@ use \Doctrine\Common\Collections\ArrayCollection;
  * Client
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Concerto\APIBundle\Repository\ClientRepository")
+ * @ORM\Entity(repositoryClass="Leap\APIBundle\Repository\ClientRepository")
  */
 class Client extends BaseClient implements \JsonSerializable {
 

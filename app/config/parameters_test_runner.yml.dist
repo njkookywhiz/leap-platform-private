@@ -1,33 +1,33 @@
 parameters:
-    env(CONCERTO_PLATFORM_URL): /
-    env(CONCERTO_SESSION_STORAGE): filesystem
-    env(CONCERTO_SESSION_FORKING): true
-    env(CONCERTO_COOKIES_SAME_SITE): ""
-    env(CONCERTO_COOKIES_SECURE): false
+    env(LEAP_PLATFORM_URL): /
+    env(LEAP_SESSION_STORAGE): filesystem
+    env(LEAP_SESSION_FORKING): true
+    env(LEAP_COOKIES_SAME_SITE): ""
+    env(LEAP_COOKIES_SECURE): false
     env(REDIS_HOST): redis
     env(REDIS_PORT): 6379
     env(REDIS_PASS): ""
-    env(CONCERTO_KEEP_ALIVE_INTERVAL_TIME): 0
-    env(CONCERTO_KEEP_ALIVE_TOLERANCE_TIME): 0
-    env(CONCERTO_SESSION_TOKEN_EXPIRY_TIME): 7200
-    env(CONCERTO_R_FORCED_GC_INTERVAL): 30
+    env(LEAP_KEEP_ALIVE_INTERVAL_TIME): 0
+    env(LEAP_KEEP_ALIVE_TOLERANCE_TIME): 0
+    env(LEAP_SESSION_TOKEN_EXPIRY_TIME): 7200
+    env(LEAP_R_FORCED_GC_INTERVAL): 30
     test_runner_settings:
         max_idle_time: 3900
         max_execution_time: 30
-        keep_alive_interval_time: '%env(CONCERTO_KEEP_ALIVE_INTERVAL_TIME)%'
-        keep_alive_tolerance_time: '%env(CONCERTO_KEEP_ALIVE_TOLERANCE_TIME)%'
+        keep_alive_interval_time: '%env(LEAP_KEEP_ALIVE_INTERVAL_TIME)%'
+        keep_alive_tolerance_time: '%env(LEAP_KEEP_ALIVE_TOLERANCE_TIME)%'
         r_environ_path: null
-        r_forced_gc_interval: '%env(CONCERTO_R_FORCED_GC_INTERVAL)%'
+        r_forced_gc_interval: '%env(LEAP_R_FORCED_GC_INTERVAL)%'
         php_exec: php
         rscript_exec: Rscript
         timer_type: server #client or server
-        session_forking: "%env(CONCERTO_SESSION_FORKING)%" #only Linux
+        session_forking: "%env(LEAP_SESSION_FORKING)%" #only Linux
         connection: local
-        platform_url: "%env(CONCERTO_PLATFORM_URL)%"
-        session_storage: "%env(CONCERTO_SESSION_STORAGE)%"
+        platform_url: "%env(LEAP_PLATFORM_URL)%"
+        session_storage: "%env(LEAP_SESSION_STORAGE)%"
         redis_host: "%env(REDIS_HOST)%"
         redis_port: "%env(REDIS_PORT)%"
         redis_pass: "%env(REDIS_PASS)%"
-        cookies_same_site: '%env(CONCERTO_COOKIES_SAME_SITE)%'
-        cookies_secure: '%env(CONCERTO_COOKIES_SECURE)%'
-        session_token_expiry_time: '%env(CONCERTO_SESSION_TOKEN_EXPIRY_TIME)%'
+        cookies_same_site: '%env(LEAP_COOKIES_SAME_SITE)%'
+        cookies_secure: '%env(LEAP_COOKIES_SECURE)%'
+        session_token_expiry_time: '%env(LEAP_SESSION_TOKEN_EXPIRY_TIME)%'

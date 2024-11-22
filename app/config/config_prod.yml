@@ -10,7 +10,7 @@ imports:
 services:
     Monolog\Formatter\LogstashFormatter:
          arguments:
-            $applicationName: "concerto"
+            $applicationName: "leap"
 
 monolog:
     handlers:

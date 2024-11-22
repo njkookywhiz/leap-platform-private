@@ -1,4 +1,4 @@
-concerto.directive.template = function(args, params){
+leap.directive.template = function(args, params){
     args = strsplit(args, ",")[[1]]
     name = args[1]
     opts = list()
@@ -13,7 +13,7 @@ concerto.directive.template = function(args, params){
     hideCss = !is.null(opts$css) && as.logical(opts$css) == F
     hideJs = !is.null(opts$js) && as.logical(opts$js) == F
 
-    insert = concerto.template.join(
+    insert = leap.template.join(
         templateId = name,
         params = params,
         html = if(hideHtml) NULL else '',

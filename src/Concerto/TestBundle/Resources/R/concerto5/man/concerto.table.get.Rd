@@ -1,5 +1,5 @@
-\name{concerto.table.get}
-\alias{concerto.table.get}
+\name{leap.table.get}
+\alias{leap.table.get}
 \title{
     Table object retrieval
 }
@@ -7,7 +7,7 @@
     Gets table object.
 }
 \usage{
-    concerto.table.get(tableId)
+    leap.table.get(tableId)
 }
 \arguments{
     \item{tableId}{
@@ -32,8 +32,8 @@
 \seealso{
 }
 \examples{
-    table1 <- concerto.table.get(1)
-    table2 <- concerto.table.get("some_other_table")
+    table1 <- leap.table.get(1)
+    table2 <- leap.table.get("some_other_table")
 }
 
 \keyword{table}

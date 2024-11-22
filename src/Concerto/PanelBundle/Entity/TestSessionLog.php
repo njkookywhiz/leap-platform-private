@@ -1,14 +1,14 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use Concerto\PanelBundle\Entity\Test;
+use Leap\PanelBundle\Entity\Test;
 
 /**
  * @ORM\Table
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\TestSessionLogRepository")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\TestSessionLogRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class TestSessionLog implements \JsonSerializable {

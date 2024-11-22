@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Session\Session;

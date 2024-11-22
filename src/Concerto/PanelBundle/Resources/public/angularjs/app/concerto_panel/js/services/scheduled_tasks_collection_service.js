@@ -1,4 +1,4 @@
-concertoPanel.factory('ScheduledTasksCollectionService', function ($http, $timeout, $uibModal, AllCollectionService) {
+leapPanel.factory('ScheduledTasksCollectionService', function ($http, $timeout, $uibModal, AllCollectionService) {
     return {
         collectionPath: Paths.ADMINISTRATION_TASKS_COLLECTION,
         collection: [],

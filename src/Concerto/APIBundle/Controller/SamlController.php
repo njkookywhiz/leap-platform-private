@@ -1,9 +1,9 @@
 <?php
 
-namespace Concerto\APIBundle\Controller;
+namespace Leap\APIBundle\Controller;
 
-use Concerto\APIBundle\Service\SamlService;
-use Concerto\PanelBundle\Service\AdministrationService;
+use Leap\APIBundle\Service\SamlService;
+use Leap\PanelBundle\Service\AdministrationService;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -54,7 +54,7 @@ class SamlController
             return new Response("API disabled", Response::HTTP_FORBIDDEN);
 
         $redirectTo = $request->get("redirectTo");
-        $tokenHash = $request->cookies->get("concertoSamlTokenHash");
+        $tokenHash = $request->cookies->get("leapSamlTokenHash");
         $this->service->logout($redirectTo, $tokenHash);
 
         return new Response('', 200);
@@ -81,7 +81,7 @@ class SamlController
             }
 
             $cookie = new Cookie(
-                "concertoSamlTokenHash",
+                "leapSamlTokenHash",
                 $token,
                 time() + (1 * 24 * 60 * 60), //1 day
                 '/',
@@ -109,7 +109,7 @@ class SamlController
         if (!$this->administrationService->isApiEnabled())
             return new Response("API disabled", Response::HTTP_FORBIDDEN);
 
-        $tokenHash = $request->cookies->get("concertoSamlTokenHash");
+        $tokenHash = $request->cookies->get("leapSamlTokenHash");
         $stateRelay = $request->get("RelayState");
         $success = $this->service->sls($tokenHash, $stateRelay);
 

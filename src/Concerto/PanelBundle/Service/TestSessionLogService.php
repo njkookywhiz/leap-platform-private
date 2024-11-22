@@ -1,10 +1,10 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
-use Concerto\PanelBundle\Entity\TestSessionLog;
-use Concerto\PanelBundle\Repository\TestSessionLogRepository;
-use Concerto\PanelBundle\Security\ObjectVoter;
+use Leap\PanelBundle\Entity\TestSessionLog;
+use Leap\PanelBundle\Repository\TestSessionLogRepository;
+use Leap\PanelBundle\Security\ObjectVoter;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;

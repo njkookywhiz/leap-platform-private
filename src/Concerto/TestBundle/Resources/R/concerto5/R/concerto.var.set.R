@@ -1,16 +1,16 @@
-concerto.var.set = c.set = function(name, value, global=F, flowIndexOffset = 0, posOffset = 0, flowIndex = NULL){
+leap.var.set = c.set = function(name, value, global=F, flowIndexOffset = 0, posOffset = 0, flowIndex = NULL){
     if(posOffset != 0) {
         flowIndexOffset = posOffset
-        concerto.log("c.set : posOffset argument is deprecated. Use flowIndexOffset argument instead")
+        leap.log("c.set : posOffset argument is deprecated. Use flowIndexOffset argument instead")
     }
 
-    if(global || (concerto$flowIndex == 0 && is.null(flowIndex))) {
-        concerto$globals[name] <<- list(value)
+    if(global || (leap$flowIndex == 0 && is.null(flowIndex))) {
+        leap$globals[name] <<- list(value)
     } else {
         if(is.null(flowIndex)) {
-            flowIndex = concerto$flowIndex
+            flowIndex = leap$flowIndex
         }
-        concerto$flow[[flowIndex + flowIndexOffset]]$globals[name] <<- list(value)
+        leap$flow[[flowIndex + flowIndexOffset]]$globals[name] <<- list(value)
     }
     return(value)
 }

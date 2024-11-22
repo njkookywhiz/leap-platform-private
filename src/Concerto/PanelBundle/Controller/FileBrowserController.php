@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
-use Concerto\PanelBundle\Service\FileService;
+use Leap\PanelBundle\Service\FileService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -254,7 +254,7 @@ class FileBrowserController
      */
     public function fileBrowserAction(Request $request)
     {
-        return $this->templating->renderResponse('ConcertoPanelBundle:FileBrowser:file_browser.html.twig');
+        return $this->templating->renderResponse('LeapPanelBundle:FileBrowser:file_browser.html.twig');
     }
 
     private function errorResponse($errorMessage, $status = 500)

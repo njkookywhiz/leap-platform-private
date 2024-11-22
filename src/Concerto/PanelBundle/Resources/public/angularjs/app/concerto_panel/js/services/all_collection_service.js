@@ -1,4 +1,4 @@
-concertoPanel.factory('AllCollectionService', function (DataTableCollectionService, TestCollectionService, TestWizardCollectionService, ViewTemplateCollectionService) {
+leapPanel.factory('AllCollectionService', function (DataTableCollectionService, TestCollectionService, TestWizardCollectionService, ViewTemplateCollectionService) {
     return {
         fetchAllCollections: function () {
             DataTableCollectionService.fetchObjectCollection();

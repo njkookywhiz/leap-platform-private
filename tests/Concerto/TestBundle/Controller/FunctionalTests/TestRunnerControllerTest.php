@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Concerto\TestBundle\Controller\FunctionalTests;
+namespace Tests\Leap\TestBundle\Controller\FunctionalTests;
 
-use Tests\Concerto\PanelBundle\AFunctionalTest;
-use Concerto\PanelBundle\Entity\ATopEntity;
-use Concerto\PanelBundle\Entity\TestSession;
-use Concerto\PanelBundle\Entity\Test;
-use Concerto\PanelBundle\Service\TestSessionService;
+use Tests\Leap\PanelBundle\AFunctionalTest;
+use Leap\PanelBundle\Entity\ATopEntity;
+use Leap\PanelBundle\Entity\TestSession;
+use Leap\PanelBundle\Entity\Test;
+use Leap\PanelBundle\Service\TestSessionService;
 
 class TestRunnerControllerTest extends AFunctionalTest {
 
@@ -15,8 +15,8 @@ class TestRunnerControllerTest extends AFunctionalTest {
 
     public static function setUpBeforeClass() {
         parent::setUpBeforeClass();
-        self::$repository = static::$entityManager->getRepository("ConcertoPanelBundle:TestSession");
-        self::$testRepository = static::$entityManager->getRepository("ConcertoPanelBundle:Test");
+        self::$repository = static::$entityManager->getRepository("LeapPanelBundle:TestSession");
+        self::$testRepository = static::$entityManager->getRepository("LeapPanelBundle:Test");
     }
 
     protected function setUp() {

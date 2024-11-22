@@ -1,11 +1,11 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
-use Concerto\PanelBundle\DAO\DBDataDAO;
-use Concerto\PanelBundle\Entity\DataTable;
-use Concerto\PanelBundle\Repository\DataTableRepository;
-use Concerto\PanelBundle\Entity\User;
+use Leap\PanelBundle\DAO\DBDataDAO;
+use Leap\PanelBundle\Entity\DataTable;
+use Leap\PanelBundle\Repository\DataTableRepository;
+use Leap\PanelBundle\Entity\User;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;

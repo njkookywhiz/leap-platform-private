@@ -1,4 +1,4 @@
-concerto.trans = c.trans = function(key){
+leap.trans = c.trans = function(key){
     dictionary = c.get("dictionary", global=T)
     if(is.null(dictionary)) { return(key) }
     dictionaryLength = dim(dictionary)[1]

@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Concerto\PanelBundle\Controller\FunctionalTests;
+namespace Tests\Leap\PanelBundle\Controller\FunctionalTests;
 
-use Tests\Concerto\PanelBundle\AFunctionalTest;
-use Concerto\PanelBundle\Entity\ATopEntity;
-use Concerto\PanelBundle\Entity\Test;
+use Tests\Leap\PanelBundle\AFunctionalTest;
+use Leap\PanelBundle\Entity\ATopEntity;
+use Leap\PanelBundle\Entity\Test;
 
 class TestWizardControllerTest extends AFunctionalTest
 {
@@ -16,9 +16,9 @@ class TestWizardControllerTest extends AFunctionalTest
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
-        self::$repository = static::$entityManager->getRepository("ConcertoPanelBundle:TestWizard");
-        self::$wizardParamsRepository = static::$entityManager->getRepository("ConcertoPanelBundle:TestWizardParam");
-        self::$wizardStepsRepository = static::$entityManager->getRepository("ConcertoPanelBundle:TestWizardStep");
+        self::$repository = static::$entityManager->getRepository("LeapPanelBundle:TestWizard");
+        self::$wizardParamsRepository = static::$entityManager->getRepository("LeapPanelBundle:TestWizardParam");
+        self::$wizardStepsRepository = static::$entityManager->getRepository("LeapPanelBundle:TestWizardStep");
     }
 
     protected function setUp()

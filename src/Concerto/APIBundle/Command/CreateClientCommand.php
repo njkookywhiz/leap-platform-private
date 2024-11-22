@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\APIBundle\Command;
+namespace Leap\APIBundle\Command;
 
 use FOS\OAuthServerBundle\Model\ClientManagerInterface;
 use Symfony\Component\Console\Command\Command;

@@ -37,14 +37,14 @@
           "sourceVolume": "data"
         }
       ],
-      "workingDirectory": "/app/concerto",
+      "workingDirectory": "/app/leap",
       "secrets": null,
       "dockerSecurityOptions": null,
       "memory": null,
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "campsych/concerto-platform",
+      "image": "campsych/leap-platform",
       "startTimeout": null,
       "dependsOn": null,
       "disableNetworking": null,
@@ -69,7 +69,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "concerto"
+      "name": "leap"
     }
   ],
   "volumes": [

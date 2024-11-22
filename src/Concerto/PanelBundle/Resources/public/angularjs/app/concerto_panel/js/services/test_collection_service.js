@@ -1,4 +1,4 @@
-concertoPanel.factory('TestCollectionService', function ($http, BaseCollectionService) {
+leapPanel.factory('TestCollectionService', function ($http, BaseCollectionService) {
     let collectionService = Object.create(BaseCollectionService);
     collectionService.collectionPath = Paths.TEST_COLLECTION;
     collectionService.userRoleRequired = "role_test";

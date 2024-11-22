@@ -2,10 +2,10 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 
 metadata:
-  name: concerto
-  namespace: concerto
+  name: leap
+  namespace: leap
   labels:
-    app: concerto
+    app: leap
 
 spec:
   accessModes:
@@ -21,24 +21,24 @@ kind: Deployment
 apiVersion: apps/v1
 
 metadata:
-  name: concerto
-  namespace: concerto
+  name: leap
+  namespace: leap
   labels:
-    app: concerto
+    app: leap
 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: concerto
+      app: leap
   template:
     metadata:
       labels:
-        app: concerto
+        app: leap
     spec:
       containers:
-        - name: concerto
-          image: campsych/concerto-platform
+        - name: leap
+          image: campsych/leap-platform
           ports:
             - containerPort: 80
           readinessProbe:
@@ -64,7 +64,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: concerto
+            claimName: leap
 
 ---
 
@@ -72,10 +72,10 @@ kind: Service
 apiVersion: v1
 
 metadata:
-  name: concerto
-  namespace: concerto
+  name: leap
+  namespace: leap
   labels:
-    app: concerto
+    app: leap
 
 spec:
   type: LoadBalancer
@@ -83,4 +83,4 @@ spec:
     - port: 80
       targetPort: 80
   selector:
-    app: concerto
+    app: leap

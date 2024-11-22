@@ -1,12 +1,12 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\AdministrationSettingRepository")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\AdministrationSettingRepository")
  */
 class AdministrationSetting implements \JsonSerializable {
     

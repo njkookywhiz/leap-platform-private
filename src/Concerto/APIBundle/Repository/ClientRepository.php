@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\APIBundle\Repository;
+namespace Leap\APIBundle\Repository;
 
-use Concerto\PanelBundle\Repository\AEntityRepository;
+use Leap\PanelBundle\Repository\AEntityRepository;
 
 /**
  * ClientRepository

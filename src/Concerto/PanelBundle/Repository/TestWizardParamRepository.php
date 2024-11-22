@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\Repository;
+namespace Leap\PanelBundle\Repository;
 
 /**
  * TestWizardParamRepository
@@ -15,7 +15,7 @@ class TestWizardParamRepository extends AEntityRepository
 
     public function findByTestWizardAndType($wizard_id, $type)
     {
-        $wizard = $this->getEntityManager()->getRepository("ConcertoPanelBundle:TestWizard")->find($wizard_id);
+        $wizard = $this->getEntityManager()->getRepository("LeapPanelBundle:TestWizard")->find($wizard_id);
         if ($wizard) {
             return $wizard->getParamsByType($type);
         }

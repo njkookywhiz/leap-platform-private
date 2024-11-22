@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
-use Concerto\PanelBundle\Service\AdministrationService;
+use Leap\PanelBundle\Service\AdministrationService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,7 +36,7 @@ class HomeController extends AbstractController
             $params[$k] = $request->query->get($k);
         }
 
-        return $this->forward("Concerto\TestBundle\Controller\TestRunnerController::startTestAction", [
+        return $this->forward("Leap\TestBundle\Controller\TestRunnerController::startTestAction", [
             "test_slug" => $test->getSlug()
         ], $params);
     }

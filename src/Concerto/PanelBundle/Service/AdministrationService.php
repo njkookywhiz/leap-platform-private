@@ -1,34 +1,34 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
-use Concerto\PanelBundle\Entity\AdministrationSetting;
-use Concerto\PanelBundle\Entity\Message;
-use Concerto\PanelBundle\Entity\Test;
-use Concerto\PanelBundle\Entity\User;
-use Concerto\PanelBundle\Repository\AdministrationSettingRepository;
-use Concerto\PanelBundle\Repository\DataTableRepository;
-use Concerto\PanelBundle\Repository\MessageRepository;
-use Concerto\PanelBundle\Repository\TestRepository;
-use Concerto\PanelBundle\Repository\TestSessionRepository;
-use Concerto\PanelBundle\Repository\TestWizardRepository;
-use Concerto\PanelBundle\Repository\ViewTemplateRepository;
+use Leap\PanelBundle\Entity\AdministrationSetting;
+use Leap\PanelBundle\Entity\Message;
+use Leap\PanelBundle\Entity\Test;
+use Leap\PanelBundle\Entity\User;
+use Leap\PanelBundle\Repository\AdministrationSettingRepository;
+use Leap\PanelBundle\Repository\DataTableRepository;
+use Leap\PanelBundle\Repository\MessageRepository;
+use Leap\PanelBundle\Repository\TestRepository;
+use Leap\PanelBundle\Repository\TestSessionRepository;
+use Leap\PanelBundle\Repository\TestWizardRepository;
+use Leap\PanelBundle\Repository\ViewTemplateRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Templating\EngineInterface;
-use Concerto\PanelBundle\Entity\TestSession;
-use Concerto\PanelBundle\Repository\TestSessionLogRepository;
-use Concerto\PanelBundle\Entity\TestSessionLog;
+use Leap\PanelBundle\Entity\TestSession;
+use Leap\PanelBundle\Repository\TestSessionLogRepository;
+use Leap\PanelBundle\Entity\TestSessionLog;
 use Symfony\Component\Yaml\Yaml;
 use DateTime;
-use Concerto\PanelBundle\Repository\ScheduledTaskRepository;
+use Leap\PanelBundle\Repository\ScheduledTaskRepository;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
-use Concerto\APIBundle\Repository\ClientRepository;
+use Leap\APIBundle\Repository\ClientRepository;
 use Symfony\Component\Process\Process;
 
 class AdministrationService
@@ -107,7 +107,7 @@ class AdministrationService
         $msg = new Message();
         $msg->setCagegory(Message::CATEGORY_SYSTEM);
         $msg->setSubject("Session limit reached.");
-        $content = $this->templating->render("ConcertoPanelBundle:Administration:msg_session_limit.html.twig", array(
+        $content = $this->templating->render("LeapPanelBundle:Administration:msg_session_limit.html.twig", array(
             "limit" => $this->getSessionLimit()
         ));
         $msg->setMessage($content);
@@ -134,7 +134,7 @@ class AdministrationService
                     break;
             }
             $msg->setSubject("Test #" . $log->getTest()->getId() . ", $error_source error.");
-            $content = $this->templating->render("ConcertoPanelBundle:Administration:msg_test_error.html.twig", array(
+            $content = $this->templating->render("LeapPanelBundle:Administration:msg_test_error.html.twig", array(
                 "test_id" => $log->getTest()->getId(),
                 "error_source" => $error_source,
                 "error_message" => $log->getMessage()
@@ -161,7 +161,7 @@ class AdministrationService
             $msg->setTime($dt);
             $msg->setCagegory(Message::CATEGORY_GLOBAL);
             $msg->setSubject($entry["subject"]);
-            $content = $this->templating->render("ConcertoPanelBundle:Administration:msg_feed.html.twig", array(
+            $content = $this->templating->render("LeapPanelBundle:Administration:msg_feed.html.twig", array(
                 "message" => $entry["message"]
             ));
             $msg->setMessage($content);
@@ -416,7 +416,7 @@ class AdministrationService
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
         $in = new ArrayInput(array(
-            "command" => "concerto:task:package:install",
+            "command" => "leap:task:package:install",
             "--method" => $installOptions["method"],
             "--name" => $installOptions["name"],
             "--mirror" => $installOptions["mirror"],
@@ -499,12 +499,12 @@ class AdministrationService
         } catch (IOException $ex) {
             return 1;
         }
-        $zipPath = $uniquePath . "/export.concerto.zip";
+        $zipPath = $uniquePath . "/export.leap.zip";
 
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
         $in = new ArrayInput(array(
-            "command" => "concerto:content:export",
+            "command" => "leap:content:export",
             "output" => $uniquePath,
             "--sc" => true,
             "--yes" => true,

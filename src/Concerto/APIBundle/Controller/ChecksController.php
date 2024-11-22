@@ -1,9 +1,9 @@
 <?php
 
-namespace Concerto\APIBundle\Controller;
+namespace Leap\APIBundle\Controller;
 
-use Concerto\APIBundle\Service\CheckService;
-use Concerto\PanelBundle\Service\AdministrationService;
+use Leap\APIBundle\Service\CheckService;
+use Leap\PanelBundle\Service\AdministrationService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 

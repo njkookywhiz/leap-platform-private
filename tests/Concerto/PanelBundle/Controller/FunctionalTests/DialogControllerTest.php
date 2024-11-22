@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Concerto\PanelBundle\Controller\FunctionalTests;
+namespace Tests\Leap\PanelBundle\Controller\FunctionalTests;
 
-use Tests\Concerto\PanelBundle\AFunctionalTest;
+use Tests\Leap\PanelBundle\AFunctionalTest;
 
 class DialogControllerTest extends AFunctionalTest {
 

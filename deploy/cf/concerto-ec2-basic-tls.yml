@@ -1,18 +1,18 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-  concerto-ec2-basic-tls (2020-09-02): Standalone Concerto, everything on one instance
+  leap-ec2-basic-tls (2020-09-02): Standalone Leap, everything on one instance
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
       - Label:
-          default: Concerto
+          default: Leap
         Parameters:
-          - ConcertoVersion
-          - ConcertoPassword
-          - ConcertoContentURL
-          - ConcertoSessionLimit
-          - ConcertoTimezone
-          - ConcertoStorage
+          - LeapVersion
+          - LeapPassword
+          - LeapContentURL
+          - LeapSessionLimit
+          - LeapTimezone
+          - LeapStorage
       - Label:
           default: Web
         Parameters:
@@ -30,17 +30,17 @@ Metadata:
           - CIDR
           - CIDRA
     ParameterLabels:
-      ConcertoVersion:
+      LeapVersion:
         default: Tag
-      ConcertoPassword:
+      LeapPassword:
         default: Password
-      ConcertoContentURL:
+      LeapContentURL:
         default: URL
-      ConcertoSessionLimit:
+      LeapSessionLimit:
         default: Session limit
-      ConcertoTimezone:
+      LeapTimezone:
         default: Timezone
-      ConcertoStorage:
+      LeapStorage:
         default: Storage
       DomainName:
         default: Domain
@@ -56,29 +56,29 @@ Metadata:
         default: CIDR for Subnet A
 
 Parameters:
-  ConcertoVersion:
-    Description: Concerto version to use. Can be any tag from https://github.com/campsych/concerto-platform
+  LeapVersion:
+    Description: Leap version to use. Can be any tag from https://github.com/campsych/leap-platform
     Type: String
     Default: 5.0
-  ConcertoPassword:
-    Description: Concerto admin account password (recommended to generate a random one)
+  LeapPassword:
+    Description: Leap admin account password (recommended to generate a random one)
     Type: String
     NoEcho: true
     MinLength: 8
     ConstraintDescription: min. 8 characters.
-  ConcertoContentURL:
-    Description: URL with Concerto content backup to preload (defaults to starter content)
+  LeapContentURL:
+    Description: URL with Leap content backup to preload (defaults to starter content)
     Type: String
     Default: .
-  ConcertoSessionLimit:
+  LeapSessionLimit:
     Description: How many concurrent sessions to allow (unlimited if 0 or not set)
     Type: Number
     Default: 0
-  ConcertoTimezone:
+  LeapTimezone:
     Description: Timezone to use, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
     Type: String
     Default: UTC
-  ConcertoStorage:
+  LeapStorage:
     Default: 8
     Description: The size of the storage volume (Gb)
     Type: Number
@@ -86,7 +86,7 @@ Parameters:
     MaxValue: 1024
     ConstraintDescription: must be between 8 and 1024Gb
   DomainName:
-    Description: The domain name to be used for Concerto, you need to own it
+    Description: The domain name to be used for Leap, you need to own it
     Type: String
     AllowedPattern: (?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]
     ConstraintDescription: must be a valid domain name
@@ -114,7 +114,7 @@ Parameters:
       - t3.large
     ConstraintDescription: must be a valid EC2 instance type
   DBPassword:
-    Description: Database admin account password (recommended to generate a random one, different than Concerto's)
+    Description: Database admin account password (recommended to generate a random one, different than Leap's)
     Type: String
     NoEcho: true
     MinLength: 8
@@ -367,7 +367,7 @@ Resources:
             - updates
             - docker
             - tls
-            - concerto
+            - leap
         cfn:
           files:
             /etc/cfn/cfn-hup.conf:
@@ -427,7 +427,7 @@ Resources:
                 ensureRunning: true
         tls:
           files:
-            /home/concerto/data/certbot/conf/cert.pem:
+            /home/leap/data/certbot/conf/cert.pem:
               content: |
                 -----BEGIN CERTIFICATE-----
                 MIIFazCCA1OgAwIBAgIRAIIQz7DSQONZRGPgu2OCiwAwDQYJKoZIhvcNAQELBQAw
@@ -582,7 +582,7 @@ Resources:
                 F9DIVM5/ICdtDdulOO+dr/BXB+pBZ3uVxjRANvJKKpdxkePyluITSNZHbanWRN07
                 gMvwBWOL060i4VrL9er1sBQrRjU9iNpZQGTnLVAxQVFu
                 -----END CERTIFICATE-----
-            /home/concerto/data/nginx/app.conf:
+            /home/leap/data/nginx/app.conf:
               content: !Sub |
                 server {
                     listen [::]:80 default_server;
@@ -621,7 +621,7 @@ Resources:
                     client_max_body_size 50M;
 
                     location / {
-                        proxy_pass http://concerto;
+                        proxy_pass http://leap;
                         proxy_set_header X-Real-IP $remote_addr;
                         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                         proxy_set_header X-Forwarded-Proto $scheme;
@@ -631,22 +631,22 @@ Resources:
                 }
           commands:
             01_mkdir:
-              command: !Sub mkdir -p /home/concerto/data/certbot/conf/dummy/${DomainName}
+              command: !Sub mkdir -p /home/leap/data/certbot/conf/dummy/${DomainName}
             02_dhparam:
               command: >-
                 if [[ ! -e dhparam.pem ]]; then
                   openssl dhparam -out dhparam.pem 2048;
                 fi
-              cwd: /home/concerto/data/certbot/conf
+              cwd: /home/leap/data/certbot/conf
             03_dummy_certs:
               command: !Sub >-
                 if [[ ! -e fullchain.pem ]]; then
                   openssl req -x509 -nodes -newkey rsa:4096 -days 7 -keyout privkey.pem -out fullchain.pem -subj '/CN=${DomainName}';
                 fi
-              cwd: !Sub /home/concerto/data/certbot/conf/dummy/${DomainName}
-        concerto:
+              cwd: !Sub /home/leap/data/certbot/conf/dummy/${DomainName}
+        leap:
           files:
-            /home/concerto/docker-compose.yml:
+            /home/leap/docker-compose.yml:
               content: !Sub
                 - |
                   version: '3'
@@ -658,29 +658,29 @@ Resources:
                       volumes:
                         - ./data/mysql:/var/lib/mysql
                       environment:
-                        - MYSQL_DATABASE=concerto
-                        - MYSQL_USER=concerto
+                        - MYSQL_DATABASE=leap
+                        - MYSQL_USER=leap
                         - MYSQL_PASSWORD=${DBPassword}
                         - MYSQL_ROOT_PASSWORD=${DBPassword}
-                        - TZ=${ConcertoTimezone}
+                        - TZ=${LeapTimezone}
 
-                    concerto:
-                      image: campsych/concerto-platform:${ConcertoVersion}
-                      container_name: concerto
+                    leap:
+                      image: campsych/leap-platform:${LeapVersion}
+                      container_name: leap
                       restart: unless-stopped
                       volumes:
-                        - ./data/concerto:/data
+                        - ./data/leap:/data
                       environment:
-                        - CONCERTO_PASSWORD=${ConcertoPassword}
-                        - CONCERTO_CONTENT_URL=${ConcertoContentURL}
-                        - CONCERTO_PLATFORM_URL=/
-                        - CONCERTO_GIT_REPOSITORY_PATH=/data/git
-                        - CONCERTO_SESSION_LIMIT=${ConcertoSessionLimit}
+                        - LEAP_PASSWORD=${LeapPassword}
+                        - LEAP_CONTENT_URL=${LeapContentURL}
+                        - LEAP_PLATFORM_URL=/
+                        - LEAP_GIT_REPOSITORY_PATH=/data/git
+                        - LEAP_SESSION_LIMIT=${LeapSessionLimit}
                         - DB_HOST=database
                         - DB_PASSWORD=${DBPassword}
                         - PHP_FPM_PM=static
                         - PHP_FPM_PM_MAX_CHILDREN=${MaxChildren}
-                        - TZ=${ConcertoTimezone}
+                        - TZ=${LeapTimezone}
 
                     nginx:
                       image: nginx
@@ -710,7 +710,7 @@ Resources:
           commands:
             start:
               command: /usr/local/bin/docker-compose up -d --remove-orphans --force-recreate
-              cwd: /home/concerto
+              cwd: /home/leap
     Properties:
       ImageId: !FindInMap
         - RegionMap
@@ -730,7 +730,7 @@ Resources:
         - DeviceName: /dev/xvda
           Ebs:
             DeleteOnTermination: false
-            VolumeSize: !Ref ConcertoStorage
+            VolumeSize: !Ref LeapStorage
       NetworkInterfaces:
         - AssociatePublicIpAddress: true
           DeleteOnTermination: true
@@ -745,16 +745,16 @@ Resources:
 Outputs:
   URL:
     Value: !Sub https://${DomainName}/admin
-    Description: Concerto administration panel URL
+    Description: Leap administration panel URL
   ServerIP:
     Value: !GetAtt WebServerInstance.PublicIp
     Description: IP address to point your domain to (i.e. with A record)
-  ConcertoVersion:
-    Value: !Ref ConcertoVersion
-    Description: Concerto version being used
-  ConcertoPassword:
-    Value: !Ref ConcertoPassword
-    Description: Concerto admin password
+  LeapVersion:
+    Value: !Ref LeapVersion
+    Description: Leap version being used
+  LeapPassword:
+    Value: !Ref LeapPassword
+    Description: Leap admin password
   DBPassword:
     Value: !Ref DBPassword
     Description: Database password

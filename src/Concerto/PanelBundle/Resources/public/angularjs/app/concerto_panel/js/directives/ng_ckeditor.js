@@ -1,4 +1,4 @@
-angular.module('concertoPanel').directive('ckeditor', function () {
+angular.module('leapPanel').directive('ckeditor', function () {
     return {
         require: '?ngModel',
         scope: {

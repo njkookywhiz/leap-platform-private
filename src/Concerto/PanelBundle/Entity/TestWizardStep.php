@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\TestWizardStepRepository")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\TestWizardStepRepository")
  * @UniqueEntity(fields={"wizard","title"}, message="validate.test.wizards.steps.unique")
  * @ORM\HasLifecycleCallbacks
  */

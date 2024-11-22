@@ -1,5 +1,5 @@
-\name{concerto.file.getPath}
-\alias{concerto.file.getPath}
+\name{leap.file.getPath}
+\alias{leap.file.getPath}
 \title{
     Public path
 }
@@ -7,7 +7,7 @@
     Gets file public path.
 }
 \usage{
-    concerto.file.getPath(filename)
+    leap.file.getPath(filename)
 }
 \arguments{
     \item{filename}{
@@ -30,7 +30,7 @@
 \seealso{
 }
 \examples{
-    plot_path <- concerto.file.getPath("plot.png")
+    plot_path <- leap.file.getPath("plot.png")
 }
 
 \keyword{table}

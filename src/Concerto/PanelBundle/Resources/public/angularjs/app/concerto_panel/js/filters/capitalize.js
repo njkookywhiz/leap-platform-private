@@ -1,4 +1,4 @@
-angular.module('concertoPanel').filter('capitalize', function () {
+angular.module('leapPanel').filter('capitalize', function () {
     return function (input) {
         var words = input.split("_");
         var result = "";

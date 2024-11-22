@@ -1,11 +1,11 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Concerto\PanelBundle\Service\ASectionService;
+use Leap\PanelBundle\Service\ASectionService;
 use Symfony\Component\Translation\TranslatorInterface;
 
 abstract class ASectionController
@@ -64,7 +64,7 @@ abstract class ASectionController
 
     public function objectAction($object_id, $format)
     {
-        return $this->templating->renderResponse("ConcertoPanelBundle::collection.$format.twig", array(
+        return $this->templating->renderResponse("LeapPanelBundle::collection.$format.twig", array(
             'collection' => $this->service->get($object_id)
         ));
     }
@@ -72,7 +72,7 @@ abstract class ASectionController
     public function collectionAction($format)
     {
         $collection = $this->service->getAll();
-        return $this->templating->renderResponse("ConcertoPanelBundle::collection.$format.twig", array(
+        return $this->templating->renderResponse("LeapPanelBundle::collection.$format.twig", array(
             'collection' => $collection
         ));
     }
@@ -85,7 +85,7 @@ abstract class ASectionController
         foreach ($params as $k => $v) {
             $p[$k] = $v;
         }
-        return $this->templating->renderResponse("ConcertoPanelBundle:" . $this->entityName . ":form.html.twig", $p);
+        return $this->templating->renderResponse("LeapPanelBundle:" . $this->entityName . ":form.html.twig", $p);
     }
 
     protected function trans($messages, $domain = null)

@@ -1,14 +1,14 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Service\GitService;
+use Leap\PanelBundle\Service\GitService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
-class ConcertoGitFetchCommand extends Command
+class LeapGitFetchCommand extends Command
 {
     private $gitService;
     private $localGitRepoPath;
@@ -24,7 +24,7 @@ class ConcertoGitFetchCommand extends Command
 
     protected function configure()
     {
-        $this->setName("concerto:git:fetch")->setDescription("Performs git fetch");
+        $this->setName("leap:git:fetch")->setDescription("Performs git fetch");
     }
 
     private function getFetchCommand()

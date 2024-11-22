@@ -1,11 +1,11 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
-use Concerto\PanelBundle\Service\UserService;
+use Leap\PanelBundle\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Concerto\PanelBundle\Service\PanelService;
-use Concerto\PanelBundle\Service\FileService;
+use Leap\PanelBundle\Service\PanelService;
+use Leap\PanelBundle\Service\FileService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
@@ -36,7 +36,7 @@ class PanelController
      */
     public function indexAction()
     {
-        return $this->templating->renderResponse('ConcertoPanelBundle:Panel:index.html.twig');
+        return $this->templating->renderResponse('LeapPanelBundle:Panel:index.html.twig');
     }
 
     /**
@@ -45,7 +45,7 @@ class PanelController
      */
     public function breadcrumbsAction()
     {
-        return $this->templating->renderResponse('ConcertoPanelBundle::breadcrumbs.html.twig');
+        return $this->templating->renderResponse('LeapPanelBundle::breadcrumbs.html.twig');
     }
 
     /**
@@ -55,7 +55,7 @@ class PanelController
      */
     public function loginAction(Request $request)
     {
-        return $this->templating->renderResponse('ConcertoPanelBundle:Panel:login.html.twig', array(
+        return $this->templating->renderResponse('LeapPanelBundle:Panel:login.html.twig', array(
             'last_username' => $request->getSession()->get(Security::LAST_USERNAME),
             'error' => $this->service->getLoginErrors($request->get(Security::AUTHENTICATION_ERROR), $request->getSession())));
     }

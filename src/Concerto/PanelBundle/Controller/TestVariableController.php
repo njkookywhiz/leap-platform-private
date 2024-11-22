@@ -1,14 +1,14 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;
-use Concerto\PanelBundle\Service\TestVariableService;
+use Leap\PanelBundle\Service\TestVariableService;
 use Symfony\Component\HttpFoundation\Request;
-use Concerto\PanelBundle\Service\TestService;
+use Leap\PanelBundle\Service\TestService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -50,7 +50,7 @@ class TestVariableController extends ASectionController
     public function collectionByTestAction($test_id)
     {
         $collection = $this->service->getAllVariables($test_id);
-        return $this->templating->renderResponse("ConcertoPanelBundle::collection.json.twig", array("collection" => $collection));
+        return $this->templating->renderResponse("LeapPanelBundle::collection.json.twig", array("collection" => $collection));
     }
 
     /**
@@ -61,7 +61,7 @@ class TestVariableController extends ASectionController
     public function parametersCollectionAction($test_id)
     {
         $collection = $this->service->getParameters($test_id);
-        return $this->templating->renderResponse("ConcertoPanelBundle::collection.json.twig", array("collection" => $collection));
+        return $this->templating->renderResponse("LeapPanelBundle::collection.json.twig", array("collection" => $collection));
     }
 
     /**
@@ -72,7 +72,7 @@ class TestVariableController extends ASectionController
     public function returnsCollectionAction($test_id)
     {
         $collection = $this->service->getReturns($test_id);
-        return $this->templating->renderResponse("ConcertoPanelBundle::collection.json.twig", array("collection" => $collection));
+        return $this->templating->renderResponse("LeapPanelBundle::collection.json.twig", array("collection" => $collection));
     }
 
     /**
@@ -83,7 +83,7 @@ class TestVariableController extends ASectionController
     public function branchesCollectionAction($test_id)
     {
         $collection = $this->service->getBranches($test_id);
-        return $this->templating->renderResponse("ConcertoPanelBundle::collection.json.twig", array("collection" => $collection));
+        return $this->templating->renderResponse("LeapPanelBundle::collection.json.twig", array("collection" => $collection));
     }
 
     /**

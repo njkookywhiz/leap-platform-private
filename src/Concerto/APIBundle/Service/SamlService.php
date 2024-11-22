@@ -1,9 +1,9 @@
 <?php
 
-namespace Concerto\APIBundle\Service;
+namespace Leap\APIBundle\Service;
 
-use Concerto\APIBundle\Entity\SamlToken;
-use Concerto\APIBundle\Repository\SamlTokenRepository;
+use Leap\APIBundle\Entity\SamlToken;
+use Leap\APIBundle\Repository\SamlTokenRepository;
 use OneLogin\Saml2\Auth;
 use OneLogin\Saml2\Utils;
 

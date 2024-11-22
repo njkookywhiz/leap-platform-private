@@ -1,8 +1,8 @@
-concerto.test.run <-
+leap.test.run <-
 function(testId, params=list(), extraReturns=c()) {
-    test <- concerto.test.get(testId, includeSubObjects=T)
+    test <- leap.test.get(testId, includeSubObjects=T)
     if (is.null(test)) stop(paste("Test #", testId, " not found!", sep = ''))
-    concerto.log(paste0("running test #", test$id, ": ", test$name, " ..."))
+    leap.log(paste0("running test #", test$id, ": ", test$name, " ..."))
 
     getParams = function(params) {
         if (dim(test$variables)[1] > 0) {
@@ -47,26 +47,26 @@ function(testId, params=list(), extraReturns=c()) {
     }
 
     r <- list()
-    flowIndex = length(concerto$flow)
-    concerto$flowIndex <<- flowIndex
-    if(concerto$resuming) {
+    flowIndex = length(leap$flow)
+    leap$flowIndex <<- flowIndex
+    if(leap$resuming) {
         if (test$type != 1) {
-            concerto$resumeIndex <<- concerto$resumeIndex + 1
+            leap$resumeIndex <<- leap$resumeIndex + 1
         }
-        flowIndex = concerto$resumeIndex
-        concerto$flowIndex <<- flowIndex
-        params = concerto$flow[[flowIndex]]$params
+        flowIndex = leap$resumeIndex
+        leap$flowIndex <<- flowIndex
+        params = leap$flow[[flowIndex]]$params
     } else {
         params = getParams(params)
         if (test$type != 1) {
             flowIndex = flowIndex + 1
-            concerto$flowIndex <<- flowIndex
+            leap$flowIndex <<- flowIndex
             globals = list()
-            if(!is.null(concerto$passedGlobals)) {
-                globals = concerto$passedGlobals
-                concerto$passedGlobals <<- NULL
+            if(!is.null(leap$passedGlobals)) {
+                globals = leap$passedGlobals
+                leap$passedGlobals <<- NULL
             }
-            concerto$flow[[flowIndex]] <<- list(
+            leap$flow[[flowIndex]] <<- list(
                 id = test$id,
                 type = test$type,
                 params = params,
@@ -82,7 +82,7 @@ function(testId, params=list(), extraReturns=c()) {
 
     if (test$type == 1) {
         #wizard
-        return(concerto.test.run(test$sourceTest$id, params, extraReturns))
+        return(leap.test.run(test$sourceTest$id, params, extraReturns))
     } else if (test$type == 0) {
         #code
 
@@ -97,7 +97,7 @@ function(testId, params=list(), extraReturns=c()) {
         }
 
         testenv = getCodeTestEnv(params)
-        sanitizedCode = concerto.test.sanitizeSource(test$code)
+        sanitizedCode = leap.test.sanitizeSource(test$code)
         eval(parse(text = sanitizedCode), envir = testenv)
 
         if (dim(test$variables)[1] > 0) {
@@ -129,10 +129,10 @@ function(testId, params=list(), extraReturns=c()) {
             } else {
                 latestDataConnection = NULL
                 latestDataConnectionExecIndex = 0
-                for (connection_id in ls(concerto$flow[[flowIndex]]$connections)) {
-                    connection = concerto$flow[[flowIndex]]$connections[[as.character(connection_id)]]
+                for (connection_id in ls(leap$flow[[flowIndex]]$connections)) {
+                    connection = leap$flow[[flowIndex]]$connections[[as.character(connection_id)]]
                     if (!is.na(connection$destinationPort_id) && connection$destinationPort_id == port$id) {
-                        sourceNode = concerto$flow[[flowIndex]]$nodes[[as.character(connection$sourceNode_id)]]
+                        sourceNode = leap$flow[[flowIndex]]$nodes[[as.character(connection$sourceNode_id)]]
                         if(!is.null(sourceNode$execIndex) && sourceNode$execIndex > latestDataConnectionExecIndex) {
                             latestDataConnection = connection
                             latestDataConnectionExecIndex = sourceNode$execIndex
@@ -141,14 +141,14 @@ function(testId, params=list(), extraReturns=c()) {
                 }
 
                 if(!is.null(latestDataConnection)) {
-                    srcPort = concerto$flow[[flowIndex]]$ports[[as.character(latestDataConnection$sourcePort_id)]]
-                    dstPort = concerto$flow[[flowIndex]]$ports[[as.character(latestDataConnection$destinationPort_id)]]
+                    srcPort = leap$flow[[flowIndex]]$ports[[as.character(latestDataConnection$sourcePort_id)]]
+                    dstPort = leap$flow[[flowIndex]]$ports[[as.character(latestDataConnection$destinationPort_id)]]
 
                     func = paste0("retFunc = function(", srcPort$name, "){ ", latestDataConnection$returnFunction, " }")
-                    sanitizedCode = concerto.test.sanitizeSource(func)
+                    sanitizedCode = leap.test.sanitizeSource(func)
                     eval(parse(text = sanitizedCode))
                     value = retFunc(srcPort$value)
-                    concerto$flow[[flowIndex]]$ports[[as.character(latestDataConnection$destinationPort_id)]]['value'] <<- list(value)
+                    leap$flow[[flowIndex]]$ports[[as.character(latestDataConnection$destinationPort_id)]]['value'] <<- list(value)
 
                     if (!is.null(value)) {
                         return(value)
@@ -157,7 +157,7 @@ function(testId, params=list(), extraReturns=c()) {
             }
 
             value = getPortDefaultValue(port, inserts)
-            concerto$flow[[flowIndex]]$ports[[as.character(port$id)]]['value'] <<- list(value)
+            leap$flow[[flowIndex]]$ports[[as.character(port$id)]]['value'] <<- list(value)
             return(value)
         }
 
@@ -168,22 +168,22 @@ function(testId, params=list(), extraReturns=c()) {
                 for(insertName in ls(inserts)) {
                     assign(insertName, inserts[[insertName]], envir=portEnv)
                 }
-                sanitizedCode = concerto.test.sanitizeSource(value)
+                sanitizedCode = leap.test.sanitizeSource(value)
                 return(eval(parse(text = sanitizedCode), envir=portEnv))
             } else {
-                value = concerto.template.insertParams(value, inserts, removeMissing=F)
+                value = leap.template.insertParams(value, inserts, removeMissing=F)
                 return(value)
             }
         }
 
         runNode = function(node){
-            currentExecIndex = concerto$flow[[flowIndex]]$execIndex
+            currentExecIndex = leap$flow[[flowIndex]]$execIndex
             if(is.null(currentExecIndex)) {
-                concerto$flow[[flowIndex]]$execIndex <<- 1
+                leap$flow[[flowIndex]]$execIndex <<- 1
             } else {
-                concerto$flow[[flowIndex]]$execIndex <<- concerto$flow[[flowIndex]]$execIndex + 1
+                leap$flow[[flowIndex]]$execIndex <<- leap$flow[[flowIndex]]$execIndex + 1
             }
-            concerto$flow[[flowIndex]]$nodes[[as.character(node$id)]]$execIndex <<- concerto$flow[[flowIndex]]$execIndex
+            leap$flow[[flowIndex]]$nodes[[as.character(node$id)]]$execIndex <<- leap$flow[[flowIndex]]$execIndex
 
             r = list()
 
@@ -200,8 +200,8 @@ function(testId, params=list(), extraReturns=c()) {
             dynamicReturns = c()
             dynamicBranches = c()
 
-            for (port_id in ls(concerto$flow[[flowIndex]]$ports)) {
-                port = concerto$flow[[flowIndex]]$ports[[as.character(port_id)]]
+            for (port_id in ls(leap$flow[[flowIndex]]$ports)) {
+                port = leap$flow[[flowIndex]]$ports[[as.character(port_id)]]
                 if (port$node_id != node$id) next
 
                 if (port$type == 0 && port$dynamic == 1) {
@@ -224,8 +224,8 @@ function(testId, params=list(), extraReturns=c()) {
                     node_params[[".branches"]] = c(node_params[[".branches"]], port$name)
                 }
             }
-            for (port_id in ls(concerto$flow[[flowIndex]]$ports)) {
-                port = concerto$flow[[flowIndex]]$ports[[as.character(port_id)]]
+            for (port_id in ls(leap$flow[[flowIndex]]$ports)) {
+                port = leap$flow[[flowIndex]]$ports[[as.character(port_id)]]
                 if (port$node_id == node$id && port$type == 0 && port$dynamic == 0) {
                     portValue = evalPortValue(port, dynamicInputs)
                     node_params[port$name] = list(portValue)
@@ -235,24 +235,24 @@ function(testId, params=list(), extraReturns=c()) {
 
             #EXECUTION, RETURNS
             if (node$type == 0) {
-                node_returns = concerto.test.run(node$sourceTest_id, params = node_params, extraReturns=dynamicReturns)
+                node_returns = leap.test.run(node$sourceTest_id, params = node_params, extraReturns=dynamicReturns)
 
-                for (port_id in ls(concerto$flow[[flowIndex]]$ports)) {
-                    port = concerto$flow[[flowIndex]]$ports[[as.character(port_id)]]
+                for (port_id in ls(leap$flow[[flowIndex]]$ports)) {
+                    port = leap$flow[[flowIndex]]$ports[[as.character(port_id)]]
                     if (port$node_id == node$id && port$type == 1) {
                         portValue = node_returns[[port$name]]
-                        concerto$flow[[flowIndex]]$ports[[as.character(port$id)]]['value'] <<- list(portValue)
+                        leap$flow[[flowIndex]]$ports[[as.character(port$id)]]['value'] <<- list(portValue)
                         if(port$pointer == 1) {
                             c.set(port$pointerVariable, portValue)
                         }
                     }
                 }
             } else if (node$type == 1) {
-                for (port_id in ls(concerto$flow[[flowIndex]]$ports)) {
-                    port = concerto$flow[[flowIndex]]$ports[[as.character(port_id)]]
+                for (port_id in ls(leap$flow[[flowIndex]]$ports)) {
+                    port = leap$flow[[flowIndex]]$ports[[as.character(port_id)]]
                     if (port$node_id == node$id && port$type == 1) {
                         portValue = params[[port$name]]
-                        concerto$flow[[flowIndex]]$ports[[as.character(port$id)]]['value'] <<- list(portValue)
+                        leap$flow[[flowIndex]]$ports[[as.character(port$id)]]['value'] <<- list(portValue)
                         if(port$pointer == 1) {
                             c.set(port$pointerVariable, portValue)
                         }
@@ -266,8 +266,8 @@ function(testId, params=list(), extraReturns=c()) {
             if (node$type != 2) {
                 branch_port = NULL
                 branch_name = NA
-                for (port_id in ls(concerto$flow[[flowIndex]]$ports)) {
-                    port = concerto$flow[[flowIndex]]$ports[[as.character(port_id)]]
+                for (port_id in ls(leap$flow[[flowIndex]]$ports)) {
+                    port = leap$flow[[flowIndex]]$ports[[as.character(port_id)]]
 
                     if (port$node_id == node$id &&
                         port$type == 1 &&
@@ -277,8 +277,8 @@ function(testId, params=list(), extraReturns=c()) {
                     }
                 }
 
-                for (port_id in ls(concerto$flow[[flowIndex]]$ports)) {
-                    port = concerto$flow[[flowIndex]]$ports[[as.character(port_id)]]
+                for (port_id in ls(leap$flow[[flowIndex]]$ports)) {
+                    port = leap$flow[[flowIndex]]$ports[[as.character(port_id)]]
 
                     if (port$node_id == node$id && port$type == 2) {
                         if (is.null(branch_name) || is.na(branch_name)) {
@@ -293,13 +293,13 @@ function(testId, params=list(), extraReturns=c()) {
                     }
                 }
 
-                for (connection_id in ls(concerto$flow[[flowIndex]]$connections)) {
-                    connection = concerto$flow[[flowIndex]]$connections[[as.character(connection_id)]]
+                for (connection_id in ls(leap$flow[[flowIndex]]$connections)) {
+                    connection = leap$flow[[flowIndex]]$connections[[as.character(connection_id)]]
                     if (!is.null(branch_port) && !is.na(connection$sourcePort_id) && connection$sourcePort_id == branch_port$id) {
-                        concerto$flow[[flowIndex]]$nextNode <<- concerto$flow[[flowIndex]]$nodes[[as.character(connection$destinationNode_id)]]
+                        leap$flow[[flowIndex]]$nextNode <<- leap$flow[[flowIndex]]$nodes[[as.character(connection$destinationNode_id)]]
                         break
                     } else if(node$type == 1 && connection$sourceNode_id == node$id && is.na(connection$sourcePort_id)) {
-                        concerto$flow[[flowIndex]]$nextNode <<- concerto$flow[[flowIndex]]$nodes[[as.character(connection$destinationNode_id)]]
+                        leap$flow[[flowIndex]]$nextNode <<- leap$flow[[flowIndex]]$nodes[[as.character(connection$destinationNode_id)]]
                         break
                     }
                 }
@@ -309,24 +309,24 @@ function(testId, params=list(), extraReturns=c()) {
         }
 
         #persist flow
-        if(!concerto$resuming) {
-            concerto$flow[[flowIndex]]$nodes <<- list()
-            concerto$flow[[flowIndex]]$connections <<- list()
-            concerto$flow[[flowIndex]]$ports <<- list()
+        if(!leap$resuming) {
+            leap$flow[[flowIndex]]$nodes <<- list()
+            leap$flow[[flowIndex]]$connections <<- list()
+            leap$flow[[flowIndex]]$ports <<- list()
 
             if (dim(test$nodes)[1] > 0) {
                 for (i in 1 : (dim(test$nodes)[1])) {
-                    concerto$flow[[flowIndex]]$nodes[[as.character(test$nodes[i, "id"])]] <<- as.list(test$nodes[i,])
+                    leap$flow[[flowIndex]]$nodes[[as.character(test$nodes[i, "id"])]] <<- as.list(test$nodes[i,])
                 }
             }
             if (dim(test$connections)[1] > 0) {
                 for (i in 1 : (dim(test$connections)[1])) {
-                    concerto$flow[[flowIndex]]$connections[[as.character(test$connections[i, "id"])]] <<- as.list(test$connections[i,])
+                    leap$flow[[flowIndex]]$connections[[as.character(test$connections[i, "id"])]] <<- as.list(test$connections[i,])
                 }
             }
             if (dim(test$ports)[1] > 0) {
                 for (i in 1 : (dim(test$ports)[1])) {
-                    concerto$flow[[flowIndex]]$ports[[as.character(test$ports[i, "id"])]] <<- as.list(test$ports[i,])
+                    leap$flow[[flowIndex]]$ports[[as.character(test$ports[i, "id"])]] <<- as.list(test$ports[i,])
                 }
             }
 
@@ -341,23 +341,23 @@ function(testId, params=list(), extraReturns=c()) {
                 }
             }
 
-            concerto$flow[[flowIndex]]$currentNode <<- NULL
-            concerto$flow[[flowIndex]]$nextNode <<- beginNode
+            leap$flow[[flowIndex]]$currentNode <<- NULL
+            leap$flow[[flowIndex]]$nextNode <<- beginNode
         } else {
-            concerto$flow[[flowIndex]]$nextNode <<- concerto$flow[[flowIndex]]$currentNode
-            if(length(concerto$flow) == flowIndex + 1) {
-                concerto$resuming <<- F
-                concerto$passedGlobals <<- concerto$flow[[flowIndex + 1]]$globals
-                concerto$flow[[flowIndex + 1]] <<- NULL
+            leap$flow[[flowIndex]]$nextNode <<- leap$flow[[flowIndex]]$currentNode
+            if(length(leap$flow) == flowIndex + 1) {
+                leap$resuming <<- F
+                leap$passedGlobals <<- leap$flow[[flowIndex + 1]]$globals
+                leap$flow[[flowIndex + 1]] <<- NULL
             }
         }
 
         finishNodeExecuted = F
-        while (!is.null(concerto$flow[[flowIndex]]$nextNode)) {
-            node = concerto$flow[[flowIndex]]$nextNode
+        while (!is.null(leap$flow[[flowIndex]]$nextNode)) {
+            node = leap$flow[[flowIndex]]$nextNode
 
-            concerto$flow[[flowIndex]]$currentNode <<- node
-            concerto$flow[[flowIndex]]$nextNode <<- NULL
+            leap$flow[[flowIndex]]$currentNode <<- node
+            leap$flow[[flowIndex]]$nextNode <<- NULL
             r = runNode(node)
             if(node$type == 2) { finishNodeExecuted = T }
         }
@@ -383,9 +383,9 @@ function(testId, params=list(), extraReturns=c()) {
         }
     }
 
-    concerto$flow[[flowIndex]] <<- NULL
-    concerto$flowIndex <<- length(concerto$flow)
+    leap$flow[[flowIndex]] <<- NULL
+    leap$flowIndex <<- length(leap$flow)
 
-    concerto.log(paste0("test #", test$id, ": ", test$name, " finished"))
+    leap.log(paste0("test #", test$id, ": ", test$name, " finished"))
     return(r)
 }

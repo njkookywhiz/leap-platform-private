@@ -3,7 +3,7 @@ getSessionId = function() {
   if(!is.null(session) && is.list(session)) {
     id = session$id
   } else {
-    id = paste0("i",concerto$session$id)
+    id = paste0("i",leap$session$id)
   }
   return(id)
 }
@@ -22,7 +22,7 @@ getMergedData = function() {
 
 getDataId = function(name, sessionId, decodedTable) {
   sql = "SELECT id FROM {{table}} WHERE {{sessionIdColumn}}='{{sessionId}}' AND {{nameColumn}}='{{name}}'"
-  result = concerto.table.query(sql, params=list(
+  result = leap.table.query(sql, params=list(
     table=decodedTable$table,
     sessionIdColumn=decodedTable$columns$session_id,
     sessionId=sessionId,
@@ -47,9 +47,9 @@ saveData = function(name, value, sessionId, decodedTable) {
   )
 
   if(is.null(id)) {
-    concerto.table.query("INSERT INTO {{table}} ({{sessionIdColumn}}, {{nameColumn}}, {{valueColumn}}) VALUES ('{{sessionId}}', '{{name}}', '{{value}}')", params=params)
+    leap.table.query("INSERT INTO {{table}} ({{sessionIdColumn}}, {{nameColumn}}, {{valueColumn}}) VALUES ('{{sessionId}}', '{{name}}', '{{value}}')", params=params)
   } else {
-    concerto.table.query("UPDATE {{table}} SET {{sessionIdColumn}}='{{sessionId}}', {{nameColumn}}='{{name}}', {{valueColumn}}='{{value}}' WHERE id={{id}}", params=params)
+    leap.table.query("UPDATE {{table}} SET {{sessionIdColumn}}='{{sessionId}}', {{nameColumn}}='{{name}}', {{valueColumn}}='{{value}}' WHERE id={{id}}", params=params)
   }
 }
 

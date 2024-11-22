@@ -1,18 +1,18 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-  concerto-ec2-basic (2020-09-02): Standalone Concerto, everything on one instance, no TLS
+  leap-ec2-basic (2020-09-02): Standalone Leap, everything on one instance, no TLS
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
       - Label:
-          default: Concerto
+          default: Leap
         Parameters:
-          - ConcertoVersion
-          - ConcertoPassword
-          - ConcertoContentURL
-          - ConcertoSessionLimit
-          - ConcertoTimezone
-          - ConcertoStorage
+          - LeapVersion
+          - LeapPassword
+          - LeapContentURL
+          - LeapSessionLimit
+          - LeapTimezone
+          - LeapStorage
       - Label:
           default: Web
         Parameters:
@@ -28,17 +28,17 @@ Metadata:
           - CIDR
           - CIDRA
     ParameterLabels:
-      ConcertoVersion:
+      LeapVersion:
         default: Tag
-      ConcertoPassword:
+      LeapPassword:
         default: Password
-      ConcertoContentURL:
+      LeapContentURL:
         default: URL
-      ConcertoSessionLimit:
+      LeapSessionLimit:
         default: Session limit
-      ConcertoTimezone:
+      LeapTimezone:
         default: Timezone
-      ConcertoStorage:
+      LeapStorage:
         default: Storage
       KeyName:
         default: Key pair
@@ -50,29 +50,29 @@ Metadata:
         default: CIDR for Subnet A
 
 Parameters:
-  ConcertoVersion:
-    Description: Concerto version to use. Can be any tag from https://github.com/campsych/concerto-platform
+  LeapVersion:
+    Description: Leap version to use. Can be any tag from https://github.com/campsych/leap-platform
     Type: String
     Default: 5.0
-  ConcertoPassword:
-    Description: Concerto admin account password (recommended to generate a random one)
+  LeapPassword:
+    Description: Leap admin account password (recommended to generate a random one)
     Type: String
     NoEcho: true
     MinLength: 8
     ConstraintDescription: min. 8 characters.
-  ConcertoContentURL:
-    Description: URL with Concerto content backup to preload (optional)
+  LeapContentURL:
+    Description: URL with Leap content backup to preload (optional)
     Type: String
     Default: .
-  ConcertoSessionLimit:
+  LeapSessionLimit:
     Description: How many concurrent sessions to allow (unlimited if 0 or not set)
     Type: Number
     Default: 0
-  ConcertoTimezone:
+  LeapTimezone:
     Description: Timezone to use, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
     Type: String
     Default: UTC
-  ConcertoStorage:
+  LeapStorage:
     Default: 8
     Description: The size of the storage volume (Gb)
     Type: Number
@@ -98,7 +98,7 @@ Parameters:
       - t3.large
     ConstraintDescription: must be a valid EC2 instance type
   DBPassword:
-    Description: Database admin account password (recommended to generate a random one, different than Concerto's)
+    Description: Database admin account password (recommended to generate a random one, different than Leap's)
     Type: String
     NoEcho: true
     MinLength: 8
@@ -334,7 +334,7 @@ Resources:
             - cfn
             - updates
             - docker
-            - concerto
+            - leap
         cfn:
           files:
             /etc/cfn/cfn-hup.conf:
@@ -392,9 +392,9 @@ Resources:
               docker:
                 enabled: true
                 ensureRunning: true
-        concerto:
+        leap:
           files:
-            /home/concerto/docker-compose.yml:
+            /home/leap/docker-compose.yml:
               content: !Sub
                 - |
                   version: '3'
@@ -406,31 +406,31 @@ Resources:
                       volumes:
                         - ./data/mysql:/var/lib/mysql
                       environment:
-                        - MYSQL_DATABASE=concerto
-                        - MYSQL_USER=concerto
+                        - MYSQL_DATABASE=leap
+                        - MYSQL_USER=leap
                         - MYSQL_PASSWORD=${DBPassword}
                         - MYSQL_ROOT_PASSWORD=${DBPassword}
-                        - TZ=${ConcertoTimezone}
+                        - TZ=${LeapTimezone}
 
-                    concerto:
-                      image: campsych/concerto-platform:${ConcertoVersion}
-                      container_name: concerto
+                    leap:
+                      image: campsych/leap-platform:${LeapVersion}
+                      container_name: leap
                       restart: unless-stopped
                       volumes:
-                        - ./data/concerto:/data
+                        - ./data/leap:/data
                       ports:
                         - "80:80"
                       environment:
-                        - CONCERTO_PASSWORD=${ConcertoPassword}
-                        - CONCERTO_CONTENT_URL=${ConcertoContentURL}
-                        - CONCERTO_PLATFORM_URL=/
-                        - CONCERTO_GIT_REPOSITORY_PATH=/data/git
-                        - CONCERTO_SESSION_LIMIT=${ConcertoSessionLimit}
+                        - LEAP_PASSWORD=${LeapPassword}
+                        - LEAP_CONTENT_URL=${LeapContentURL}
+                        - LEAP_PLATFORM_URL=/
+                        - LEAP_GIT_REPOSITORY_PATH=/data/git
+                        - LEAP_SESSION_LIMIT=${LeapSessionLimit}
                         - DB_HOST=database
                         - DB_PASSWORD=${DBPassword}
                         - PHP_FPM_PM=static
                         - PHP_FPM_PM_MAX_CHILDREN=${MaxChildren}
-                        - TZ=${ConcertoTimezone}
+                        - TZ=${LeapTimezone}
                 - MaxChildren: !FindInMap
                     - InstanceTypeMap
                     - !Ref WebServerInstanceType
@@ -438,7 +438,7 @@ Resources:
           commands:
             start:
               command: /usr/local/bin/docker-compose up -d --remove-orphans --force-recreate
-              cwd: /home/concerto
+              cwd: /home/leap
     Properties:
       ImageId: !FindInMap
         - RegionMap
@@ -458,7 +458,7 @@ Resources:
         - DeviceName: /dev/xvda
           Ebs:
             DeleteOnTermination: false
-            VolumeSize: !Ref ConcertoStorage
+            VolumeSize: !Ref LeapStorage
       NetworkInterfaces:
         - AssociatePublicIpAddress: true
           DeleteOnTermination: true
@@ -475,16 +475,16 @@ Outputs:
     Value: !Sub
       - http://${PublicIp}/admin
       - PublicIp: !GetAtt WebServerInstance.PublicIp
-    Description: Concerto administration panel URL
+    Description: Leap administration panel URL
   ServerIP:
     Value: !GetAtt WebServerInstance.PublicIp
     Description: IP address to point your domain to (i.e. with A record)
-  ConcertoVersion:
-    Value: !Ref ConcertoVersion
-    Description: Concerto version being used
-  ConcertoPassword:
-    Value: !Ref ConcertoPassword
-    Description: Concerto admin password
+  LeapVersion:
+    Value: !Ref LeapVersion
+    Description: Leap version being used
+  LeapPassword:
+    Value: !Ref LeapPassword
+    Description: Leap admin password
   DBPassword:
     Value: !Ref DBPassword
     Description: Database password

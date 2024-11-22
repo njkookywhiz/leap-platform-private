@@ -1,4 +1,4 @@
-concertoPanel.factory('ApiClientsCollectionService', function ($http) {
+leapPanel.factory('ApiClientsCollectionService', function ($http) {
     return {
         collectionPath: Paths.ADMINISTRATION_API_CLIENTS_COLLECTION,
         collection: [],

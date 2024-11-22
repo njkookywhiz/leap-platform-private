@@ -2,24 +2,24 @@ exposureMaxItems = as.numeric(settings$exposureMaxItems)
 exposureLimit = as.numeric(settings$exposureLimit)
 exposureMinSessions = as.numeric(settings$exposureMinSessions)
 
-concerto.log(exposureMaxItems, "exposure max items")
+leap.log(exposureMaxItems, "exposure max items")
 
 if(is.na(exposureMaxItems) || exposureMaxItems == 0) { 
   return()
 }
 
 if(!is.list(session) || is.null(session$id)) {
-  concerto.log("session is required for item exposure")
+  leap.log("session is required for item exposure")
   return()
 }
 
 responseTable = fromJSON(settings$responseBank)
 if(!is.character(responseTable$table) || nchar(responseTable$table) == 0) {
-  concerto.log("no response bank defined, skipping exposure")
+  leap.log("no response bank defined, skipping exposure")
   return()
 }
 
-responsesRecords = concerto.table.query("
+responsesRecords = leap.table.query("
 SELECT id, 
 {{itemIdCol}} AS item_id
 FROM {{table}} 
@@ -42,18 +42,18 @@ if(itemsLeftNum == 0) {
   return()
 }
 
-sessionNum = concerto.table.query("
+sessionNum = leap.table.query("
 SELECT COUNT(DISTINCT session_id) AS sessionNum
 FROM {{table}}", params=list(
   table = responseTable$table
 ))[1,1]
 
 if(sessionNum == 0 || exposureMinSessions > sessionNum) {
-  concerto.log(sessionNum, "session number to low for item exposure")
+  leap.log(sessionNum, "session number to low for item exposure")
   return()
 }
 
-exposureCount = concerto.table.query("
+exposureCount = leap.table.query("
 SELECT COUNT(*) AS sessionNum,
 {{itemIdCol}} AS item_id
 FROM {{table}}
@@ -78,7 +78,7 @@ for(i in 1:itemsLeftNum) {
   }
 }
 
-concerto.log(excludedIndices, "excluded item indices by item exposure")
+leap.log(excludedIndices, "excluded item indices by item exposure")
 if(length(excludedIndices) > 0) {
   items = items[-excludedIndices,]
   paramBank = paramBank[-excludedIndices,]

@@ -10,4 +10,4 @@ function WizardParamDefiner13Controller($scope, AdministrationSettingsService, T
 
 };
 
-concertoPanel.controller('WizardParamDefiner13Controller', ["$scope", "AdministrationSettingsService", "TestCollectionService", WizardParamDefiner13Controller]);
+leapPanel.controller('WizardParamDefiner13Controller', ["$scope", "AdministrationSettingsService", "TestCollectionService", WizardParamDefiner13Controller]);

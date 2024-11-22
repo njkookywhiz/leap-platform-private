@@ -1,11 +1,11 @@
 <?php
 
-namespace Concerto\TestBundle\Service;
+namespace Leap\TestBundle\Service;
 
-use Concerto\PanelBundle\Repository\TestSessionRepository;
-use Concerto\PanelBundle\Service\AdministrationService;
-use Concerto\TestBundle\Entity\TestSessionCount;
-use Concerto\TestBundle\Repository\TestSessionCountRepository;
+use Leap\PanelBundle\Repository\TestSessionRepository;
+use Leap\PanelBundle\Service\AdministrationService;
+use Leap\TestBundle\Entity\TestSessionCount;
+use Leap\TestBundle\Repository\TestSessionCountRepository;
 
 class TestSessionCountService
 {

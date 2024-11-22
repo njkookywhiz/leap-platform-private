@@ -1,4 +1,4 @@
-concertoPanel.factory('MessagesCollectionService', function ($http) {
+leapPanel.factory('MessagesCollectionService', function ($http) {
     return {
         collectionPath: Paths.ADMINISTRATION_MESSAGES_COLLECTION,
         collection: [],

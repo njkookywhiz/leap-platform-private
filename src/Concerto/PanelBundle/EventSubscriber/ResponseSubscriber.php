@@ -1,16 +1,16 @@
 <?php
 
-namespace Concerto\PanelBundle\EventSubscriber;
+namespace Leap\PanelBundle\EventSubscriber;
 
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 
 class ResponseSubscriber
 {
     const CACHEABLE_ACTIONS = [
-        "Concerto\PanelBundle\Controller\ViewTemplateController::contentAction",
-        "Concerto\PanelBundle\Controller\ViewTemplateController::htmlAction",
-        "Concerto\PanelBundle\Controller\ViewTemplateController::cssAction",
-        "Concerto\PanelBundle\Controller\ViewTemplateController::jsAction"
+        "Leap\PanelBundle\Controller\ViewTemplateController::contentAction",
+        "Leap\PanelBundle\Controller\ViewTemplateController::htmlAction",
+        "Leap\PanelBundle\Controller\ViewTemplateController::cssAction",
+        "Leap\PanelBundle\Controller\ViewTemplateController::jsAction"
     ];
     const CACHE_MAX_AGE = 60 * 60 * 24;
 

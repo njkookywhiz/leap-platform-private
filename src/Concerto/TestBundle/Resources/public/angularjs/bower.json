@@ -1,7 +1,7 @@
 {
-  "name": "concerto-platform-test",
+  "name": "leap-platform-test",
   "description": "LEAP Scores test runner",
-  "homepage": "http://concertoplatform.com/",
+  "homepage": "http://leapplatform.com/",
   "license": "Apache-2.0",
   "private": false,
   "dependencies": {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
-use Concerto\PanelBundle\Utils\SystemExecutableStatus;
-use Concerto\PanelBundle\Utils\SystemPathStatus;
+use Leap\PanelBundle\Utils\SystemExecutableStatus;
+use Leap\PanelBundle\Utils\SystemPathStatus;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 
 /**

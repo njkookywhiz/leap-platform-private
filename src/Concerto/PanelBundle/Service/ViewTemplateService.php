@@ -1,10 +1,10 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
-use Concerto\PanelBundle\Entity\ViewTemplate;
-use Concerto\PanelBundle\Entity\User;
-use Concerto\PanelBundle\Repository\ViewTemplateRepository;
+use Leap\PanelBundle\Entity\ViewTemplate;
+use Leap\PanelBundle\Entity\User;
+use Leap\PanelBundle\Repository\ViewTemplateRepository;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;

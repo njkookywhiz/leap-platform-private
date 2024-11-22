@@ -8,6 +8,6 @@
 
   if ! ps --ppid 1 -F | grep -v grep | grep $PROCESS > /dev/null; then
     echo "`date`: forker process not running";
-    /usr/bin/php /app/concerto/bin/console concerto:forker:start --env=prod;
+    /usr/bin/php /app/leap/bin/console leap:forker:start --env=prod;
   fi
-) 9>/var/lock/concerto.forker.guard.lock
+) 9>/var/lock/leap.forker.guard.lock

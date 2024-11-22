@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\EquatableInterface;
@@ -12,8 +12,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Scheb\TwoFactorBundle\Model\Google\TwoFactorInterface;
 
 /**
- * @ORM\Table(name="ConcertoUser")
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\UserRepository")
+ * @ORM\Table(name="LeapUser")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\UserRepository")
  * @UniqueEntity(fields="username", message="validate.user.username.unique")
  * @UniqueEntity(fields="email", message="validate.user.email.unique")
  */
@@ -378,7 +378,7 @@ class User extends ATopEntity implements AdvancedUserInterface, \Serializable, \
 
     public function getGoogleAuthenticatorUsername(): string
     {
-        return "Concerto (" . $this->username . "@" . $_SERVER["HTTP_HOST"] . ")";
+        return "Leap (" . $this->username . "@" . $_SERVER["HTTP_HOST"] . ")";
     }
 
     public function getGoogleAuthenticatorSecret(): ?string

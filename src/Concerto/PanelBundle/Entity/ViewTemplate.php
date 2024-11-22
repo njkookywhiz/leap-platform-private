@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
-use Concerto\PanelBundle\Entity\Test;
+use Leap\PanelBundle\Entity\Test;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Table
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\ViewTemplateRepository")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\ViewTemplateRepository")
  * @UniqueEntity(fields="name", message="validate.table.name.unique")
  * @ORM\HasLifecycleCallbacks
  */

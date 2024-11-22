@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\Repository;
+namespace Leap\PanelBundle\Repository;
 
 /**
  * RoleRepository
@@ -8,7 +8,7 @@ namespace Concerto\PanelBundle\Repository;
 class RoleRepository extends AEntityRepository {
 
     public function findOneByRole($role) {
-        return $this->getEntityManager()->getRepository("ConcertoPanelBundle:Role")->findOneBy(array("role" => $role));
+        return $this->getEntityManager()->getRepository("LeapPanelBundle:Role")->findOneBy(array("role" => $role));
     }
 
 }

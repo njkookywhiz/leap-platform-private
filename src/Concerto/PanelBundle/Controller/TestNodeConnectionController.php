@@ -1,12 +1,12 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Concerto\PanelBundle\Service\TestService;
-use Concerto\PanelBundle\Service\TestNodeConnectionService;
-use Concerto\PanelBundle\Service\TestNodeService;
-use Concerto\PanelBundle\Service\TestNodePortService;
+use Leap\PanelBundle\Service\TestService;
+use Leap\PanelBundle\Service\TestNodeConnectionService;
+use Leap\PanelBundle\Service\TestNodeService;
+use Leap\PanelBundle\Service\TestNodePortService;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -65,7 +65,7 @@ class TestNodeConnectionController extends ASectionController
      */
     public function collectionByFlowTestAction($test_id)
     {
-        return $this->templating->renderResponse('ConcertoPanelBundle::collection.json.twig', array(
+        return $this->templating->renderResponse('LeapPanelBundle::collection.json.twig', array(
             'collection' => $this->service->getByFlowTest($test_id)
         ));
     }

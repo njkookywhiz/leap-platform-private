@@ -1,5 +1,5 @@
-\name{concerto.event.remove}
-\alias{concerto.event.remove}
+\name{leap.event.remove}
+\alias{leap.event.remove}
 \title{
     Events
 }
@@ -7,7 +7,7 @@
     Removing events.
 }
 \usage{
-    concerto.event.remove(name, fun)
+    leap.event.remove(name, fun)
 }
 \arguments{
     \item{name}{
@@ -30,7 +30,7 @@
 \seealso{
 }
 \examples{
-    concerto.event.remove("onTemplateSubmit", function(response) {
+    leap.event.remove("onTemplateSubmit", function(response) {
         print(response)
     })
 }

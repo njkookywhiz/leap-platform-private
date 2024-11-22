@@ -5,7 +5,7 @@ getSessionId = function(session) {
   if(!is.null(session) && is.list(session)) {
     id = session$id
   } else {
-    id = paste0("i",concerto$session$id)
+    id = paste0("i",leap$session$id)
   }
   return(id)
 }
@@ -30,7 +30,7 @@ getSafeItems = function(items, extraFields) {
         item$responseOptions = tryCatch({
           fromJSON(item$responseOptions)
         }, error = function(message) {
-          concerto.log(message)
+          leap.log(message)
           stop(paste0("item #", item$id, " contains invalid JSON in responseOptions field"))
         })
       }
@@ -86,7 +86,7 @@ getSafeItems = function(items, extraFields) {
 getSafePastResponses = function(nextItems, nextItemsIndices) {
   responseBank = fromJSON(settings$responseBank)
   if(is.null(responseBank$table) || responseBank$table == "") {
-    concerto.log("no response bank defined")
+    leap.log("no response bank defined")
 
     pastResponses = NULL
     for(nextItemIndex in nextItemsIndices) {
@@ -117,7 +117,7 @@ WHERE
 {{sessionIdColumn}}='{{sessionId}}' AND
 {{itemIdColumn}} IN ({{itemIds}})
 "
-  pastResponses = concerto.table.query(sql, list(
+  pastResponses = leap.table.query(sql, list(
     table=responseBank$table,
     responseColumn=responseBank$columns$response,
     skippedColumn=skippedColumn,
@@ -146,7 +146,7 @@ if(length(nextItemsIndices) == 0) {
 
     #content balancing
     cbProps = fromJSON(settings$contentBalancing)
-    concerto.log(cbProps, "cbProps")
+    leap.log(cbProps, "cbProps")
     if(length(cbProps) > 0) {
       cbGroup = as.character(items[,"trait"])
       cbControl = list(
@@ -157,7 +157,7 @@ if(length(nextItemsIndices) == 0) {
         cbControl$names = c(cbControl$names, cbProps[[i]]$name)
         cbControl$props = c(cbControl$props, as.numeric(cbProps[[i]]$proportion))
       }
-      concerto.log(cbControl, "cbControl")
+      leap.log(cbControl, "cbControl")
     }
 
     for(onPageIndex in 1:itemsPerPage) {
@@ -187,7 +187,7 @@ if(length(nextItemsIndices) == 0) {
         result = tryCatch({
           nextItem(paramBank, model=settings$model, theta=theta, out=itemsAdministered, x=scores, nAvailable=nAvailable, criterion=settings$nextItemCriterion, method=settings$scoringMethod, randomesque=randomesque, D=d, cbGroup=cbGroup, cbControl=cbControl)
         }, error=function(ex) {
-          concerto.log(ex, "potentialy not possible to satisfy CB rule")
+          leap.log(ex, "potentialy not possible to satisfy CB rule")
           if(!is.null(cbGroup) && !is.null(cbControl)) {
             return(nextItem(paramBank, model=settings$model, theta=theta, out=itemsAdministered, x=scores, nAvailable=nAvailable, criterion=settings$nextItemCriterion, method=settings$scoringMethod, randomesque=randomesque, D=d, cbGroup=NULL, cbControl=NULL))
           } else {
@@ -225,7 +225,7 @@ if(length(nextItemsIndices) == 0) {
   }
 
   if(!is.na(settings$nextItemModule) && settings$nextItemModule != "") {
-    nextItemsIndices = concerto.test.run(settings$nextItemModule, params=list(
+    nextItemsIndices = leap.test.run(settings$nextItemModule, params=list(
       nextItemsIndices=nextItemsIndices,
       settings = settings,
       theta = theta,
@@ -244,15 +244,15 @@ if(length(nextItemsIndices) == 0) {
 }
 
 .branch = "continue"
-concerto.log(nextItemsIndices, "nextItemsIndices")
+leap.log(nextItemsIndices, "nextItemsIndices")
 
 if(length(nextItemsIndices) > 0) {
   nextItems = items[nextItemsIndices,]
-  concerto.log(nextItems, "next items")
+  leap.log(nextItems, "next items")
   nextItemsSafe = getSafeItems(nextItems, settings$itemBankTableExtraFields)
   responsesSafe = getSafePastResponses(nextItems, nextItemsIndices)
   resumedItemsIds = NULL
 } else {
   .branch = "stop"
-  concerto.log("empty set of next items - stopping")
+  leap.log("empty set of next items - stopping")
 }

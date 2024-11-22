@@ -1,10 +1,10 @@
 <?php
 
-namespace Concerto\PanelBundle\Security;
+namespace Leap\PanelBundle\Security;
 
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter;
-use Concerto\PanelBundle\Entity\User;
+use Leap\PanelBundle\Entity\User;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
 

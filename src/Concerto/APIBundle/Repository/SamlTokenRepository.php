@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\APIBundle\Repository;
+namespace Leap\APIBundle\Repository;
 
-use Concerto\PanelBundle\Repository\AEntityRepository;
+use Leap\PanelBundle\Repository\AEntityRepository;
 use Exception;
 
 /**
@@ -19,7 +19,7 @@ class SamlTokenRepository extends AEntityRepository
 
         $query = $this->getEntityManager()->createQueryBuilder()
             ->select('t')
-            ->from('Concerto\APIBundle\Entity\SamlToken', 't')
+            ->from('Leap\APIBundle\Entity\SamlToken', 't')
             ->where('t.revoked=0')
             ->andWhere('t.expiresAt IS NULL OR t.expiresAt > :now')
             ->andWhere('t.hash = :hash')

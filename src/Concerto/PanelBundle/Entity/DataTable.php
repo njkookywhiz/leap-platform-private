@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -8,7 +8,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Table
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\DataTableRepository")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\DataTableRepository")
  * @UniqueEntity(fields="name", message="validate.table.name.unique")
  * @ORM\HasLifecycleCallbacks
  */

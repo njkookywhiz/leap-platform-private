@@ -9,4 +9,4 @@ function WizardParamDefiner2Controller($scope, AdministrationSettingsService) {
   $scope.htmlEditorOptions = Defaults.ckeditorPanelContentOptions;
 };
 
-concertoPanel.controller('WizardParamDefiner2Controller', ["$scope", "AdministrationSettingsService", WizardParamDefiner2Controller]);
+leapPanel.controller('WizardParamDefiner2Controller', ["$scope", "AdministrationSettingsService", WizardParamDefiner2Controller]);

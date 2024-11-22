@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\DAO;
+namespace Leap\PanelBundle\DAO;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Schema\ColumnDiff;

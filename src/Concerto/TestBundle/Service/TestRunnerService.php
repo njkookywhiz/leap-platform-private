@@ -1,10 +1,10 @@
 <?php
 
-namespace Concerto\TestBundle\Service;
+namespace Leap\TestBundle\Service;
 
-use Concerto\PanelBundle\Service\TestService;
+use Leap\PanelBundle\Service\TestService;
 use Psr\Log\LoggerInterface;
-use Concerto\PanelBundle\Service\TestSessionService;
+use Leap\PanelBundle\Service\TestSessionService;
 
 class TestRunnerService
 {

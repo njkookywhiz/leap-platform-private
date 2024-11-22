@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\PanelBundle\Repository;
+namespace Leap\PanelBundle\Repository;
 
-use Concerto\PanelBundle\Entity\ScheduledTask;
+use Leap\PanelBundle\Entity\ScheduledTask;
 
 /**
  * ScheduledTaskRepository
@@ -29,7 +29,7 @@ class ScheduledTaskRepository extends AEntityRepository
     public function cancelPending()
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
-        return $qb->update("Concerto\PanelBundle\Entity\ScheduledTask", "st")->set("st.status", ScheduledTask::STATUS_CANCELED)->where("st.status = :pending_status")->setParameter("pending_status", ScheduledTask::STATUS_PENDING)->getQuery()->execute();
+        return $qb->update("Leap\PanelBundle\Entity\ScheduledTask", "st")->set("st.status", ScheduledTask::STATUS_CANCELED)->where("st.status = :pending_status")->setParameter("pending_status", ScheduledTask::STATUS_PENDING)->getQuery()->execute();
     }
 
     public function findLatestGit()

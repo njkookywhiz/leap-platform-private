@@ -1,13 +1,13 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 
 /**
  * @ORM\Table
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\MessageRepository")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\MessageRepository")
  */
 class Message implements \JsonSerializable
 {

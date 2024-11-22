@@ -1,20 +1,20 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Repository\ScheduledTaskRepository;
-use Concerto\PanelBundle\Service\AdministrationService;
-use Concerto\PanelBundle\Service\GitService;
+use Leap\PanelBundle\Repository\ScheduledTaskRepository;
+use Leap\PanelBundle\Service\AdministrationService;
+use Leap\PanelBundle\Service\GitService;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\Console\Input\InputInterface;
-use Concerto\PanelBundle\Entity\ScheduledTask;
+use Leap\PanelBundle\Entity\ScheduledTask;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Templating\EngineInterface;
 
-class ConcertoTaskGitEnableCommand extends ConcertoScheduledTaskCommand
+class LeapTaskGitEnableCommand extends LeapScheduledTaskCommand
 {
     private $templating;
     private $gitService;
@@ -34,14 +34,14 @@ class ConcertoTaskGitEnableCommand extends ConcertoScheduledTaskCommand
     protected function configure()
     {
         parent::configure();
-        $this->setName("concerto:task:git:enable")->setDescription("Git enable");
+        $this->setName("leap:task:git:enable")->setDescription("Git enable");
         $this->getDefinition()->getOption("content-block")->setDefault(1);
         $this->addOption("instructions", "i", InputOption::VALUE_REQUIRED, "Import instructions", null);
     }
 
     public function getTaskDescription(ScheduledTask $task)
     {
-        return $this->templating->render("@ConcertoPanel/Administration/task_git_enable.html.twig", array());
+        return $this->templating->render("@LeapPanel/Administration/task_git_enable.html.twig", array());
     }
 
     public function getTaskInfo(InputInterface $input)

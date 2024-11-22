@@ -1,15 +1,15 @@
 <?php
 
-namespace Concerto\PanelBundle\EventSubscriber;
+namespace Leap\PanelBundle\EventSubscriber;
 
-use Concerto\PanelBundle\Entity\AEntity;
-use Concerto\PanelBundle\Entity\ATopEntity;
-use Concerto\PanelBundle\Entity\TestNode;
-use Concerto\PanelBundle\Entity\TestNodeConnection;
-use Concerto\PanelBundle\Entity\TestNodePort;
-use Concerto\PanelBundle\Entity\TestVariable;
-use Concerto\PanelBundle\Entity\TestWizardParam;
-use Concerto\PanelBundle\Entity\TestWizardStep;
+use Leap\PanelBundle\Entity\AEntity;
+use Leap\PanelBundle\Entity\ATopEntity;
+use Leap\PanelBundle\Entity\TestNode;
+use Leap\PanelBundle\Entity\TestNodeConnection;
+use Leap\PanelBundle\Entity\TestNodePort;
+use Leap\PanelBundle\Entity\TestVariable;
+use Leap\PanelBundle\Entity\TestWizardParam;
+use Leap\PanelBundle\Entity\TestWizardStep;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;

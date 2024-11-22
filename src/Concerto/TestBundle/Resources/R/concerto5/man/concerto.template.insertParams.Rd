@@ -1,5 +1,5 @@
-\name{concerto.template.insertParams}
-\alias{concerto.template.insertParams}
+\name{leap.template.insertParams}
+\alias{leap.template.insertParams}
 \title{
     Template helper function.
 }
@@ -7,7 +7,7 @@
     Fills template HTML with given parameters.
 }
 \usage{
-    concerto.template.insertParams(html, params = list(), removeMissing=T)
+    leap.template.insertParams(html, params = list(), removeMissing=T)
 }
 \arguments{
     \item{html}{
@@ -37,7 +37,7 @@
 }
 \examples{
     html <- "<html><body>Inserted variable: {{param1}}</body></html>"
-    html <- concerto.template.insertParams(html,list(param1="value"))
+    html <- leap.template.insertParams(html,list(param1="value"))
 }
 
 \keyword{template}

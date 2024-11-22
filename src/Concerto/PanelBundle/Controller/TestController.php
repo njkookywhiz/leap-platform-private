@@ -1,20 +1,20 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
-use Concerto\PanelBundle\Entity\Test;
-use Concerto\PanelBundle\Service\FileService;
-use Concerto\PanelBundle\Service\TestService;
-use Concerto\PanelBundle\Service\ViewTemplateService;
+use Leap\PanelBundle\Entity\Test;
+use Leap\PanelBundle\Service\FileService;
+use Leap\PanelBundle\Service\TestService;
+use Leap\PanelBundle\Service\ViewTemplateService;
 use Symfony\Component\HttpFoundation\Response;
-use Concerto\PanelBundle\Service\TestWizardService;
+use Leap\PanelBundle\Service\TestWizardService;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;
-use Concerto\PanelBundle\Service\ImportService;
-use Concerto\PanelBundle\Service\ExportService;
-use Concerto\PanelBundle\Service\UserService;
+use Leap\PanelBundle\Service\ImportService;
+use Leap\PanelBundle\Service\ExportService;
+use Leap\PanelBundle\Service\UserService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
@@ -69,7 +69,7 @@ class TestController extends AExportableTabController
             $test->clearNodes();
             $test->clearNodesConnections();
         }
-        return $this->templating->renderResponse("ConcertoPanelBundle::collection.$format.twig", array(
+        return $this->templating->renderResponse("LeapPanelBundle::collection.$format.twig", array(
             'collection' => $collection
         ));
     }

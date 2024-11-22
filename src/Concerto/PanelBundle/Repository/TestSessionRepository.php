@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\PanelBundle\Repository;
+namespace Leap\PanelBundle\Repository;
 
-use Concerto\PanelBundle\Entity\TestSession;
+use Leap\PanelBundle\Entity\TestSession;
 use Doctrine\DBAL\Types\Type;
 
 /**

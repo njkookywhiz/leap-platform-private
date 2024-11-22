@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Concerto\PanelBundle\Controller\FunctionalTests;
+namespace Tests\Leap\PanelBundle\Controller\FunctionalTests;
 
 use Symfony\Component\Yaml\Yaml;
-use Tests\Concerto\PanelBundle\AFunctionalTest;
+use Tests\Leap\PanelBundle\AFunctionalTest;
 
 class DataTableControllerTest extends AFunctionalTest
 {
@@ -14,7 +14,7 @@ class DataTableControllerTest extends AFunctionalTest
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
-        self::$repository = static::$entityManager->getRepository("ConcertoPanelBundle:DataTable");
+        self::$repository = static::$entityManager->getRepository("LeapPanelBundle:DataTable");
         self::$driver_class = get_class(static::$entityManager->getConnection()->getDatabasePlatform());
     }
 
@@ -205,7 +205,7 @@ class DataTableControllerTest extends AFunctionalTest
         $client = self::createLoggedClient();
 
         $client->request("POST", "/admin/DataTable/import", array(
-            "file" => "DataTable_1.concerto.json",
+            "file" => "DataTable_1.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "DataTable",
@@ -238,7 +238,7 @@ class DataTableControllerTest extends AFunctionalTest
         $client = self::createLoggedClient();
 
         $client->request("POST", "/admin/DataTable/import", array(
-            "file" => "DataTable_1.concerto.json",
+            "file" => "DataTable_1.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "DataTable",

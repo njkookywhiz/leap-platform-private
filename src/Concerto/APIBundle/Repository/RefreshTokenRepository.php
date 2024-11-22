@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\APIBundle\Repository;
+namespace Leap\APIBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

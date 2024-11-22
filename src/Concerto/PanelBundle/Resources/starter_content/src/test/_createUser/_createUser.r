@@ -22,7 +22,7 @@ checkLoginExist = function(login, tableMap) {
 SELECT * FROM {{table}} 
 WHERE {{loginColumn}}='{{login}}'
 "
-  user = concerto.table.query(sql, params=list(
+  user = leap.table.query(sql, params=list(
     table=tableMap$table,
     loginColumn=tableMap$columns$login,
     login=login
@@ -52,19 +52,19 @@ insertUser = function(fields, tableMap) {
     paste0("'{{",ls(fields),"}}'", collapse=","),
     ")"
   )
-  concerto.table.query(sql, params=append(fields, list(
+  leap.table.query(sql, params=append(fields, list(
     table=tableMap$table
   )))
-  userId = concerto.table.lastInsertId()
-  concerto.log(userId, title="new user id")
+  userId = leap.table.lastInsertId()
+  leap.log(userId, title="new user id")
 
   sql="SELECT * FROM {{table}} WHERE {{idColumn}}={{id}}"
-  user=concerto.table.query(sql,params=list(
+  user=leap.table.query(sql,params=list(
     table=tableMap$table,
     idColumn=tableMap$columns$id,
     id=userId
   ))
-  concerto.log(user, title="inserted user")
+  leap.log(user, title="inserted user")
   return(user)
 }
 
@@ -73,10 +73,10 @@ if(is.na(password)) { password = "" }
 tableMap = fromJSON(userBankTable)
 fields = formatFields(login, password, userBankEncryption, enabled, extraFields)
 if(checkLoginExist(login, tableMap)) {
-  concerto.log(login, title="login already exist")
+  leap.log(login, title="login already exist")
   .branch = "loginAlreadyExist"
 } else {
-  concerto.log(login, title="login doesn't exist and can be created")
+  leap.log(login, title="login doesn't exist and can be created")
   user=insertUser(fields, tableMap)
   .branch = "created"
 }

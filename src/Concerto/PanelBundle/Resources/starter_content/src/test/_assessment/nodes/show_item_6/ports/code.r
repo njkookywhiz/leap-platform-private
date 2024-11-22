@@ -6,7 +6,7 @@ getTemplateParams = function() {
   totalPages = ceiling(maxItems / as.numeric(settings$itemsPerPage))
   
   processedItems = toJSON(data.frame(itemsSafe))
-  processedItems = concerto.template.insertParams(processedItems, templateParams, F)
+  processedItems = leap.template.insertParams(processedItems, templateParams, F)
   templateParams$items = fromJSON(processedItems)
   
   templateParams$responseRequired = as.numeric(settings$responseRequired)
@@ -61,7 +61,7 @@ getTemplateTimeLimit = function(testTimeLimit) {
 
 params = getTemplateParams()
 if(!is.na(settings$itemTemplateParamsModule) && settings$itemTemplateParamsModule != "") {
-  params = concerto.test.run(settings$itemTemplateParamsModule, params=list(
+  params = leap.test.run(settings$itemTemplateParamsModule, params=list(
     params = params,
     items = items[itemsIndices,],
     itemsAdministered = itemsAdministered,
@@ -85,7 +85,7 @@ if(settings$sessionResuming == 1) {
   state$testTimeStarted = testTimeStarted
 
   sessionTable = fromJSON(settings$sessionTable)
-  concerto.table.query("
+  leap.table.query("
 UPDATE {{table}} 
 SET {{stateCol}}='{{resumeState}}'
 WHERE id={{id}}", params=list(
@@ -99,7 +99,7 @@ WHERE id={{id}}", params=list(
 if(!is.list(bgWorkers)) {
   bgWorkers = list()
 }
-templateResponse = concerto.template.show(
+templateResponse = leap.template.show(
   templateId=settings$itemTemplate, 
   html=settings$itemTemplateHtml,
   params=params, 
@@ -108,7 +108,7 @@ templateResponse = concerto.template.show(
 )
 
 if(!is.na(settings$templateResponseModule) && settings$templateResponseModule != "") {
-  templateResponse = concerto.test.run(settings$templateResponseModule, params=list(
+  templateResponse = leap.test.run(settings$templateResponseModule, params=list(
     settings = settings,
     params = params,
     templateResponse = templateResponse

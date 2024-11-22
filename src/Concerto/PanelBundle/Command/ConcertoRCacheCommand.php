@@ -1,15 +1,15 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Service\RDataCacheService;
+use Leap\PanelBundle\Service\RDataCacheService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 use Symfony\Component\DomCrawler\Crawler;
 
-class ConcertoRCacheCommand extends Command
+class LeapRCacheCommand extends Command
 {
     private $cacheService;
     private $projectDir;
@@ -26,7 +26,7 @@ class ConcertoRCacheCommand extends Command
 
     protected function configure()
     {
-        $this->setName("concerto:r:cache")->setDescription("Caches R functions documentation.");
+        $this->setName("leap:r:cache")->setDescription("Caches R functions documentation.");
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -35,7 +35,7 @@ class ConcertoRCacheCommand extends Command
         $output->writeln("Generating R documentation cache. This might take several minutes...");
         $lastLibrary = null;
 
-        $script_path = "{$this->projectDir}/src/Concerto/PanelBundle/Resources/R/function_documentation.R";
+        $script_path = "{$this->projectDir}/src/Leap/PanelBundle/Resources/R/function_documentation.R";
         $p = "\"" . $this->testRunnerSettings['rscript_exec'] . "\" --no-save --no-restore --quiet \"" . $script_path . "\"";
         $process = new Process($p);
 

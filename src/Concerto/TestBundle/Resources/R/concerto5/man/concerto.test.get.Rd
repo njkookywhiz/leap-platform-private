@@ -1,5 +1,5 @@
-\name{concerto.test.get}
-\alias{concerto.test.get}
+\name{leap.test.get}
+\alias{leap.test.get}
 \title{
     Test object retrieval
 }
@@ -7,7 +7,7 @@
     Gets template object.
 }
 \usage{
-    concerto.test.get(testId)
+    leap.test.get(testId)
 }
 \arguments{
     \item{testId}{
@@ -33,8 +33,8 @@
 \seealso{
 }
 \examples{
-    test1 <- concerto.test.get(1)
-    test2 <- concerto.test.get("some_other_test")
+    test1 <- leap.test.get(1)
+    test2 <- leap.test.get("some_other_test")
 }
 
 \keyword{ test }

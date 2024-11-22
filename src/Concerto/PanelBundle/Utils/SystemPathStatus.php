@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\PanelBundle\Utils;
+namespace Leap\PanelBundle\Utils;
 
-use Concerto\PanelBundle\Utils\StatusCheckReport;
+use Leap\PanelBundle\Utils\StatusCheckReport;
 
 class SystemPathStatus implements StatusCheckReport {
 

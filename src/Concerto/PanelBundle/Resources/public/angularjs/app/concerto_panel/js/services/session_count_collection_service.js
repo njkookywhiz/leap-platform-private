@@ -1,4 +1,4 @@
-concertoPanel.factory('SessionCountCollectionService', function ($http) {
+leapPanel.factory('SessionCountCollectionService', function ($http) {
     return {
         collectionPath: Paths.ADMINISTRATION_SESSION_COUNT_COLLECTION,
         collection: [],

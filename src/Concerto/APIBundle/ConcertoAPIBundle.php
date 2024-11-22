@@ -1,9 +1,9 @@
 <?php
 
-namespace Concerto\APIBundle;
+namespace Leap\APIBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ConcertoAPIBundle extends Bundle
+class LeapAPIBundle extends Bundle
 {
 }

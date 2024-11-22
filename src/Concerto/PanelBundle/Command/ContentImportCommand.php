@@ -1,21 +1,21 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Service\AdministrationService;
-use Concerto\PanelBundle\Service\GitService;
-use Concerto\PanelBundle\Service\ImportService;
+use Leap\PanelBundle\Service\AdministrationService;
+use Leap\PanelBundle\Service\GitService;
+use Leap\PanelBundle\Service\ImportService;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
-use Concerto\PanelBundle\Service\ASectionService;
+use Leap\PanelBundle\Service\ASectionService;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Filesystem\Filesystem;
-use Concerto\PanelBundle\Entity\User;
+use Leap\PanelBundle\Entity\User;
 use Symfony\Component\Translation\TranslatorInterface;
 
 class ContentImportCommand extends Command
@@ -45,7 +45,7 @@ class ContentImportCommand extends Command
 
     protected function configure()
     {
-        $this->setName("concerto:content:import")->setDescription("Imports content");
+        $this->setName("leap:content:import")->setDescription("Imports content");
         $this->addArgument("input", InputArgument::OPTIONAL, "Input directory", null);
         $this->addOption("convert", null, InputOption::VALUE_NONE, "Convert any existing objects to imported version.");
         $this->addOption("clean", null, InputOption::VALUE_NONE, "Remove left-over object?");
@@ -73,7 +73,7 @@ class ContentImportCommand extends Command
             $pattern = basename($sourcePath);
             $dir = dirname($sourcePath);
         } else {
-            $pattern = '*.concerto*';
+            $pattern = '*.leap*';
             $dir = $sourcePath;
         }
 
@@ -137,7 +137,7 @@ class ContentImportCommand extends Command
     {
         $this->output->writeln("downloading source from $url");
         $fs = new Filesystem();
-        $importPath = "{$this->projectDir}/src/Concerto/PanelBundle/Resources/import";
+        $importPath = "{$this->projectDir}/src/Leap/PanelBundle/Resources/import";
         $uniquePath = $importPath . "/import_" . uniqid();
         try {
             $fs->mkdir($uniquePath);
@@ -198,7 +198,7 @@ class ContentImportCommand extends Command
     private function importFiles($sourcePath)
     {
         $this->output->writeln("copying files...");
-        $dstDir = "{$this->projectDir}/src/Concerto/PanelBundle/Resources/public/files/";
+        $dstDir = "{$this->projectDir}/src/Leap/PanelBundle/Resources/public/files/";
         $srcDir = $sourcePath . "/files/";
 
         if (file_exists($srcDir)) {
@@ -248,7 +248,7 @@ class ContentImportCommand extends Command
             $input->setOption("files", true);
             $input->setOption("src", true);
         }
-        chdir("{$this->projectDir}/src/Concerto/PanelBundle/Resources/starter_content");
+        chdir("{$this->projectDir}/src/Leap/PanelBundle/Resources/starter_content");
 
         ASectionService::$securityOn = false;
 

@@ -1,16 +1,16 @@
 <?php
 
-namespace Concerto\APIBundle\Entity;
+namespace Leap\APIBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\OAuthServerBundle\Entity\AuthCode as BaseAuthCode;
-use Concerto\PanelBundle\Entity\User;
+use Leap\PanelBundle\Entity\User;
 
 /**
  * AuthCode
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Concerto\APIBundle\Repository\AuthCodeRepository")
+ * @ORM\Entity(repositoryClass="Leap\APIBundle\Repository\AuthCodeRepository")
  */
 class AuthCode extends BaseAuthCode
 {
@@ -30,7 +30,7 @@ class AuthCode extends BaseAuthCode
     protected $client;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Concerto\PanelBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Leap\PanelBundle\Entity\User")
      */
     protected $user;
 

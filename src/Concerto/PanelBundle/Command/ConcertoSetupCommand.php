@@ -1,20 +1,20 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Concerto\PanelBundle\Entity\User;
-use Concerto\PanelBundle\Entity\Role;
+use Leap\PanelBundle\Entity\User;
+use Leap\PanelBundle\Entity\Role;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
-class ConcertoSetupCommand extends Command
+class LeapSetupCommand extends Command
 {
     private $doctrine;
     private $kernel;
@@ -33,13 +33,13 @@ class ConcertoSetupCommand extends Command
 
     protected function configure()
     {
-        $this->setName("concerto:setup")->setDescription("Sets up Concerto.");
+        $this->setName("leap:setup")->setDescription("Sets up Leap.");
         $this->addOption("admin-pass", null, InputOption::VALUE_REQUIRED, "Password for admin user", "admin");
     }
 
     private function updateSchema(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln("concerto setup (" . $input->getOption("env") . ")");
+        $output->writeln("leap setup (" . $input->getOption("env") . ")");
 
         $output->writeln("updating database...");
         $command = $this->getApplication()->get("doctrine:schema:update");
@@ -55,7 +55,7 @@ class ConcertoSetupCommand extends Command
     {
         $output->writeln("checking for user roles...");
         $em = $this->doctrine->getManager();
-        $roleRepo = $em->getRepository("ConcertoPanelBundle:Role");
+        $roleRepo = $em->getRepository("LeapPanelBundle:Role");
 
         $role_names = array(User::ROLE_TEST, User::ROLE_TABLE, User::ROLE_TEMPLATE, User::ROLE_WIZARD, User::ROLE_FILE, User::ROLE_SUPER_ADMIN);
         foreach ($role_names as $role_name) {
@@ -74,7 +74,7 @@ class ConcertoSetupCommand extends Command
         }
 
         $output->writeln("checking for default user...");
-        $userRepo = $em->getRepository("ConcertoPanelBundle:User");
+        $userRepo = $em->getRepository("LeapPanelBundle:User");
         $users = $userRepo->findBy(array("username" => "admin"));
         $user = null;
         if (count($users) === 0) {

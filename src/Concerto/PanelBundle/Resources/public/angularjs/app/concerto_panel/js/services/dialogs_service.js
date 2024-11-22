@@ -1,4 +1,4 @@
-concertoPanel.factory('DialogsService', function ($uibModal) {
+leapPanel.factory('DialogsService', function ($uibModal) {
     return {
         preDialog: function (title, tooltip, content, callback) {
             var instance = $uibModal.open({

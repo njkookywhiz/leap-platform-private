@@ -1,4 +1,4 @@
-concerto.session.getResumeUrl = function(){
-    url = paste0(concerto$appUrl, "/test/session/", concerto$session$hash)
+leap.session.getResumeUrl = function(){
+    url = paste0(leap$appUrl, "/test/session/", leap$session$hash)
     return(url)
 }

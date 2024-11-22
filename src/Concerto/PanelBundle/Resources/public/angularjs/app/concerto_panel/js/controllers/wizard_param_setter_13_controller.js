@@ -15,4 +15,4 @@ function WizardParamSetter13Controller($scope, TestCollectionService, Administra
     });
 }
 
-concertoPanel.controller('WizardParamSetter13Controller', ["$scope", "TestCollectionService", "AdministrationSettingsService", "TestWizardParam", WizardParamSetter13Controller]);
+leapPanel.controller('WizardParamSetter13Controller', ["$scope", "TestCollectionService", "AdministrationSettingsService", "TestWizardParam", WizardParamSetter13Controller]);

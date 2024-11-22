@@ -1,15 +1,15 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
-use Concerto\PanelBundle\Entity\Test;
-use Concerto\PanelBundle\Entity\TestVariable;
-use Concerto\PanelBundle\Entity\ViewTemplate;
-use Concerto\PanelBundle\Entity\TestNodePort;
-use Concerto\PanelBundle\Repository\TestRepository;
-use Concerto\PanelBundle\Entity\User;
+use Leap\PanelBundle\Entity\Test;
+use Leap\PanelBundle\Entity\TestVariable;
+use Leap\PanelBundle\Entity\ViewTemplate;
+use Leap\PanelBundle\Entity\TestNodePort;
+use Leap\PanelBundle\Repository\TestRepository;
+use Leap\PanelBundle\Entity\User;
 use Cocur\Slugify\Slugify;
-use Concerto\PanelBundle\Repository\TestSessionRepository;
+use Leap\PanelBundle\Repository\TestSessionRepository;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;

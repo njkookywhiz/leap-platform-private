@@ -1,20 +1,20 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Repository\ScheduledTaskRepository;
-use Concerto\PanelBundle\Service\AdministrationService;
+use Leap\PanelBundle\Repository\ScheduledTaskRepository;
+use Leap\PanelBundle\Service\AdministrationService;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
-use Concerto\PanelBundle\Entity\ScheduledTask;
+use Leap\PanelBundle\Entity\ScheduledTask;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Input\ArrayInput;
 
-abstract class ConcertoScheduledTaskCommand extends Command
+abstract class LeapScheduledTaskCommand extends Command
 {
     protected $administrationService;
     protected $administration;

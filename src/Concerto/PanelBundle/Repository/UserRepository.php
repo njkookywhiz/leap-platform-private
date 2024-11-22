@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\PanelBundle\Repository;
+namespace Leap\PanelBundle\Repository;
 
-use Concerto\PanelBundle\Entity\User;
+use Leap\PanelBundle\Entity\User;
 
 /**
  * UserRepository
@@ -12,7 +12,7 @@ class UserRepository extends AEntityRepository {
     public function findAllExcept(User $user) {
         $query = $this->getEntityManager()->createQuery(
                         'SELECT u
-            FROM ConcertoPanelBundle:User u
+            FROM LeapPanelBundle:User u
             WHERE u.id != :id'
                 )->setParameter('id', $user->getId());
         return $query->getResult();

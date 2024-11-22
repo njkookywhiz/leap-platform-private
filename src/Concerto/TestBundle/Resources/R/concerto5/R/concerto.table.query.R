@@ -1,10 +1,10 @@
-concerto.table.query <-
+leap.table.query <-
 function(sql, params=list(), n=-1, connection = NULL){
-  if(is.null(connection)) { connection = concerto$connection }
+  if(is.null(connection)) { connection = leap$connection }
   sql <- gsub("^\\s+|\\s+$", "", sql)
-  sql <- concerto.table.insertParams(sql, params, connection)
+  sql <- leap.table.insertParams(sql, params, connection)
 
-  concerto.log(sql)
+  leap.log(sql)
 
   result <- NULL
   output <- NULL
@@ -12,10 +12,10 @@ function(sql, params=list(), n=-1, connection = NULL){
     result <- dbSendQuery(connection, sql)
     output <- fetch(result, n=n)
   } else if(startsWith(toupper(sql), "INSERT")) {
-    if(concerto$dbConnectionParams$driver == "pdo_sqlsrv") {
+    if(leap$dbConnectionParams$driver == "pdo_sqlsrv") {
          result <- dbSendQuery(connection, paste0(sql,"; SELECT SCOPE_IDENTITY();"))
          output <- fetch(result, n=1)[1,1]
-         concerto$sqlsrv_last_insert_id <<- output
+         leap$sqlsrv_last_insert_id <<- output
     } else {
         result <- dbSendStatement(connection, sql)
         output <- dbGetRowsAffected(result)

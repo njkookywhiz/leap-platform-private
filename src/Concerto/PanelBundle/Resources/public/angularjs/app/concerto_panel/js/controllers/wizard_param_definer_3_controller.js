@@ -97,4 +97,4 @@ function WizardParamDefiner3Controller($scope, uiGridConstants, AdministrationSe
   });
 };
 
-concertoPanel.controller('WizardParamDefiner3Controller', ["$scope", "uiGridConstants", "AdministrationSettingsService", "GridService", WizardParamDefiner3Controller]);
+leapPanel.controller('WizardParamDefiner3Controller', ["$scope", "uiGridConstants", "AdministrationSettingsService", "GridService", WizardParamDefiner3Controller]);

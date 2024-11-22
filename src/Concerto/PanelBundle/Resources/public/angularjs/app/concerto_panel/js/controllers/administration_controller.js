@@ -453,4 +453,4 @@ function AdministrationController($scope, $http, $uibModal, $filter, Administrat
     $scope.refreshApiClients();
 }
 
-concertoPanel.controller('AdministrationController', ["$scope", "$http", "$uibModal", "$filter", "AdministrationSettingsService", "SessionCountCollectionService", "uiGridConstants", "MessagesCollectionService", "ScheduledTasksCollectionService", "ApiClientsCollectionService", "DialogsService", "TestCollectionService", AdministrationController]);
+leapPanel.controller('AdministrationController', ["$scope", "$http", "$uibModal", "$filter", "AdministrationSettingsService", "SessionCountCollectionService", "uiGridConstants", "MessagesCollectionService", "ScheduledTasksCollectionService", "ApiClientsCollectionService", "DialogsService", "TestCollectionService", AdministrationController]);

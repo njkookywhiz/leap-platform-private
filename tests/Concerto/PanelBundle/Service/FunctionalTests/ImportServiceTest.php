@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Concerto\PanelBundle\Service\FunctionalTests;
+namespace Tests\Leap\PanelBundle\Service\FunctionalTests;
 
-use Tests\Concerto\PanelBundle\AFunctionalTest;
+use Tests\Leap\PanelBundle\AFunctionalTest;
 
 class ImportServiceTest extends AFunctionalTest
 {
@@ -37,32 +37,32 @@ class ImportServiceTest extends AFunctionalTest
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
-        self::$testRepository = static::$entityManager->getRepository("ConcertoPanelBundle:Test");
-        self::$testVariableRepository = static::$entityManager->getRepository("ConcertoPanelBundle:TestVariable");
-        self::$testWizardRepository = static::$entityManager->getRepository("ConcertoPanelBundle:TestWizard");
-        self::$testWizardStepRepository = static::$entityManager->getRepository("ConcertoPanelBundle:TestWizardStep");
-        self::$testWizardParamRepository = static::$entityManager->getRepository("ConcertoPanelBundle:TestWizardParam");
-        self::$testNodeRepository = static::$entityManager->getRepository("ConcertoPanelBundle:TestNode");
-        self::$testNodePortRepository = static::$entityManager->getRepository("ConcertoPanelBundle:TestNodePort");
-        self::$testNodeConnectionRepository = static::$entityManager->getRepository("ConcertoPanelBundle:TestNodeConnection");
-        self::$testNodeConnectionRepository = static::$entityManager->getRepository("ConcertoPanelBundle:TestNodeConnection");
-        self::$viewTemplateRepository = static::$entityManager->getRepository("ConcertoPanelBundle:ViewTemplate");
-        self::$dataTableRepository = static::$entityManager->getRepository("ConcertoPanelBundle:DataTable");
+        self::$testRepository = static::$entityManager->getRepository("LeapPanelBundle:Test");
+        self::$testVariableRepository = static::$entityManager->getRepository("LeapPanelBundle:TestVariable");
+        self::$testWizardRepository = static::$entityManager->getRepository("LeapPanelBundle:TestWizard");
+        self::$testWizardStepRepository = static::$entityManager->getRepository("LeapPanelBundle:TestWizardStep");
+        self::$testWizardParamRepository = static::$entityManager->getRepository("LeapPanelBundle:TestWizardParam");
+        self::$testNodeRepository = static::$entityManager->getRepository("LeapPanelBundle:TestNode");
+        self::$testNodePortRepository = static::$entityManager->getRepository("LeapPanelBundle:TestNodePort");
+        self::$testNodeConnectionRepository = static::$entityManager->getRepository("LeapPanelBundle:TestNodeConnection");
+        self::$testNodeConnectionRepository = static::$entityManager->getRepository("LeapPanelBundle:TestNodeConnection");
+        self::$viewTemplateRepository = static::$entityManager->getRepository("LeapPanelBundle:ViewTemplate");
+        self::$dataTableRepository = static::$entityManager->getRepository("LeapPanelBundle:DataTable");
     }
 
     protected function setUp()
     {
-        self::truncateClass("ConcertoPanelBundle:Test");
-        self::truncateClass("ConcertoPanelBundle:TestSession");
-        self::truncateClass("ConcertoPanelBundle:TestVariable");
-        self::truncateClass("ConcertoPanelBundle:TestWizard");
-        self::truncateClass("ConcertoPanelBundle:TestWizardStep");
-        self::truncateClass("ConcertoPanelBundle:TestWizardParam");
-        self::truncateClass("ConcertoPanelBundle:TestNode");
-        self::truncateClass("ConcertoPanelBundle:TestNodeConnection");
-        self::truncateClass("ConcertoPanelBundle:TestNodePort");
-        self::truncateClass("ConcertoPanelBundle:ViewTemplate");
-        self::truncateClass("ConcertoPanelBundle:DataTable");
+        self::truncateClass("LeapPanelBundle:Test");
+        self::truncateClass("LeapPanelBundle:TestSession");
+        self::truncateClass("LeapPanelBundle:TestVariable");
+        self::truncateClass("LeapPanelBundle:TestWizard");
+        self::truncateClass("LeapPanelBundle:TestWizardStep");
+        self::truncateClass("LeapPanelBundle:TestWizardParam");
+        self::truncateClass("LeapPanelBundle:TestNode");
+        self::truncateClass("LeapPanelBundle:TestNodeConnection");
+        self::truncateClass("LeapPanelBundle:TestNodePort");
+        self::truncateClass("LeapPanelBundle:ViewTemplate");
+        self::truncateClass("LeapPanelBundle:DataTable");
         $this->dropTable("data");
     }
 
@@ -73,7 +73,7 @@ class ImportServiceTest extends AFunctionalTest
         /* IMPORT NEW TEST */
 
         $client->request("POST", "/admin/Test/import", array(
-            "file" => "nested_flow1.concerto.json",
+            "file" => "nested_flow1.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "Test",
@@ -148,7 +148,7 @@ class ImportServiceTest extends AFunctionalTest
         /* IMPORT CONVERT TEST */
 
         $client->request("POST", "/admin/Test/import", array(
-            "file" => "nested_flow2.concerto.json",
+            "file" => "nested_flow2.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "Test",
@@ -233,7 +233,7 @@ class ImportServiceTest extends AFunctionalTest
         /* IMPORT NEW TEST */
 
         $client->request("POST", "/admin/Test/import", array(
-            "file" => "port_default_full.concerto.json",
+            "file" => "port_default_full.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "id" => 1,
@@ -304,7 +304,7 @@ class ImportServiceTest extends AFunctionalTest
         /* IMPORT CONVERT TEST */
 
         $client->request("POST", "/admin/Test/import", array(
-            "file" => "port_default_source.concerto.json",
+            "file" => "port_default_source.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "id" => 1,
@@ -372,7 +372,7 @@ class ImportServiceTest extends AFunctionalTest
         /* IMPORT NEW TEST */
 
         $client->request("POST", "/admin/Test/import", array(
-            "file" => "nested_port_duplicate1.concerto.json",
+            "file" => "nested_port_duplicate1.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "Test",
@@ -447,7 +447,7 @@ class ImportServiceTest extends AFunctionalTest
         /* IMPORT CONVERT TEST */
 
         $client->request("POST", "/admin/Test/import", array(
-            "file" => "nested_port_duplicate2.concerto.json",
+            "file" => "nested_port_duplicate2.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "Test",
@@ -520,7 +520,7 @@ class ImportServiceTest extends AFunctionalTest
         /* IMPORT NEW VIEW TEMPLATE */
 
         $client->request("POST", "/admin/ViewTemplate/import", array(
-            "file" => "view1.concerto.json",
+            "file" => "view1.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "ViewTemplate",
@@ -555,7 +555,7 @@ class ImportServiceTest extends AFunctionalTest
         /* IMPORT CONVERT VIEW TEMPLATE */
 
         $client->request("POST", "/admin/ViewTemplate/import", array(
-            "file" => "view2.concerto.json",
+            "file" => "view2.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "ViewTemplate",
@@ -595,7 +595,7 @@ class ImportServiceTest extends AFunctionalTest
         /* IMPORT NEW DATA TABLE */
 
         $client->request("POST", "/admin/DataTable/import", array(
-            "file" => "data1.concerto.json",
+            "file" => "data1.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "DataTable",
@@ -641,7 +641,7 @@ class ImportServiceTest extends AFunctionalTest
         /* IMPORT CONVERT DATA TABLE */
 
         $client->request("POST", "/admin/DataTable/import", array(
-            "file" => "data2.concerto.json",
+            "file" => "data2.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "DataTable",

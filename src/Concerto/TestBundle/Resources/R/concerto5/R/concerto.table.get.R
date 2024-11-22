@@ -1,11 +1,11 @@
-concerto.table.get <-
+leap.table.get <-
 function(tableId, cache=NULL){
 
   if(is.null(cache)) {
-    cache = concerto$cacheEnabled
+    cache = leap$cacheEnabled
   }
-  if(!is.null(concerto$cache$tables[[as.character(tableId)]])) {
-    return(concerto$cache$tables[[as.character(tableId)]])
+  if(!is.null(leap$cache$tables[[as.character(tableId)]])) {
+    return(leap$cache$tables[[as.character(tableId)]])
   }
 
   objField <- "id"
@@ -13,15 +13,15 @@ function(tableId, cache=NULL){
     objField <- "name"
   }
 
-  tableId <- dbEscapeStrings(concerto$connection,toString(tableId))
-  result <- dbSendQuery(concerto$connection,sprintf("SELECT id,name FROM Table WHERE %s='%s'",objField,tableId))
+  tableId <- dbEscapeStrings(leap$connection,toString(tableId))
+  result <- dbSendQuery(leap$connection,sprintf("SELECT id,name FROM Table WHERE %s='%s'",objField,tableId))
   response <- fetch(result,n=-1)
 
   if(dim(response)[1] > 0){
     table = as.list(response)
     if(cache) {
-        concerto$cache$tables[[as.character(response$id)]] <<- table
-        concerto$cache$tables[[response$name]] <<- table
+        leap$cache$tables[[as.character(response$id)]] <<- table
+        leap$cache$tables[[response$name]] <<- table
     }
     return(table)
   }

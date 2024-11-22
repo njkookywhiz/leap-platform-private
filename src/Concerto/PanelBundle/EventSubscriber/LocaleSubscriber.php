@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\EventSubscriber;
+namespace Leap\PanelBundle\EventSubscriber;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;

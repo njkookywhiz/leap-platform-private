@@ -42,4 +42,4 @@ function WizardParamSetter11Controller($scope, RDocumentation, $http) {
     $scope.onPrimitiveValueChange($scope.output);
 }
 
-concertoPanel.controller('WizardParamSetter11Controller', ["$scope", "RDocumentation", "$http", WizardParamSetter11Controller]);
+leapPanel.controller('WizardParamSetter11Controller', ["$scope", "RDocumentation", "$http", WizardParamSetter11Controller]);

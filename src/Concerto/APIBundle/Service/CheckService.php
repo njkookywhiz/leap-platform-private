@@ -1,9 +1,9 @@
 <?php
 
-namespace Concerto\APIBundle\Service;
+namespace Leap\APIBundle\Service;
 
-use Concerto\TestBundle\Service\ASessionRunnerService;
-use Concerto\TestBundle\Service\TestSessionCountService;
+use Leap\TestBundle\Service\ASessionRunnerService;
+use Leap\TestBundle\Service\TestSessionCountService;
 
 class CheckService
 {

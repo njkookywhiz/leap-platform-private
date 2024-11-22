@@ -3,7 +3,7 @@ getWhereClause = function(whereClause, queryType) {
     .elems = NULL
     for(.name in .dynamicInputs) {
       if(is.null(get(.name))) { next }
-      .elem = concerto.table.insertParams("{{name}}='{{value}}'", list(
+      .elem = leap.table.insertParams("{{name}}='{{value}}'", list(
         name=.name,
         value=get(.name)
       ))
@@ -20,7 +20,7 @@ getWhereClause = function(whereClause, queryType) {
       for(.name in .dynamicInputs) {
         .params[[.name]] = get(.name)
       }
-      .elemsJoined = concerto.table.insertParams(whereClause, .params)
+      .elemsJoined = leap.table.insertParams(whereClause, .params)
       if(.elemsJoined == "") { return(NULL) }
       return(paste0("WHERE ", .elemsJoined))
     } else if(is.numeric(.id)) {
@@ -38,7 +38,7 @@ getSetClause = function(setClause, queryType) {
       for(.name in .dynamicInputs) {
         if(is.null(get(.name))) { next }
         .cols = c(.cols, .name)
-        .val = concerto.table.insertParams("'{{value}}'", list(
+        .val = leap.table.insertParams("'{{value}}'", list(
           value=get(.name)
         ))
         .vals = c(.vals, .val)
@@ -52,7 +52,7 @@ getSetClause = function(setClause, queryType) {
       .elems = NULL
       for(.name in .dynamicInputs) {
         if(is.null(get(.name))) { next }
-        .elem = concerto.table.insertParams("{{name}}='{{value}}'", list(
+        .elem = leap.table.insertParams("{{name}}='{{value}}'", list(
           name=.name,
           value=get(.name)
         ))
@@ -68,7 +68,7 @@ getSetClause = function(setClause, queryType) {
     for(.name in .dynamicInputs) {
       .params[[.name]] = get(.name)
     }
-    .elemsJoined = concerto.table.insertParams(setClause, .params)
+    .elemsJoined = leap.table.insertParams(setClause, .params)
     return(paste0("SET ", .elemsJoined))
   }
   return(NULL)
@@ -79,7 +79,7 @@ getCustomQuery = function(queryString) {
   for(.name in .dynamicInputs) {
     .params[[.name]] = get(.name)
   }
-  queryString = concerto.table.insertParams(queryString, .params)
+  queryString = leap.table.insertParams(queryString, .params)
   return(queryString)
 }
 
@@ -90,7 +90,7 @@ if(queryType == "select") {
   if(!is.null(.whereString)) {
     queryString = paste0(queryString, " ", .whereString)
   }
-  result = concerto.table.query(queryString, params=list(
+  result = leap.table.query(queryString, params=list(
     table=table
   ))
 } else if(queryType == "insert") {
@@ -99,10 +99,10 @@ if(queryType == "select") {
   if(!is.null(.setString)) {
     queryString = paste0(queryString, " ", .setString)
   }
-  result = concerto.table.query(queryString, params=list(
+  result = leap.table.query(queryString, params=list(
     table=table
   ))
-  insertId = concerto.table.lastInsertId()
+  insertId = leap.table.lastInsertId()
 } else if(queryType == "update") {
   queryString = "UPDATE {{table}}"
   .setString = getSetClause(setClause, queryType)
@@ -115,7 +115,7 @@ if(queryType == "select") {
   if(!is.null(.whereString)) {
     queryString = paste0(queryString, " ", .whereString)
   }
-  result = concerto.table.query(queryString, params=list(
+  result = leap.table.query(queryString, params=list(
     table=table
   ))
 } else if(queryType == "delete") {
@@ -124,10 +124,10 @@ if(queryType == "select") {
   if(!is.null(.whereString)) {
     queryString = paste0(queryString, " ", .whereString)
   }
-  result = concerto.table.query(queryString, params=list(
+  result = leap.table.query(queryString, params=list(
     table=table
   ))
 } else {
   queryString = getCustomQuery(queryString)
-  result = concerto.table.query(queryString)
+  result = leap.table.query(queryString)
 }

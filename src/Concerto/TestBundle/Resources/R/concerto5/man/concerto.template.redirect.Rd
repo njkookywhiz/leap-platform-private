@@ -1,5 +1,5 @@
-\name{concerto.template.redirect}
-\alias{concerto.template.redirect}
+\name{leap.template.redirect}
+\alias{leap.template.redirect}
 \title{
     URL navigation
 }
@@ -7,7 +7,7 @@
     Redirect to URL
 }
 \usage{
-    concerto.template.redirect(url)
+    leap.template.redirect(url)
 }
 
 \arguments{
@@ -28,7 +28,7 @@
 \seealso{
 }
 \examples{
-    concerto.template.redirect("https://mydomain.com")
+    leap.template.redirect("https://mydomain.com")
 }
 
 \keyword{template}

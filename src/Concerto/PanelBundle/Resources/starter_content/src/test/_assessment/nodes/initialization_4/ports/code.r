@@ -1,7 +1,7 @@
 getIndicedColumnsNum = function(tableName, firstColumnName) {
   columnPrefix = substring(firstColumnName, 1, nchar(firstColumnName) - 1)
 
-  columns = concerto.table.query("SHOW COLUMNS FROM {{tableName}} LIKE '{{columnPrefix}}%'", params=list(
+  columns = leap.table.query("SHOW COLUMNS FROM {{tableName}} LIKE '{{columnPrefix}}%'", params=list(
     tableName=tableName,
     columnPrefix=columnPrefix
   ))[,"Field"]
@@ -14,7 +14,7 @@ getIndicedColumnsNum = function(tableName, firstColumnName) {
 }
 
 getExtraFieldsSql = function(table, extraFields) {
-  columns = concerto.table.query("SHOW COLUMNS FROM {{table}}", params=list(
+  columns = leap.table.query("SHOW COLUMNS FROM {{table}}", params=list(
     table=table
   ))[,"Field"]
   extraFields = fromJSON(extraFields)
@@ -170,7 +170,7 @@ FROM {{table}}
       sql = paste0(sql, "WHERE {{itemSetColumn}}='{{itemSet}}'")
     }
 
-    items = concerto.table.query(sql, list(
+    items = leap.table.query(sql, list(
       questionColumn=questionColumn,
       responseOptionsColumn=responseOptionsColumn,
       parametersSql=parametersSql,
@@ -275,7 +275,7 @@ FROM {{table}}
       sql = paste0(sql, "WHERE {{itemSetColumn}}='{{itemSet}}'")
     }
 
-    items = concerto.table.query(sql, list(
+    items = leap.table.query(sql, list(
       questionColumn=questionColumn,
       parametersSql=parametersSql,
       traitColumn=traitColumn,
@@ -316,7 +316,7 @@ FROM {{table}}
   }
 
   if(!is.na(settings$itemBankFilterModule) && settings$itemBankFilterModule != "") {
-    items = concerto.test.run(settings$itemBankFilterModule, params=list(
+    items = leap.test.run(settings$itemBankFilterModule, params=list(
       settings = settings,
       session=session,
       items=items
@@ -403,7 +403,7 @@ if(settings$sessionResuming == 1) {
       }
 
       responseTable = fromJSON(settings$responseBank)
-      responsesRecords = concerto.table.query("
+      responsesRecords = leap.table.query("
 SELECT id, 
 {{scoreCol}} AS score, 
 {{timeTakenCol}} AS timeTaken,

@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Concerto\PanelBundle\Controller\FunctionalTests;
+namespace Tests\Leap\PanelBundle\Controller\FunctionalTests;
 
-use Tests\Concerto\PanelBundle\AFunctionalTest;
-use Concerto\PanelBundle\Entity\ATopEntity;
-use Concerto\PanelBundle\Entity\User;
-use Concerto\PanelBundle\Entity\Role;
+use Tests\Leap\PanelBundle\AFunctionalTest;
+use Leap\PanelBundle\Entity\ATopEntity;
+use Leap\PanelBundle\Entity\User;
+use Leap\PanelBundle\Entity\Role;
 
 class UserControllerTest extends AFunctionalTest
 {
@@ -17,18 +17,18 @@ class UserControllerTest extends AFunctionalTest
         $client = static::createClient();
         self::$encoderFactory = $client->getContainer()->get("test.security.encoder_factory");
         self::$entityManager = $client->getContainer()->get("doctrine")->getManager();
-        self::$repository = static::$entityManager->getRepository("ConcertoPanelBundle:User");
+        self::$repository = static::$entityManager->getRepository("LeapPanelBundle:User");
     }
 
     protected function setUp()
     {
-        $repo = self::$entityManager->getRepository("ConcertoPanelBundle:User");
+        $repo = self::$entityManager->getRepository("LeapPanelBundle:User");
         foreach ($repo->findAll() as $user) {
             self::$entityManager->remove($user);
         }
         self::$entityManager->flush();
-        static::truncateClass("ConcertoPanelBundle:User");
-        static::truncateClass("ConcertoPanelBundle:Role");
+        static::truncateClass("LeapPanelBundle:User");
+        static::truncateClass("LeapPanelBundle:Role");
 
         $role = null;
         $roles = array(

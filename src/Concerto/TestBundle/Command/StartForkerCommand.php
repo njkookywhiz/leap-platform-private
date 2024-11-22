@@ -1,9 +1,9 @@
 <?php
 
-namespace Concerto\TestBundle\Command;
+namespace Leap\TestBundle\Command;
 
-use Concerto\PanelBundle\Service\AdministrationService;
-use Concerto\TestBundle\Service\ASessionRunnerService;
+use Leap\PanelBundle\Service\AdministrationService;
+use Leap\TestBundle\Service\ASessionRunnerService;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -32,12 +32,12 @@ class StartForkerCommand extends Command
 
     protected function configure()
     {
-        $this->setName("concerto:forker:start")->setDescription("Start forker process.");
+        $this->setName("leap:forker:start")->setDescription("Start forker process.");
     }
 
     private function getCommand()
     {
-        $forkerPath = "{$this->projectDir}/src/Concerto/TestBundle/Resources/R/forker.R";
+        $forkerPath = "{$this->projectDir}/src/Leap/TestBundle/Resources/R/forker.R";
         $logPath = "{$this->projectDir}/var/logs/forker.log";
 
         return "nohup {$this->testRunnerSettings["rscript_exec"]} --no-save --no-restore --quiet '$forkerPath' >> '$logPath' 2>&1 & echo $!";
@@ -66,19 +66,19 @@ class StartForkerCommand extends Command
         $process->inheritEnvironmentVariables(true);
 
         $env = [
-            "CONCERTO_R_APP_URL" => $appUrl,
-            "CONCERTO_R_DB_CONNECTION" => $dbConnection,
-            "CONCERTO_R_FIFO_PATH" => $fifoPath,
-            "CONCERTO_R_MAX_EXEC_TIME" => $maxExecTime,
-            "CONCERTO_R_MAX_IDLE_TIME" => $maxIdleTime,
-            "CONCERTO_R_KEEP_ALIVE_TOLERANCE_TIME" => $keepAliveToleranceTime,
-            "CONCERTO_R_PLATFORM_URL" => $platformUrl,
-            "CONCERTO_R_PUBLIC_DIR" => $publicDir,
-            "CONCERTO_R_REDIS_CONNECTION" => $redisConnection,
-            "CONCERTO_R_SESSION_STORAGE" => $sessionStorage,
-            "CONCERTO_R_SESSION_FILES_EXPIRATION" => $sessionFilesExpiration,
-            "CONCERTO_R_SESSION_LOG_LEVEL" => $sessionLogLevel,
-            "CONCERTO_R_FORCED_GC_INTERVAL" => $forcedGcInterval,
+            "LEAP_R_APP_URL" => $appUrl,
+            "LEAP_R_DB_CONNECTION" => $dbConnection,
+            "LEAP_R_FIFO_PATH" => $fifoPath,
+            "LEAP_R_MAX_EXEC_TIME" => $maxExecTime,
+            "LEAP_R_MAX_IDLE_TIME" => $maxIdleTime,
+            "LEAP_R_KEEP_ALIVE_TOLERANCE_TIME" => $keepAliveToleranceTime,
+            "LEAP_R_PLATFORM_URL" => $platformUrl,
+            "LEAP_R_PUBLIC_DIR" => $publicDir,
+            "LEAP_R_REDIS_CONNECTION" => $redisConnection,
+            "LEAP_R_SESSION_STORAGE" => $sessionStorage,
+            "LEAP_R_SESSION_FILES_EXPIRATION" => $sessionFilesExpiration,
+            "LEAP_R_SESSION_LOG_LEVEL" => $sessionLogLevel,
+            "LEAP_R_FORCED_GC_INTERVAL" => $forcedGcInterval,
             "R_GC_MEM_GROW" => 0
         ];
         if ($this->testRunnerSettings["r_environ_path"] != null) $env["R_ENVIRON"] = $this->testRunnerSettings["r_environ_path"];

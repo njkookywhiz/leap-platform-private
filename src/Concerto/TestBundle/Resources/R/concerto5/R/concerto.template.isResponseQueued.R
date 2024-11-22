@@ -1,3 +1,3 @@
-concerto.template.isResponseQueued = function(){
-     return(concerto$runnerType == RUNNER_SERIALIZED && !is.null(concerto$queuedResponse))
+leap.template.isResponseQueued = function(){
+     return(leap$runnerType == RUNNER_SERIALIZED && !is.null(leap$queuedResponse))
 }

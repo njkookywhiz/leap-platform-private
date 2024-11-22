@@ -9,23 +9,23 @@ services:
         # if you need to do this, you can override this setting on individual services
         public: false
 
-    Concerto\TestBundle\:
+    Leap\TestBundle\:
         resource: '../../{Command,Service}'
 
         # controllers are imported separately to make sure they're public
         # and have a tag that allows actions to type-hint services
-    Concerto\TestBundle\Controller\:
+    Leap\TestBundle\Controller\:
         resource: '../../Controller'
         public: true
         tags: ['controller.service_arguments']
 
 #repositories
-    Concerto\TestBundle\Repository\TestSessionCountRepository:
+    Leap\TestBundle\Repository\TestSessionCountRepository:
         factory: doctrine.orm.entity_manager:getRepository
-        arguments: [ Concerto\TestBundle\Entity\TestSessionCount]
+        arguments: [ Leap\TestBundle\Entity\TestSessionCount]
 
 #controller
-    Concerto\TestBundle\Controller\TestRunnerController:
+    Leap\TestBundle\Controller\TestRunnerController:
         arguments:
             $environment: "%kernel.environment%"
             $projectDir: "%kernel.project_dir%"
@@ -33,40 +33,40 @@ services:
         public: true
 
 #services
-    Concerto\TestBundle\Service\TestRunnerService:
+    Leap\TestBundle\Service\TestRunnerService:
         arguments:
             $environment: "%kernel.environment%"
 
-    Concerto\TestBundle\Service\PersistantSessionRunnerService:
+    Leap\TestBundle\Service\PersistantSessionRunnerService:
         public: true
         arguments:
             $testRunnerSettings: "%test_runner_settings%"
             $projectDir: "%kernel.project_dir%"
             $environment: "%kernel.environment%"
 
-    Concerto\TestBundle\Service\SerializedSessionRunnerService:
+    Leap\TestBundle\Service\SerializedSessionRunnerService:
         public: true
         arguments:
             $testRunnerSettings: "%test_runner_settings%"
             $projectDir: "%kernel.project_dir%"
             $environment: "%kernel.environment%"
 
-    Concerto\TestBundle\Service\ASessionRunnerService:
+    Leap\TestBundle\Service\ASessionRunnerService:
         public: true
         synthetic: true
 
-    Concerto\TestBundle\Service\TestSessionCountService:
+    Leap\TestBundle\Service\TestSessionCountService:
         arguments:
             $administration: "%administration%"
 
 #commands
-    Concerto\TestBundle\Command\StartForkerCommand:
+    Leap\TestBundle\Command\StartForkerCommand:
         arguments:
             $testRunnerSettings: "%test_runner_settings%"
             $projectDir: "%kernel.project_dir%"
 
 #event subscribers
-    Concerto\PanelBundle\EventSubscriber\LocaleSubscriber:
+    Leap\PanelBundle\EventSubscriber\LocaleSubscriber:
         arguments:
             $defaultLocale: "%kernel.default_locale%"
         tags:

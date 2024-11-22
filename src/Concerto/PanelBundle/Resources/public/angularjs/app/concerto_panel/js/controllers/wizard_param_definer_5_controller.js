@@ -9,4 +9,4 @@ function WizardParamDefiner5Controller($scope, ViewTemplateCollectionService, Ad
   $scope.administrationSettingsService = AdministrationSettingsService;
 };
 
-concertoPanel.controller('WizardParamDefiner5Controller', ["$scope", "ViewTemplateCollectionService", "AdministrationSettingsService", WizardParamDefiner5Controller]);
+leapPanel.controller('WizardParamDefiner5Controller', ["$scope", "ViewTemplateCollectionService", "AdministrationSettingsService", WizardParamDefiner5Controller]);

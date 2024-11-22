@@ -95,4 +95,4 @@ function WizardParamDefiner12Controller($scope, uiGridConstants, GridService) {
   });
 };
 
-concertoPanel.controller('WizardParamDefiner12Controller', ["$scope", "uiGridConstants", "GridService", WizardParamDefiner12Controller]);
+leapPanel.controller('WizardParamDefiner12Controller', ["$scope", "uiGridConstants", "GridService", WizardParamDefiner12Controller]);

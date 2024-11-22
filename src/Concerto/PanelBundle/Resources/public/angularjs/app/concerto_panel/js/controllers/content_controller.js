@@ -51,4 +51,4 @@ function ContentController($scope, $state, $location) {
     });
 }
 
-concertoPanel.controller('ContentController', ["$scope", "$state", "$location", ContentController]);
+leapPanel.controller('ContentController', ["$scope", "$state", "$location", ContentController]);

@@ -167,13 +167,13 @@ completion:
     documentation:
         help:
             title: Documentation d'autocomplétion pour R - Instructions de génération
-            intro: Avant d'utiliser la fonctionnalité d'autocomplétion pour R dans Concerto, vous avez besoin d'être sûr que la documentation de R, basée sur la configuration de R dans votre système, a bien été générée.
+            intro: Avant d'utiliser la fonctionnalité d'autocomplétion pour R dans Leap, vous avez besoin d'être sûr que la documentation de R, basée sur la configuration de R dans votre système, a bien été générée.
             info:
                 directory: >
-                    Dans le but de générer cette documentation, you devez ouvrir une console de ligne de commande (sur Windows `cmd`, sur Linux `xterm`, `konsole` ou `gnome-terminal`) et, une fois ouverte, naviguer jusqu'au dossier d'installation de Concerto:
-                console: Depuis cet emplacement, vous devez être capable d'utiliser la console de Symfony. Vous devez exécuter l'opération `concerto:r:cache` avec la console.
+                    Dans le but de générer cette documentation, you devez ouvrir une console de ligne de commande (sur Windows `cmd`, sur Linux `xterm`, `konsole` ou `gnome-terminal`) et, une fois ouverte, naviguer jusqu'au dossier d'installation de Leap:
+                console: Depuis cet emplacement, vous devez être capable d'utiliser la console de Symfony. Vous devez exécuter l'opération `leap:r:cache` avec la console.
                 console.more: Cliquez ici pour plus d'information à propos de la console de Symfony
-                output: Exécuter cette commande affichera toutes les fonction de R qui ont été trouvées dans votre système, et préparera les fichiers de documentation nécessaires. Rechargez ou ré-ouvrez la page de Concerto afin de commencer à l'utiliser lors de l'édition de sources R.
+                output: Exécuter cette commande affichera toutes les fonction de R qui ont été trouvées dans votre système, et préparera les fichiers de documentation nécessaires. Rechargez ou ré-ouvrez la page de Leap afin de commencer à l'utiliser lors de l'édition de sources R.
 
 flow:
     fieldset:

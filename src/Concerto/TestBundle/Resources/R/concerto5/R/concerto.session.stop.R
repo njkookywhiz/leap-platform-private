@@ -1,15 +1,15 @@
-concerto.session.stop <- function(status = STATUS_STOPPED, response = NULL, data=list()){
-    concerto.log("stopping session...")
-    concerto.log(paste0("status: ", status))
+leap.session.stop <- function(status = STATUS_STOPPED, response = NULL, data=list()){
+    leap.log("stopping session...")
+    leap.log(paste0("status: ", status))
 
-    if(!is.null(concerto$session)) {
-        concerto$session$status <<- status
-        concerto5:::concerto.session.update()
+    if(!is.null(leap$session)) {
+        leap$session$status <<- status
+        leap5:::leap.session.update()
     }
-    dbDisconnect(concerto$connection)
+    dbDisconnect(leap$connection)
 
     if (!is.null(response)) {
-        concerto5:::concerto.server.respond(response, data)
+        leap5:::leap.server.respond(response, data)
     }
     q("no", if(status == STATUS_ERROR) 1 else 0)
 }

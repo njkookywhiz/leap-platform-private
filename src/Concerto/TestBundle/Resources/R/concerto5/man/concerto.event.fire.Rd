@@ -1,5 +1,5 @@
-\name{concerto.event.fire}
-\alias{concerto.event.fire}
+\name{leap.event.fire}
+\alias{leap.event.fire}
 \title{
     Events
 }
@@ -7,7 +7,7 @@
     Firing events.
 }
 \usage{
-    concerto.event.fire(name)
+    leap.event.fire(name)
 }
 \arguments{
     \item{name}{
@@ -27,7 +27,7 @@
 \seealso{
 }
 \examples{
-    concerto.event.fire("onTemplateSubmit")
+    leap.event.fire("onTemplateSubmit")
 }
 
 \keyword{events}

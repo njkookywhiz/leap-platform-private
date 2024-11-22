@@ -1,9 +1,9 @@
 <?php
 
-namespace Concerto\TestBundle\Controller;
+namespace Leap\TestBundle\Controller;
 
-use Concerto\TestBundle\Service\ASessionRunnerService;
-use Concerto\TestBundle\Service\TestRunnerService;
+use Leap\TestBundle\Service\ASessionRunnerService;
+use Leap\TestBundle\Service\TestRunnerService;
 use Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTDecodeFailureException;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTEncodeFailureException;
@@ -15,7 +15,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Templating\EngineInterface;
-use Concerto\PanelBundle\Entity\TestSessionLog;
+use Leap\PanelBundle\Entity\TestSessionLog;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Twig\Environment;
 use Twig\Extension\EscaperExtension;
@@ -111,7 +111,7 @@ class TestRunnerController
             "existing_session_hash" => $existing_session_hash
         );
 
-        $template = "ConcertoTestBundle::index.html.twig";
+        $template = "LeapTestBundle::index.html.twig";
         if ($baseTemplate) {
             $loader = new ArrayLoader([
                 "baseTemplate.html.twig" => $baseTemplate
@@ -119,7 +119,7 @@ class TestRunnerController
             $twig = new Environment($loader);
             $escaper = $twig->getExtension(EscaperExtension::class);
             $escaper->setDefaultStrategy(false);
-            $bodyContent = $this->templating->render("@ConcertoTest/test_body.html.twig", $responseParams);
+            $bodyContent = $this->templating->render("@LeapTest/test_body.html.twig", $responseParams);
             $responseParams["content"] = $bodyContent;
 
             $template = $twig->createTemplate($baseTemplate)->render($responseParams);
@@ -328,7 +328,7 @@ class TestRunnerController
     {
         if (!$this->checkAuthorizationToken($request, null, true)) return new Response("", 403);
 
-        $dir = "{$this->projectDir}/src/Concerto/PanelBundle/Resources/public/files/protected";
+        $dir = "{$this->projectDir}/src/Leap/PanelBundle/Resources/public/files/protected";
         $realDir = realpath($dir);
         $file = "$realDir/$name";
         if (is_file($file) && realpath($file) === "$realDir/$name") return new BinaryFileResponse($file);

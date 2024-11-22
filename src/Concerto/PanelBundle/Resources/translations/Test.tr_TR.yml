@@ -167,13 +167,13 @@ completion:
     documentation:
         help:
             title: R otomatik tamamlama dokümantasyonu - üretme talimatları
-            intro: R otomatik tamamlama özelliklerini Concerto'da kullanmadan önce, bilgisayarınızdaki R konfigürasyonuna uygun R dokümantasyonunun oluşturulduğundan emin olun.
+            intro: R otomatik tamamlama özelliklerini Leap'da kullanmadan önce, bilgisayarınızdaki R konfigürasyonuna uygun R dokümantasyonunun oluşturulduğundan emin olun.
             info:
                 directory: >
-                    Bu dokümantasyonu oluşturmak için, konsol aplikasyonu açmalı (Windows'da  - `cmd`, Linux'da `xterm`, `konsole` ya da `gnome-terminal`) ve içinde Concertonun yüklü olduğu klasör dizinini açmalısınız.
-                console: Bu dizinden, Symfony konsolunu kullanabilirsiniz. Çalıştırmak için `concerto:r:cache`komutunu kullanın 
+                    Bu dokümantasyonu oluşturmak için, konsol aplikasyonu açmalı (Windows'da  - `cmd`, Linux'da `xterm`, `konsole` ya da `gnome-terminal`) ve içinde Leapnun yüklü olduğu klasör dizinini açmalısınız.
+                console: Bu dizinden, Symfony konsolunu kullanabilirsiniz. Çalıştırmak için `leap:r:cache`komutunu kullanın
                 console.more: Symfony konsolu hakkkında daha fazla bilgi için buraya tıklayın
-                output: Bu komutu çalıştırarak sistemde kullanabileceğiniz tüm R kodlarının dökümünü alabilir ve gerekli dokümantasyonu oluşturabilirsiniz. R kaynaklarını kullanmak için Concerto'yu  yeniden başlatmalı ya da yeniden açmalısınız.
+                output: Bu komutu çalıştırarak sistemde kullanabileceğiniz tüm R kodlarının dökümünü alabilir ve gerekli dokümantasyonu oluşturabilirsiniz. R kaynaklarını kullanmak için Leap'yu  yeniden başlatmalı ya da yeniden açmalısınız.
 
 flow:
     fieldset:

@@ -1,11 +1,11 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Concerto\PanelBundle\Service\TestWizardService;
-use Concerto\PanelBundle\Service\TestWizardStepService;
+use Leap\PanelBundle\Service\TestWizardService;
+use Leap\PanelBundle\Service\TestWizardStepService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -49,7 +49,7 @@ class TestWizardStepController extends ASectionController
      */
     public function collectionByWizardAction($wizard_id, $format = "json")
     {
-        return $this->templating->renderResponse('ConcertoPanelBundle::collection.' . $format . '.twig', array(
+        return $this->templating->renderResponse('LeapPanelBundle::collection.' . $format . '.twig', array(
             'collection' => $this->service->getByTestWizard($wizard_id)
         ));
     }

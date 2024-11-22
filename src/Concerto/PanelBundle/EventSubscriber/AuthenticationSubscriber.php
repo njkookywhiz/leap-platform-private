@@ -1,14 +1,14 @@
 <?php
 
-namespace Concerto\PanelBundle\EventSubscriber;
+namespace Leap\PanelBundle\EventSubscriber;
 
-use Concerto\PanelBundle\Repository\UserRepository;
-use Concerto\PanelBundle\Service\AdministrationService;
+use Leap\PanelBundle\Repository\UserRepository;
+use Leap\PanelBundle\Service\AdministrationService;
 use Symfony\Component\Security\Core\AuthenticationEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Event\AuthenticationEvent;
 use Symfony\Component\Security\Core\Event\AuthenticationFailureEvent;
-use Concerto\PanelBundle\Entity\User;
+use Leap\PanelBundle\Entity\User;
 
 class AuthenticationSubscriber implements EventSubscriberInterface
 {

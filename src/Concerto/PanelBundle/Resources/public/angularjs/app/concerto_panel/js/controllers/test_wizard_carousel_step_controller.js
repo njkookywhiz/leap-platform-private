@@ -18,4 +18,4 @@ function TestWizardCarouselStepController($scope, $http, $filter, TestWizardPara
     $scope.mapParamsValue();
 }
 
-concertoPanel.controller('TestWizardCarouselStepController', ["$scope", "$http", "$filter", "TestWizardParam", TestWizardCarouselStepController]);
+leapPanel.controller('TestWizardCarouselStepController', ["$scope", "$http", "$filter", "TestWizardParam", TestWizardCarouselStepController]);

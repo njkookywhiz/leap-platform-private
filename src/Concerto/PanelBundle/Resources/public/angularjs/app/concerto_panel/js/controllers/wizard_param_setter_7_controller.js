@@ -9,4 +9,4 @@ function WizardParamSetter7Controller($scope, DataTableCollectionService, Admini
     $scope.administrationSettingsService = AdministrationSettingsService;
 }
 
-concertoPanel.controller('WizardParamSetter7Controller', ["$scope", "DataTableCollectionService", "AdministrationSettingsService", WizardParamSetter7Controller]);
+leapPanel.controller('WizardParamSetter7Controller', ["$scope", "DataTableCollectionService", "AdministrationSettingsService", WizardParamSetter7Controller]);

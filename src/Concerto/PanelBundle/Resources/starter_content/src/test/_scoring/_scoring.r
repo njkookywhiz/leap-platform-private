@@ -44,7 +44,7 @@ getPercentileRange = function() {
 {{upperBoundColumn}} AS upperBound,
 {{scoreColumn}} AS score
 FROM {{table}}"
-    ranges = concerto.table.query(sql, params=list(
+    ranges = leap.table.query(sql, params=list(
       lowerBoundColumn=rangesTable$columns$lowerBound,
       upperBoundColumn=rangesTable$columns$upperBound,
       scoreColumn=rangesTable$columns$score,
@@ -98,7 +98,7 @@ if(feedbackType != "none") {
 {{upperBoundColumn}} AS upperBound,
 {{feedbackColumn}} AS feedback
 FROM {{table}}"
-    ranges = concerto.table.query(sql, params=list(
+    ranges = leap.table.query(sql, params=list(
       lowerBoundColumn=rangesTable$columns$lowerBound,
       upperBoundColumn=rangesTable$columns$upperBound,
       feedbackColumn=rangesTable$columns$feedback,

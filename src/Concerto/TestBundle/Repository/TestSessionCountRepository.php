@@ -1,9 +1,9 @@
 <?php
 
-namespace Concerto\TestBundle\Repository;
+namespace Leap\TestBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Concerto\TestBundle\Entity\TestSessionCount;
+use Leap\TestBundle\Entity\TestSessionCount;
 use DateTime;
 
 class TestSessionCountRepository extends EntityRepository {
@@ -33,7 +33,7 @@ class TestSessionCountRepository extends EntityRepository {
     }
 
     public function deleteAll() {
-        return $this->getEntityManager()->createQueryBuilder()->delete("Concerto\TestBundle\Entity\TestSessionCount", "sc")->getQuery()->execute();
+        return $this->getEntityManager()->createQueryBuilder()->delete("Leap\TestBundle\Entity\TestSessionCount", "sc")->getQuery()->execute();
     }
 
 }

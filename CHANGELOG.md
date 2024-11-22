@@ -24,14 +24,14 @@
 
 #### Features
 
-* _concerto-tick test
-* concerto$globalTemplateParams object added
+* _leap-tick test
+* leap$globalTemplateParams object added
 * OTP helpers
 
 #### Docker
 
 * UTC as default timezone for PHP
-* can now be installed in subdirectory; base dir will be extracted from CONCERTO_PLATFORM_URL
+* can now be installed in subdirectory; base dir will be extracted from LEAP_PLATFORM_URL
 
 #### Starter content
 
@@ -72,7 +72,7 @@
 * limited max number of messages that are fetched to 100
 * limited max number of automatic client side error logs per session to 1
 * removed version information from panel login page
-* added **debug** option for **concerto.test.run** command
+* added **debug** option for **leap.test.run** command
 
 #### Starter content
 
@@ -82,7 +82,7 @@
 #### Docker
 
 * paths ending with / will be rewritten (nginx)
-* prevented routing to /bundles/concertopanel/files/protected (nginx)
+* prevented routing to /bundles/leappanel/files/protected (nginx)
 * removed **Server** header (nginx)
 
 ## 5.0.25 (2021-07-26)
@@ -96,7 +96,7 @@
 
 * updated js dependencies
 * removed jquery-migrate dependency
-* CONCERTO_KEEP_ALIVE_INTERVAL_TIME default is now 0
+* LEAP_KEEP_ALIVE_INTERVAL_TIME default is now 0
 
 #### Starter content
 
@@ -119,8 +119,8 @@
 ### Docker
 
 * moved default PHP session path out of docker volume
-* added CONCERTO_COOKIE_LIFETIME env
-* added CONCERTO_SESSION_FORKING env
+* added LEAP_COOKIE_LIFETIME env
+* added LEAP_SESSION_FORKING env
 * /root/env.sh double quote escaping
 
 ## 5.0.24 (2021-04-19)
@@ -158,7 +158,7 @@
 #### Improvements
 
 * configurable R long running processes forced GC interval (r_forced_gc_interval)
-* replaced RSA key pair for JWT with HMAC key (CONCERTO_JWT_SECRET env)
+* replaced RSA key pair for JWT with HMAC key (LEAP_JWT_SECRET env)
 * exposed testRunner.getControlValues()
 
 #### Starter content
@@ -168,7 +168,7 @@
 
 #### Docker
 
-* exposed Symfony's config framework.session.save_path as CONCERTO_PHP_SESSION_SAVE_PATH env variable
+* exposed Symfony's config framework.session.save_path as LEAP_PHP_SESSION_SAVE_PATH env variable
 * import directory is now on shared storage
 * /data/php/sessions set as PHP session path
 * file lock for forker guard
@@ -220,14 +220,14 @@
 
 #### Other
 
-* renamed **CONCERTO_SESSION_COOKIE_EXPIRY_TIME** to **CONCERTO_SESSION_TOKEN_EXPIRY_TIME**
+* renamed **LEAP_SESSION_COOKIE_EXPIRY_TIME** to **LEAP_SESSION_TOKEN_EXPIRY_TIME**
 * **assessment** node labels for **options** item type are now centered horizontally and vertically
 
 ## 5.0.18 (2020-10-27)
 
 #### Features
 
-* data API can be enabled/disabled by **CONCERTO_DATA_API_ENABLED** setting
+* data API can be enabled/disabled by **LEAP_DATA_API_ENABLED** setting
 
 #### Fixes
 
@@ -240,8 +240,8 @@
 
 * content import as scheduled task
 * content modifications blocked when content modifying scheduled task is ongoing
-* added **CONCERTO_COOKIES_SECURE** and **CONCERTO_COOKIES_SAME_SITE** config options exposed through env variables
-* added **CONCERTO_KEEP_ALIVE_INTERVAL_TIME**, **CONCERTO_KEEP_ALIVE_TOLERANCE_TIME** and **CONCERTO_SESSION_COOKIE_EXPIRY_TIME** config options exposed through env variables
+* added **LEAP_COOKIES_SECURE** and **LEAP_COOKIES_SAME_SITE** config options exposed through env variables
+* added **LEAP_KEEP_ALIVE_INTERVAL_TIME**, **LEAP_KEEP_ALIVE_TOLERANCE_TIME** and **LEAP_SESSION_COOKIE_EXPIRY_TIME** config options exposed through env variables
 * can now set column number for **assessment** node 'options' item type
 * can now set fixed index for **assessment** node response options ('options' item type)
 
@@ -320,7 +320,7 @@
 * import fixes
 * renamed SamlToken hash_idx to saml_token_hash_idx for PostgreSQL compatibility
 * SAML metadata endpoint fix
-* concerto.saml.getAuthenticatedUser fix for serialized session runner service
+* leap.saml.getAuthenticatedUser fix for serialized session runner service
 * reduced memory consumption on collection fetches
 * item bank extra fields can now be set for flat item bank table
 * removed automatic data connections
@@ -335,7 +335,7 @@
 * improved import comparison hashing
 * sessionHash property exposed in testRunner javascript object
 * assessment node fixes/improvements
-* concerto objects caching enabled for test session
+* leap objects caching enabled for test session
 * more flexible toJSON, fromJSON assignment
 * platform_url config setting doesn't have to end with / now
 * overridable response.isValid() in each assessment's item type template
@@ -401,7 +401,7 @@
 #### Improvements
 
 * when importing CSV with empty field - column default value is used
-* added connection argument to concerto.table.query and concerto.table.lastInsertId 
+* added connection argument to leap.table.query and leap.table.lastInsertId 
 * clicking outside of modal in panel no longer closes modal
 * increased  data table's data grid columns min width
 * added flowIndex argument to c.get and c.set
@@ -472,8 +472,8 @@
 
 #### Improvements
 
-* added SHOW statement to **concerto.table.query**
-* html argument takes precedence over templateId in **concerto.template.join**
+* added SHOW statement to **leap.table.query**
+* html argument takes precedence over templateId in **leap.template.join**
 * data tables can now be scrolled horizontally
 * removed alert on successful object save
 * flow variable pointer name is visible on port label when its value is different than port variable name
@@ -514,9 +514,9 @@
 
 #### Features
 
-* added **concerto.event.add** function to R package
-* added **concerto.event.fire** function to R package
-* added **concerto.event.remove** function to R package 
+* added **leap.event.add** function to R package
+* added **leap.event.fire** function to R package
+* added **leap.event.remove** function to R package 
 
 #### Fixes
 
@@ -549,11 +549,11 @@
 #### Features
 
 * SAML flow API (experimental)
-* cookies are now included in concerto.template.show return (**result$.cookies**) for both submit and background worker actions
-* concerto.saml.getAuthenticatedUser R method
+* cookies are now included in leap.template.show return (**result$.cookies**) for both submit and background worker actions
+* leap.saml.getAuthenticatedUser R method
 * session resume endpoint
-* **concerto.template.show** now accepts **cookies** input parameter (name-value pair list)
-* added **CONCERTO_BEHIND_PROXY** env and **behind_proxy** config option for SAML toolkit
+* **leap.template.show** now accepts **cookies** input parameter (name-value pair list)
+* added **LEAP_BEHIND_PROXY** env and **behind_proxy** config option for SAML toolkit
 
 #### Improvements
 
@@ -577,17 +577,17 @@
 #### Other
 
 * added **platform_url** config parameter
-* renamed **concerto.file.getPublicPath** to **concerto.file.getPath**
-* added **concerto.saml.login** R function
-* added **concerto.saml.logout** R function
-* added **concerto.session.getResumeUrl** R function
-* added **concerto.template.redirect** R function
+* renamed **leap.file.getPublicPath** to **leap.file.getPath**
+* added **leap.saml.login** R function
+* added **leap.saml.logout** R function
+* added **leap.session.getResumeUrl** R function
+* added **leap.template.redirect** R function
 
 ## 5.0.4 (2019-10-21)
 
 #### Features
 
-* added **CONCERTO_CONTENT_IMPORT_AT_START** env var
+* added **LEAP_CONTENT_IMPORT_AT_START** env var
 
 #### Improvements
 

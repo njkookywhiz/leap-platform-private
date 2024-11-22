@@ -1,5 +1,5 @@
 'use strict';
-angular.module('concertoPanel').directive('flowLogic', ['$http', '$compile', '$timeout', '$uibModal', '$filter', 'TestCollectionService', 'DialogsService', function ($http, $compile, $timeout, $uibModal, $filter, TestCollectionService, DialogsService) {
+angular.module('leapPanel').directive('flowLogic', ['$http', '$compile', '$timeout', '$uibModal', '$filter', 'TestCollectionService', 'DialogsService', function ($http, $compile, $timeout, $uibModal, $filter, TestCollectionService, DialogsService) {
     return {
         restrict: 'A',
         scope: true,
@@ -1263,7 +1263,7 @@ angular.module('concertoPanel').directive('flowLogic', ['$http', '$compile', '$t
                 );
             };
 
-            scope.addConnection = function (concertoConnection, jspConnection) {
+            scope.addConnection = function (leapConnection, jspConnection) {
                 var params = jspConnection.getParameters();
                 $http.post(Paths.TEST_FLOW_CONNECTION_ADD_COLLECTION.pf(scope.object.id), {
                     flowTest: scope.object.id,
@@ -1301,10 +1301,10 @@ angular.module('concertoPanel').directive('flowLogic', ['$http', '$compile', '$t
                 });
             };
 
-            scope.saveConnection = function (concertoConnection, jspConnection) {
+            scope.saveConnection = function (leapConnection, jspConnection) {
                 var id = 0;
-                if (concertoConnection)
-                    id = concertoConnection.id;
+                if (leapConnection)
+                    id = leapConnection.id;
 
                 var params = jspConnection.getParameters();
                 $http.post(Paths.TEST_FLOW_CONNECTION_SAVE.pf(id), {
@@ -1317,7 +1317,7 @@ angular.module('concertoPanel').directive('flowLogic', ['$http', '$compile', '$t
                     objectTimestamp: scope.object.updatedOn
                 }).then(function (httpResponse) {
                     if (httpResponse.data.result === 0) {
-                        jspConnection.setParameter("concertoConnection", httpResponse.data.object);
+                        jspConnection.setParameter("leapConnection", httpResponse.data.object);
                         for (var j = 0; j < scope.object.nodesConnections.length; j++) {
                             var connection = scope.object.nodesConnections[j];
                             if (connection.id == httpResponse.data.object.id) {
@@ -1344,20 +1344,20 @@ angular.module('concertoPanel').directive('flowLogic', ['$http', '$compile', '$t
                 });
             };
 
-            scope.connect = function (concertoConnection) {
-                let sourcePort = scope.collectionService.getPort(concertoConnection.sourcePort);
+            scope.connect = function (leapConnection) {
+                let sourcePort = scope.collectionService.getPort(leapConnection.sourcePort);
 
                 jsPlumb.connect({
                     uuids: [
-                        "node" + concertoConnection.sourceNode + "-ep" + (concertoConnection.sourcePort ? concertoConnection.sourcePort : "_out"),
-                        "node" + concertoConnection.destinationNode + "-ep" + (concertoConnection.destinationPort ? concertoConnection.destinationPort : "_entry"),
+                        "node" + leapConnection.sourceNode + "-ep" + (leapConnection.sourcePort ? leapConnection.sourcePort : "_out"),
+                        "node" + leapConnection.destinationNode + "-ep" + (leapConnection.destinationPort ? leapConnection.destinationPort : "_entry"),
                     ],
                     parameters: {
-                        concertoConnection: concertoConnection
+                        leapConnection: leapConnection
                     },
                     paintStyle: {
                         dashstyle: "dot",
-                        strokeStyle: scope.getConnectionStrokeStyle(concertoConnection.automatic, sourcePort ? sourcePort.type : 2),
+                        strokeStyle: scope.getConnectionStrokeStyle(leapConnection.automatic, sourcePort ? sourcePort.type : 2),
                         lineWidth: scope.getConnectionLineWidth(sourcePort ? sourcePort.type : 2)
                     }
                 });
@@ -1390,22 +1390,22 @@ angular.module('concertoPanel').directive('flowLogic', ['$http', '$compile', '$t
             scope.setUpConnection = function (jspConnection) {
                 var params = jspConnection.getParameters();
                 if (params.sourcePort && params.sourcePort.type == 1) {
-                    if (jspConnection.getOverlay("overlayConnection" + params.concertoConnection.id))
+                    if (jspConnection.getOverlay("overlayConnection" + params.leapConnection.id))
                         return;
                     jspConnection.addOverlay(
                         ["Custom", {
                             create: function (component) {
                                 var overlayElem = $("<div>" +
-                                    "<div id='divConnectionControl" + params.concertoConnection.id + "'>" +
-                                    "<i class='clickable glyphicon glyphicon-align-justify' ng-class='{\"return-function-default\": collectionService.getConnection(" + params.concertoConnection.id + ").defaultReturnFunction == \"1\"}' " +
-                                    "ng-click='editConnectionCode(collectionService.getConnection(" + params.concertoConnection.id + "))' " +
-                                    "uib-tooltip-html='getConnectionTooltip(" + params.concertoConnection.id + ")' tooltip-append-to-body='true'></i></div>" +
+                                    "<div id='divConnectionControl" + params.leapConnection.id + "'>" +
+                                    "<i class='clickable glyphicon glyphicon-align-justify' ng-class='{\"return-function-default\": collectionService.getConnection(" + params.leapConnection.id + ").defaultReturnFunction == \"1\"}' " +
+                                    "ng-click='editConnectionCode(collectionService.getConnection(" + params.leapConnection.id + "))' " +
+                                    "uib-tooltip-html='getConnectionTooltip(" + params.leapConnection.id + ")' tooltip-append-to-body='true'></i></div>" +
                                     "</div>");
                                 $compile(overlayElem)(scope);
                                 return overlayElem;
                             },
                             location: 0.75,
-                            id: "overlayConnection" + params.concertoConnection.id
+                            id: "overlayConnection" + params.leapConnection.id
                         }]);
                 } else if (!params.sourcePort || params.sourcePort.type == 2) {
                     jspConnection.addOverlay(
@@ -1564,8 +1564,8 @@ angular.module('concertoPanel').directive('flowLogic', ['$http', '$compile', '$t
                     if (!scope.jsPlumbEventsEnabled)
                         return;
                     var params = info.connection.getParameters();
-                    if (!params.concertoConnection) {
-                        scope.addConnection(params.concertoConnection, info.connection);
+                    if (!params.leapConnection) {
+                        scope.addConnection(params.leapConnection, info.connection);
                         return;
                     }
                     scope.setUpConnection(info.connection);
@@ -1575,16 +1575,16 @@ angular.module('concertoPanel').directive('flowLogic', ['$http', '$compile', '$t
                     if (!scope.jsPlumbEventsEnabled)
                         return;
                     var params = info.connection.getParameters();
-                    scope.saveConnection(params.concertoConnection, info.connection);
+                    scope.saveConnection(params.leapConnection, info.connection);
                 });
 
                 jsPlumb.bind("connectionDetached", function (info) {
                     if (!scope.jsPlumbEventsEnabled)
                         return;
                     var params = info.connection.getParameters();
-                    if (!params.concertoConnection)
+                    if (!params.leapConnection)
                         return;
-                    scope.removeConnection(params.concertoConnection.id);
+                    scope.removeConnection(params.leapConnection.id);
                 });
 
                 $timeout(function () {

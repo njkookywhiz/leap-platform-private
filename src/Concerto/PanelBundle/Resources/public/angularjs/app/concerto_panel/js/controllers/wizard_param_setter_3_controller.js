@@ -10,4 +10,4 @@ function WizardParamSetter3Controller($scope, AdministrationSettingsService) {
     $scope.onPrimitiveValueChange($scope.output);
 }
 
-concertoPanel.controller('WizardParamSetter3Controller', ["$scope", "AdministrationSettingsService", WizardParamSetter3Controller]);
+leapPanel.controller('WizardParamSetter3Controller', ["$scope", "AdministrationSettingsService", WizardParamSetter3Controller]);

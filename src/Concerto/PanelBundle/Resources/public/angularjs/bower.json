@@ -1,7 +1,7 @@
 {
-  "name": "concerto-platform",
+  "name": "leap-platform",
   "description": "LEAP Scores panel",
-  "homepage": "http://concertoplatform.com/",
+  "homepage": "http://leapplatform.com/",
   "license": "Apache-2.0",
   "private": false,
   "dependencies": {
@@ -22,11 +22,11 @@
     "jquery": "3.5.x",
     "jquery-ui": "1.12.x",
     "angular-ui-grid": "4.9.x",
-    "angular-wizard-concerto": "0.6.1-concerto",
+    "angular-wizard-leap": "0.6.1-leap",
     "angular-ui-sortable": "*",
     "angular-breadcrumb": "0.4.x",
     "angular-ui-router": "0.4.x",
-    "ng-context-menu-concerto": "1.0.x",
+    "ng-context-menu-leap": "1.0.x",
     "jquery-mousewheel": "3.1.x",
     "pdfmake": "0.1.33",
     "csv-js": "1.1.x",

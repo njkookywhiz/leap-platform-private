@@ -1,13 +1,13 @@
-\name{concerto.table.query}
-\alias{concerto.table.query}
+\name{leap.table.query}
+\alias{leap.table.query}
 \title{
 Table query
 }
 \description{
-    Perform query on Concerto table.
+    Perform query on Leap table.
 }
 \usage{
-    concerto.table.query(sql, params, n, connection)
+    leap.table.query(sql, params, n, connection)
 }
 \arguments{
     \item{sql}{

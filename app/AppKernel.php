@@ -20,9 +20,9 @@ class AppKernel extends Kernel
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
 
-            new Concerto\PanelBundle\ConcertoPanelBundle(),
-            new Concerto\TestBundle\ConcertoTestBundle(),
-            new Concerto\APIBundle\ConcertoAPIBundle(),
+            new Leap\PanelBundle\LeapPanelBundle(),
+            new Leap\TestBundle\LeapTestBundle(),
+            new Leap\APIBundle\LeapAPIBundle(),
             new Scheb\TwoFactorBundle\SchebTwoFactorBundle()
         ];
 
@@ -69,13 +69,13 @@ class AppKernel extends Kernel
     {
         parent::initializeContainer();
 
-        $adminService = $this->container->get("Concerto\\PanelBundle\\Service\\AdministrationService");
+        $adminService = $this->container->get("Leap\\PanelBundle\\Service\\AdministrationService");
         $sessionRunnerService = "PersistantSessionRunnerService";
         //DB will not always be available at this stage
         try {
             $sessionRunnerService = $adminService->getSessionRunnerService();
         } catch (Exception $ex) {
         }
-        $this->container->set("Concerto\\TestBundle\\Service\\ASessionRunnerService", $this->container->get("Concerto\\TestBundle\\Service\\" . $sessionRunnerService));
+        $this->container->set("Leap\\TestBundle\\Service\\ASessionRunnerService", $this->container->get("Leap\\TestBundle\\Service\\" . $sessionRunnerService));
     }
 }

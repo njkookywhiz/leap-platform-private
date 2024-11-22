@@ -1,5 +1,5 @@
-concerto.redis.connect = function(host, port, password){
-    concerto.log("connecting with redis...")
+leap.redis.connect = function(host, port, password){
+    leap.log("connecting with redis...")
 
     redisPass = NULL
     if(password != "") { redisPass = password }

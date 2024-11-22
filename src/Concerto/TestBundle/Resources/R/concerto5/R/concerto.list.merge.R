@@ -1,4 +1,4 @@
-concerto.list.merge = function(list1,list2){
+leap.list.merge = function(list1,list2){
     if(!is.list(list1)) stop("'list1' must be a list!")
     if(!is.list(list2)) stop("'list2' must be a list!")
 

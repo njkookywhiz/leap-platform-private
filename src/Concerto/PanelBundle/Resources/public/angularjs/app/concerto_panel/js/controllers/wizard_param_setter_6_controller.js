@@ -11,4 +11,4 @@ function WizardParamSetter6Controller($scope, DataTableCollectionService, Admini
     $scope.onPrimitiveValueChange($scope.output);
 }
 
-concertoPanel.controller('WizardParamSetter6Controller', ["$scope", "DataTableCollectionService", "AdministrationSettingsService", WizardParamSetter6Controller]);
+leapPanel.controller('WizardParamSetter6Controller', ["$scope", "DataTableCollectionService", "AdministrationSettingsService", WizardParamSetter6Controller]);

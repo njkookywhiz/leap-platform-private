@@ -1,3 +1,3 @@
-concerto.file.getPath = concerto.file.getPublicPath = function(filename){
-    return(paste0(concerto$publicDir, filename))
+leap.file.getPath = leap.file.getPublicPath = function(filename){
+    return(paste0(leap$publicDir, filename))
 }

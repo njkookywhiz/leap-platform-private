@@ -1,5 +1,5 @@
-concerto_api:
-    resource: "@ConcertoAPIBundle/Controller/"
+leap_api:
+    resource: "@LeapAPIBundle/Controller/"
     type:     annotation
     
 fos_oauth_server_token:

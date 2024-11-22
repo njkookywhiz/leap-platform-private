@@ -2,4 +2,4 @@ function FileBrowserController($scope) {
   $scope.tabStateName = "files";
 }
 
-concertoPanel.controller('FileBrowserController', ["$scope", FileBrowserController]);
+leapPanel.controller('FileBrowserController', ["$scope", FileBrowserController]);

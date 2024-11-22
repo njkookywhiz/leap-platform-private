@@ -3,7 +3,7 @@ getSessionId = function(session) {
   if(!is.null(session) && is.list(session)) {
     id = session$id
   } else {
-    id = paste0("i",concerto$session$id)
+    id = paste0("i",leap$session$id)
   }
   return(id)
 }
@@ -51,7 +51,7 @@ saveResponse = function(score, trait, item, itemSafe, skipped) {
   )
 
   sql = NULL
-  response = concerto.table.query("
+  response = leap.table.query("
 SELECT id 
 FROM {{table}} 
 WHERE {{itemIdColumn}}={{itemId}} AND {{sessionIdColumn}}='{{sessionId}}' 
@@ -129,13 +129,13 @@ VALUES (
 )")
   }
 
-  concerto.table.query(sql, params)
+  leap.table.query(sql, params)
   if(!responseExist) {
-    responseId = concerto.table.lastInsertId()
+    responseId = leap.table.lastInsertId()
   }
 
   if(!is.na(settings$responseSavedModule) && settings$responseSavedModule != "") {
-    concerto.test.run(settings$responseSavedModule, params=list(
+    leap.test.run(settings$responseSavedModule, params=list(
       settings = settings,
       id = responseId,
       response = params,

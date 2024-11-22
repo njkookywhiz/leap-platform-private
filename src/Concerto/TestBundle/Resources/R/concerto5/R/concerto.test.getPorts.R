@@ -1,9 +1,9 @@
-concerto.test.getPorts = function(testId){
+leap.test.getPorts = function(testId){
   
   idField <- "flowTest_id"
-  testId <- dbEscapeStrings(concerto$connection,toString(testId))
+  testId <- dbEscapeStrings(leap$connection,toString(testId))
 
-  result <- dbSendQuery(concerto$connection,sprintf("
+  result <- dbSendQuery(leap$connection,sprintf("
   SELECT
   TestNodePort.id AS id,
   node_id,

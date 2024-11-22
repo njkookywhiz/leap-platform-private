@@ -1,72 +1,72 @@
-concerto.run = function(workingDir, client, sessionHash, maxIdleTime = NULL, maxExecTime = NULL, response = NULL, initialPort = NULL, runnerType = 0) {
-    concerto$workingDir <<- workingDir
-    concerto$client <<- client
-    concerto$sessionHash <<- sessionHash
-    concerto$sessionFile <<- paste0(concerto$workingDir,"session.Rs")
-    concerto$initialPort <<- initialPort
-    concerto$runnerType <<- runnerType
-    concerto$lastResponse <<- response
+leap.run = function(workingDir, client, sessionHash, maxIdleTime = NULL, maxExecTime = NULL, response = NULL, initialPort = NULL, runnerType = 0) {
+    leap$workingDir <<- workingDir
+    leap$client <<- client
+    leap$sessionHash <<- sessionHash
+    leap$sessionFile <<- paste0(leap$workingDir,"session.Rs")
+    leap$initialPort <<- initialPort
+    leap$runnerType <<- runnerType
+    leap$lastResponse <<- response
     if(!is.null(response) && !is.null(response$headers)) {
-        concerto$headers <<- response$headers
+        leap$headers <<- response$headers
     }
 
     if(!is.null(maxIdleTime)) {
-        concerto$maxIdleTime <<- maxIdleTime
+        leap$maxIdleTime <<- maxIdleTime
     }
     if(!is.null(maxExecTime)) {
-        concerto$maxExecTime <<- maxExecTime
+        leap$maxExecTime <<- maxExecTime
     }
 
-    concerto$connection <<- concerto.db.connect(
-        concerto$dbConnectionParams$driver,
-        concerto$dbConnectionParams$username,
-        concerto$dbConnectionParams$password,
-        concerto$dbConnectionParams$dbname,
-        concerto$dbConnectionParams$host,
-        concerto$dbConnectionParams$unix_socket,
-        concerto$dbConnectionParams$port
+    leap$connection <<- leap.db.connect(
+        leap$dbConnectionParams$driver,
+        leap$dbConnectionParams$username,
+        leap$dbConnectionParams$password,
+        leap$dbConnectionParams$dbname,
+        leap$dbConnectionParams$host,
+        leap$dbConnectionParams$unix_socket,
+        leap$dbConnectionParams$port
     )
 
-    if(concerto$sessionStorage == "redis") {
-        concerto$redisConnection <<- concerto.redis.connect(
-            host = concerto$redisConnectionParams$host,
-            port = concerto$redisConnectionParams$port,
-            password = concerto$redisConnectionParams$password
+    if(leap$sessionStorage == "redis") {
+        leap$redisConnection <<- leap.redis.connect(
+            host = leap$redisConnectionParams$host,
+            port = leap$redisConnectionParams$port,
+            password = leap$redisConnectionParams$password
         )
     }
 
-    concerto["session"] <<- list(NULL)
-    if(!is.null(concerto$sessionHash)) {
-        concerto$session <<- as.list(concerto5:::concerto.session.get(concerto$sessionHash))
-        concerto$session$previousStatus <<- concerto$session$status
-        concerto$session$status <<- STATUS_RUNNING
-        concerto$session$params <<- fromJSON(concerto$session$params)
-        concerto$mainTest <<- list(id=concerto$session$test_id)
+    leap["session"] <<- list(NULL)
+    if(!is.null(leap$sessionHash)) {
+        leap$session <<- as.list(leap5:::leap.session.get(leap$sessionHash))
+        leap$session$previousStatus <<- leap$session$status
+        leap$session$status <<- STATUS_RUNNING
+        leap$session$params <<- fromJSON(leap$session$params)
+        leap$mainTest <<- list(id=leap$session$test_id)
     }
-    concerto$resuming <<- F
+    leap$resuming <<- F
 
     tryCatch({
-        setwd(concerto$workingDir)
-        if(concerto$maxExecTime > 0) {
-            setTimeLimit(elapsed=concerto$maxExecTime, transient=TRUE)
+        setwd(leap$workingDir)
+        if(leap$maxExecTime > 0) {
+            setTimeLimit(elapsed=leap$maxExecTime, transient=TRUE)
         }
 
-        if(!is.null(concerto$session)) {
-            testId = concerto$session["test_id"]
-            params = concerto$session$params
-            if(concerto$runnerType == RUNNER_SERIALIZED && concerto.session.unserialize(response)) {
-                concerto$resuming <<- T
-                concerto$resumeIndex <<- 0
-                testId = concerto$flow[[1]]$id
-                params = concerto$flow[[1]]$params
+        if(!is.null(leap$session)) {
+            testId = leap$session["test_id"]
+            params = leap$session$params
+            if(leap$runnerType == RUNNER_SERIALIZED && leap.session.unserialize(response)) {
+                leap$resuming <<- T
+                leap$resumeIndex <<- 0
+                testId = leap$flow[[1]]$id
+                params = leap$flow[[1]]$params
             }
-            concerto.test.run(testId, params)
+            leap.test.run(testId, params)
         }
 
-        concerto5:::concerto.session.stop(STATUS_FINALIZED, RESPONSE_FINISHED)
+        leap5:::leap.session.stop(STATUS_FINALIZED, RESPONSE_FINISHED)
     }, error = function(e) {
-        concerto.log(e)
-        if(!is.null(concerto$session)) { concerto$session$error <<- e }
-        concerto5:::concerto.session.stop(STATUS_ERROR, RESPONSE_ERROR)
+        leap.log(e)
+        if(!is.null(leap$session)) { leap$session$error <<- e }
+        leap5:::leap.session.stop(STATUS_ERROR, RESPONSE_ERROR)
     })
 }

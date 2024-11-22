@@ -1,13 +1,13 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Service\MaintenanceService;
+use Leap\PanelBundle\Service\MaintenanceService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ConcertoSessionsClearCommand extends Command
+class LeapSessionsClearCommand extends Command
 {
 
     private $maintenanceService;
@@ -21,7 +21,7 @@ class ConcertoSessionsClearCommand extends Command
 
     protected function configure()
     {
-        $this->setName("concerto:sessions:clear")->setDescription("Clearing session files.");
+        $this->setName("leap:sessions:clear")->setDescription("Clearing session files.");
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

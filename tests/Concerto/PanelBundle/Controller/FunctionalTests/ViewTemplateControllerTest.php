@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Concerto\PanelBundle\Controller\FunctionalTests;
+namespace Tests\Leap\PanelBundle\Controller\FunctionalTests;
 
 use Symfony\Component\Yaml\Yaml;
-use Tests\Concerto\PanelBundle\AFunctionalTest;
-use Concerto\PanelBundle\Entity\ATopEntity;
+use Tests\Leap\PanelBundle\AFunctionalTest;
+use Leap\PanelBundle\Entity\ATopEntity;
 
 class ViewTemplateControllerTest extends AFunctionalTest
 {
@@ -14,7 +14,7 @@ class ViewTemplateControllerTest extends AFunctionalTest
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
-        self::$repository = static::$entityManager->getRepository("ConcertoPanelBundle:ViewTemplate");
+        self::$repository = static::$entityManager->getRepository("LeapPanelBundle:ViewTemplate");
     }
 
     protected function setUp()
@@ -156,7 +156,7 @@ class ViewTemplateControllerTest extends AFunctionalTest
         $client = self::createLoggedClient();
 
         $client->request("POST", "/admin/ViewTemplate/import", array(
-            "file" => "ViewTemplate_8.concerto.json",
+            "file" => "ViewTemplate_8.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "ViewTemplate",
@@ -183,7 +183,7 @@ class ViewTemplateControllerTest extends AFunctionalTest
         $client = self::createLoggedClient();
 
         $client->request("POST", "/admin/ViewTemplate/import", array(
-            "file" => "ViewTemplate_8.concerto.json",
+            "file" => "ViewTemplate_8.leap.json",
             "instructions" => json_encode(array(
                 array(
                     "class_name" => "ViewTemplate",

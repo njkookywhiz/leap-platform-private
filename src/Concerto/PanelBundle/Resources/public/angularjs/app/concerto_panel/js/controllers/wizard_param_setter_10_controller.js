@@ -169,4 +169,4 @@ function WizardParamSetter10Controller($scope, AdministrationSettingsService, ui
     });
 }
 
-concertoPanel.controller('WizardParamSetter10Controller', ["$scope", "AdministrationSettingsService", "uiGridConstants", "GridService", "$filter", "TestWizardParam", WizardParamSetter10Controller]);
+leapPanel.controller('WizardParamSetter10Controller', ["$scope", "AdministrationSettingsService", "uiGridConstants", "GridService", "$filter", "TestWizardParam", WizardParamSetter10Controller]);

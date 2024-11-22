@@ -28,4 +28,4 @@ function WizardParamSetter12Controller($scope, DataTableCollectionService, Admin
     };
 }
 
-concertoPanel.controller('WizardParamSetter12Controller', ["$scope", "DataTableCollectionService", "AdministrationSettingsService", WizardParamSetter12Controller]);
+leapPanel.controller('WizardParamSetter12Controller', ["$scope", "DataTableCollectionService", "AdministrationSettingsService", WizardParamSetter12Controller]);

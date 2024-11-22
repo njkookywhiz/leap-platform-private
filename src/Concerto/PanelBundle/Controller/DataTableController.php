@@ -1,20 +1,20 @@
 <?php
 
-namespace Concerto\PanelBundle\Controller;
+namespace Leap\PanelBundle\Controller;
 
-use Concerto\PanelBundle\Service\FileService;
+use Leap\PanelBundle\Service\FileService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
-use Concerto\PanelBundle\DAO\DAOUnsupportedOperationException;
+use Leap\PanelBundle\DAO\DAOUnsupportedOperationException;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;
-use Concerto\PanelBundle\Service\DataTableService;
-use Concerto\PanelBundle\Service\ImportService;
-use Concerto\PanelBundle\Service\ExportService;
-use Concerto\PanelBundle\Service\UserService;
+use Leap\PanelBundle\Service\DataTableService;
+use Leap\PanelBundle\Service\ImportService;
+use Leap\PanelBundle\Service\ExportService;
+use Leap\PanelBundle\Service\UserService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
@@ -221,7 +221,7 @@ class DataTableController extends AExportableTabController
      */
     public function dataSectionAction($table_id)
     {
-        return $this->templating->renderResponse("ConcertoPanelBundle:DataTable:data_section.html.twig", array(
+        return $this->templating->renderResponse("LeapPanelBundle:DataTable:data_section.html.twig", array(
             "table" => $this->service->get($table_id),
             "columns" => $this->service->getColumns($table_id)
         ));

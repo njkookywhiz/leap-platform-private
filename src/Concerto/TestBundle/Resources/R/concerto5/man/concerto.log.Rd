@@ -1,5 +1,5 @@
-\name{concerto.log}
-\alias{concerto.log}
+\name{leap.log}
+\alias{leap.log}
 \title{
     Logs
 }
@@ -7,7 +7,7 @@
     Logs message
 }
 \usage{
-    concerto.log(obj)
+    leap.log(obj)
 }
 \arguments{
     \item{obj}{
@@ -30,7 +30,7 @@
 \seealso{
 }
 \examples{
-    concerto.log("success")
+    leap.log("success")
 }
 
 \keyword{log}

@@ -1,5 +1,5 @@
-concerto.session.update = function(){
-  concerto.log("updating session...")
+leap.session.update = function(){
+  leap.log("updating session...")
 
   sql = sprintf("UPDATE TestSession SET
     status = '%s',
@@ -7,11 +7,11 @@ concerto.session.update = function(){
     error = '%s',
     updated = CURRENT_TIMESTAMP
     WHERE id='%s'",
-  dbEscapeStrings(concerto$connection, toString(concerto$session$status)),
-  dbEscapeStrings(concerto$connection, toString(concerto$session$timeLimit)),
-  dbEscapeStrings(concerto$connection, toString(concerto$session$error)),
-  dbEscapeStrings(concerto$connection, toString(concerto$session$id)))
+  dbEscapeStrings(leap$connection, toString(leap$session$status)),
+  dbEscapeStrings(leap$connection, toString(leap$session$timeLimit)),
+  dbEscapeStrings(leap$connection, toString(leap$session$error)),
+  dbEscapeStrings(leap$connection, toString(leap$session$id)))
 
-  res = dbSendStatement(concerto$connection, statement = sql)
+  res = dbSendStatement(leap$connection, statement = sql)
   dbClearResult(res)
 }

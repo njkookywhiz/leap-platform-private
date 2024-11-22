@@ -11,4 +11,4 @@ function WizardParamSetter5Controller($scope, ViewTemplateCollectionService, Adm
     $scope.onPrimitiveValueChange($scope.output);
 }
 
-concertoPanel.controller('WizardParamSetter5Controller', ["$scope", "ViewTemplateCollectionService", "AdministrationSettingsService", WizardParamSetter5Controller]);
+leapPanel.controller('WizardParamSetter5Controller', ["$scope", "ViewTemplateCollectionService", "AdministrationSettingsService", WizardParamSetter5Controller]);

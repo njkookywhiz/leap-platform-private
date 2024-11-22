@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Table
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\RoleRepository")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\RoleRepository")
  */
 class Role extends \Symfony\Component\Security\Core\Role\Role
 {

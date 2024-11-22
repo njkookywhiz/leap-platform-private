@@ -43,7 +43,7 @@ WHERE
 {{loginColumn}}='{{login}}'
 AND {{enabledColumn}}=1
 "
-    user = concerto.table.query(sql, params=list(
+    user = leap.table.query(sql, params=list(
       table=columnMap$table,
       loginColumn=columnMap$columns$login,
       enabledColumn=columnMap$columns$enabled,
@@ -68,9 +68,9 @@ checkPassword = function(rawPassword, encryptedPassword, encryption) {
 
 authorizeUser = function(login, password, columnMap) {
   user = getUserByLogin(login, columnMap)
-  concerto.log(login, "login checked")
-  concerto.log(password, "password checked")
-  concerto.log(user, "user checked for password")
+  leap.log(login, "login checked")
+  leap.log(password, "password checked")
+  leap.log(user, "user checked for password")
 
   if(!is.null(user) && checkPassword(password, user[[columnMap$columns$password]], userBankEncryption)) {
     return(user)
@@ -82,9 +82,9 @@ authorizeUser = function(login, password, columnMap) {
 columnMap = getColumnMap()
 user = authorizeUser(login, password, columnMap)
 if(is.null(user)) {
-  concerto.log(paste0("user ",login," unauthorized"), title="authorization result")
+  leap.log(paste0("user ",login," unauthorized"), title="authorization result")
   .branch = "unauthorized"
 } else {
-  concerto.log(paste0("user ",login," authorized"), title="authorization result")
+  leap.log(paste0("user ",login," authorized"), title="authorization result")
   .branch = "authorized"
 }

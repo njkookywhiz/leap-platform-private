@@ -1,6 +1,6 @@
-concerto.event.fire = function(name, args){
-    concerto.log(name, "event fire")
-    for(fun in concerto$events[[name]]) {
+leap.event.fire = function(name, args){
+    leap.log(name, "event fire")
+    for(fun in leap$events[[name]]) {
         do.call(fun, args, envir = .GlobalEnv)
     }
 }

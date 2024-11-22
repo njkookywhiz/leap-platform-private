@@ -1,5 +1,5 @@
-\name{concerto.var.set}
-\alias{concerto.var.set}
+\name{leap.var.set}
+\alias{leap.var.set}
 \alias{c.set}
 \title{
     Global variables
@@ -8,7 +8,7 @@
     Sets global variable value
 }
 \usage{
-    concerto.var.set(name, value)
+    leap.var.set(name, value)
 }
 \arguments{
     \item{name}{
@@ -43,7 +43,7 @@
 \seealso{
 }
 \examples{
-    concerto.var.set("score", 100)
+    leap.var.set("score", 100)
 }
 
 \keyword{variable}

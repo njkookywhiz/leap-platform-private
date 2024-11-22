@@ -106,7 +106,7 @@ function ViewTemplateController($scope, $uibModal, $http, $filter, $state, $sce,
     };
 
     $scope.updateCKEditorCSS = function () {
-        var styleId = 'ckeditor-concerto-template';
+        var styleId = 'ckeditor-leap-template';
         if (CKEDITOR.instances.templateHtml && CKEDITOR.instances.templateHtml.document && CKEDITOR.instances.templateHtml.document.$) {
             var doc = CKEDITOR.instances.templateHtml.document.$;
             var style = doc.getElementById(styleId);
@@ -164,4 +164,4 @@ function ViewTemplateController($scope, $uibModal, $http, $filter, $state, $sce,
 }
 
 ViewTemplateController.prototype = Object.create(BaseController.prototype);
-concertoPanel.controller('ViewTemplateController', ["$scope", "$uibModal", "$http", "$filter", "$state", "$sce", "$timeout", "uiGridConstants", "GridService", "DialogsService", "DataTableCollectionService", "TestCollectionService", "TestWizardCollectionService", "UserCollectionService", "ViewTemplateCollectionService", "AdministrationSettingsService", "AuthService", "ScheduledTasksCollectionService", ViewTemplateController]);
+leapPanel.controller('ViewTemplateController', ["$scope", "$uibModal", "$http", "$filter", "$state", "$sce", "$timeout", "uiGridConstants", "GridService", "DialogsService", "DataTableCollectionService", "TestCollectionService", "TestWizardCollectionService", "UserCollectionService", "ViewTemplateCollectionService", "AdministrationSettingsService", "AuthService", "ScheduledTasksCollectionService", ViewTemplateController]);

@@ -1,12 +1,12 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
-use Concerto\PanelBundle\Repository\TestWizardStepRepository;
-use Concerto\PanelBundle\Entity\TestWizardStep;
-use Concerto\PanelBundle\Entity\User;
-use Concerto\PanelBundle\Repository\TestWizardRepository;
-use Concerto\PanelBundle\Security\ObjectVoter;
+use Leap\PanelBundle\Repository\TestWizardStepRepository;
+use Leap\PanelBundle\Entity\TestWizardStep;
+use Leap\PanelBundle\Entity\User;
+use Leap\PanelBundle\Repository\TestWizardRepository;
+use Leap\PanelBundle\Security\ObjectVoter;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;

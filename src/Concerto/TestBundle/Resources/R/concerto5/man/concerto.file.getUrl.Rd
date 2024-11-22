@@ -1,5 +1,5 @@
-\name{concerto.file.getUrl}
-\alias{concerto.file.getUrl}
+\name{leap.file.getUrl}
+\alias{leap.file.getUrl}
 \title{
     Files URL
 }
@@ -7,7 +7,7 @@
     Gets URL of filename in public directory.
 }
 \usage{
-    concerto.file.getUrl(filename, noCache=F)
+    leap.file.getUrl(filename, noCache=F)
 }
 \arguments{
     \item{filename}{
@@ -33,7 +33,7 @@
 \seealso{
 }
 \examples{
-    plot_url <- concerto.file.getUrl("plot.png")
+    plot_url <- leap.file.getUrl("plot.png")
 }
 
 \keyword{table}

@@ -10,7 +10,7 @@ for(name in .dynamicInputs) {
   }
 }
 
-results = concerto5:::concerto.test.run(test, params=params)
+results = leap5:::leap.test.run(test, params=params)
 for(name in .dynamicReturns) {
   assign(name, results[[name]])
 }

@@ -1,84 +1,84 @@
-concerto.session.unserialize <- function(response = NULL, hash = NULL){
-    concerto.log("unserializing session...")
+leap.session.unserialize <- function(response = NULL, hash = NULL){
+    leap.log("unserializing session...")
 
     prevEnv = new.env()
-    if(concerto$sessionStorage == "redis") {
+    if(leap$sessionStorage == "redis") {
         #TODO decompress
-        redisBinarySession = concerto$redisConnection$GET(concerto$session$hash)
+        redisBinarySession = leap$redisConnection$GET(leap$session$hash)
         if(!is.null(redisBinarySession)) {
-            prevEnv$concerto = unserialize(redisBinarySession)
+            prevEnv$leap = unserialize(redisBinarySession)
         } else {
             return(F)
         }
     } else {
-        sessionFileName = concerto$sessionFile
+        sessionFileName = leap$sessionFile
         if(!is.null(hash)) {
-            sessionFileName = gsub(concerto$session$hash, hash, sessionFileName)
+            sessionFileName = gsub(leap$session$hash, hash, sessionFileName)
         }
         if(!file.exists(sessionFileName)) {
-            concerto.log(sessionFileName, "session file not found")
+            leap.log(sessionFileName, "session file not found")
             return(F)
         }
-        concerto.log(sessionFileName)
+        leap.log(sessionFileName)
 
         load(sessionFileName, envir=prevEnv)
     }
 
-    concerto$cache <<- prevEnv$concerto$cache
-    concerto$globals <<- prevEnv$concerto$globals
-    concerto$templateParams <<- prevEnv$concerto$templateParams
-    concerto$globalTemplateParams <<- prevEnv$concerto$globalTemplateParams
-    concerto$flow <<- prevEnv$concerto$flow
-    concerto$lastSubmitTime <<- prevEnv$concerto$lastSubmitTime
-    concerto$lastSubmitResult <<- prevEnv$lastSubmitResult
-    concerto$lastSubmitId <<- prevEnv$lastSubmitId
-    concerto$lastKeepAliveTime <<- prevEnv$concerto$lastKeepAliveTime
-    concerto$bgWorkers <<- prevEnv$concerto$bgWorkers
-    concerto$headers <<- prevEnv$concerto$headers
+    leap$cache <<- prevEnv$leap$cache
+    leap$globals <<- prevEnv$leap$globals
+    leap$templateParams <<- prevEnv$leap$templateParams
+    leap$globalTemplateParams <<- prevEnv$leap$globalTemplateParams
+    leap$flow <<- prevEnv$leap$flow
+    leap$lastSubmitTime <<- prevEnv$leap$lastSubmitTime
+    leap$lastSubmitResult <<- prevEnv$lastSubmitResult
+    leap$lastSubmitId <<- prevEnv$lastSubmitId
+    leap$lastKeepAliveTime <<- prevEnv$leap$lastKeepAliveTime
+    leap$bgWorkers <<- prevEnv$leap$bgWorkers
+    leap$headers <<- prevEnv$leap$headers
     if(!is.null(response)) {
-        concerto$lastResponse <<- response
+        leap$lastResponse <<- response
     } else {
-        concerto$lastResponse <<- prevEnv$concerto$lastResponse
+        leap$lastResponse <<- prevEnv$leap$lastResponse
     }
-    concerto$skipTemplateOnResume <<- prevEnv$concerto$skipTemplateOnResume
-    concerto$events <<- prevEnv$concerto$events
+    leap$skipTemplateOnResume <<- prevEnv$leap$skipTemplateOnResume
+    leap$events <<- prevEnv$leap$events
     rm(prevEnv)
 
-    concerto.log("session unserialized")
+    leap.log("session unserialized")
 
     #non submit resume
-    if(is.null(response) && concerto$runnerType == RUNNER_SERIALIZED) {
-        concerto$resuming <<- T
-        concerto$resumeIndex <<- 0
-        concerto.test.run(concerto$flow[[1]]$id, params=concerto$flow[[1]]$params)
-        concerto5:::concerto.session.stop(STATUS_FINALIZED, RESPONSE_FINISHED)
+    if(is.null(response) && leap$runnerType == RUNNER_SERIALIZED) {
+        leap$resuming <<- T
+        leap$resumeIndex <<- 0
+        leap.test.run(leap$flow[[1]]$id, params=leap$flow[[1]]$params)
+        leap5:::leap.session.stop(STATUS_FINALIZED, RESPONSE_FINISHED)
     }
 
     if (!is.null(response$code) && response$code == RESPONSE_SUBMIT) {
-        concerto$lastKeepAliveTime <<- as.numeric(Sys.time())
-        concerto$lastSubmitTime <<- as.numeric(Sys.time())
+        leap$lastKeepAliveTime <<- as.numeric(Sys.time())
+        leap$lastSubmitTime <<- as.numeric(Sys.time())
 
-        if(!is.null(concerto$lastSubmitId) && concerto$lastSubmitId == response$values$submitId) {
-            concerto5:::concerto.server.respond(RESPONSE_VIEW_TEMPLATE, concerto$lastSubmitResult)
-            concerto5:::concerto.session.stop(STATUS_RUNNING)
+        if(!is.null(leap$lastSubmitId) && leap$lastSubmitId == response$values$submitId) {
+            leap5:::leap.server.respond(RESPONSE_VIEW_TEMPLATE, leap$lastSubmitResult)
+            leap5:::leap.session.stop(STATUS_RUNNING)
         }
 
-        concerto.event.fire("onTemplateSubmit", list(response=response$values))
-        concerto$queuedResponse <<- response$values
+        leap.event.fire("onTemplateSubmit", list(response=response$values))
+        leap$queuedResponse <<- response$values
     } else if(!is.null(response$code) && response$code == RESPONSE_WORKER) {
-        concerto$lastKeepAliveTime <<- as.numeric(Sys.time())
+        leap$lastKeepAliveTime <<- as.numeric(Sys.time())
         result = list()
-        if(!is.null(response$values$bgWorker) && response$values$bgWorker %in% ls(concerto$bgWorkers)) {
-            concerto.log(paste0("running worker: ", response$values$bgWorker))
-            result = do.call(concerto$bgWorkers[[response$values$bgWorker]], list(response=response$values))
+        if(!is.null(response$values$bgWorker) && response$values$bgWorker %in% ls(leap$bgWorkers)) {
+            leap.log(paste0("running worker: ", response$values$bgWorker))
+            result = do.call(leap$bgWorkers[[response$values$bgWorker]], list(response=response$values))
         }
-        concerto5:::concerto.session.serialize()
-        concerto5:::concerto.server.respond(RESPONSE_WORKER, result)
-        concerto5:::concerto.session.stop(STATUS_RUNNING)
+        leap5:::leap.session.serialize()
+        leap5:::leap.server.respond(RESPONSE_WORKER, result)
+        leap5:::leap.session.stop(STATUS_RUNNING)
     } else if(!is.null(response$code) && response$code == RESPONSE_RESUME) {
-        concerto$lastKeepAliveTime <<- as.numeric(Sys.time())
-        if(concerto$skipTemplateOnResume) {
-            concerto$queuedResponse <<- list()
+        leap$lastKeepAliveTime <<- as.numeric(Sys.time())
+        if(leap$skipTemplateOnResume) {
+            leap$queuedResponse <<- list()
         }
     }
 

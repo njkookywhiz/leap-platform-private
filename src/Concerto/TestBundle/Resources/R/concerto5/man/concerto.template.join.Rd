@@ -1,5 +1,5 @@
-\name{concerto.template.join}
-\alias{concerto.template.join}
+\name{leap.template.join}
+\alias{leap.template.join}
 \title{
     Template helper function.
 }
@@ -7,7 +7,7 @@
     Combines template CSS, JS and HTML.
 }
 \usage{
-    concerto.template.join(html="", css="", js="", templateId=NULL, params = list())
+    leap.template.join(html="", css="", js="", templateId=NULL, params = list())
 }
 \arguments{
     \item{html}{
@@ -42,7 +42,7 @@
 \seealso{
 }
 \examples{
-    html <- concerto.template.join(templateId=1)
+    html <- leap.template.join(templateId=1)
 }
 
 \keyword{template}

@@ -1,16 +1,16 @@
 <?php
 
-namespace Concerto\APIBundle\Entity;
+namespace Leap\APIBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\OAuthServerBundle\Entity\RefreshToken as BaseRefreshToken;
-use Concerto\PanelBundle\Entity\User;
+use Leap\PanelBundle\Entity\User;
 
 /**
  * RefreshToken
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Concerto\APIBundle\Repository\RefreshTokenRepository")
+ * @ORM\Entity(repositoryClass="Leap\APIBundle\Repository\RefreshTokenRepository")
  */
 class RefreshToken extends BaseRefreshToken
 {
@@ -30,7 +30,7 @@ class RefreshToken extends BaseRefreshToken
     protected $client;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Concerto\PanelBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Leap\PanelBundle\Entity\User")
      */
     protected $user;
 

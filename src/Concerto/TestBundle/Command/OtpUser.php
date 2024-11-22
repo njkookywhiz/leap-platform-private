@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\TestBundle\Command;
+namespace Leap\TestBundle\Command;
 
 use Scheb\TwoFactorBundle\Model\Google\TwoFactorInterface;
 

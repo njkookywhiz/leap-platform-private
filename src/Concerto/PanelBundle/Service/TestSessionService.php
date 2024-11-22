@@ -1,16 +1,16 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
-use Concerto\PanelBundle\Entity\Test;
-use Concerto\PanelBundle\Entity\TestSession;
-use Concerto\PanelBundle\Entity\User;
-use Concerto\PanelBundle\Repository\TestSessionRepository;
-use Concerto\PanelBundle\Repository\TestSessionLogRepository;
-use Concerto\PanelBundle\Repository\TestRepository;
-use Concerto\TestBundle\Service\ASessionRunnerService;
+use Leap\PanelBundle\Entity\Test;
+use Leap\PanelBundle\Entity\TestSession;
+use Leap\PanelBundle\Entity\User;
+use Leap\PanelBundle\Repository\TestSessionRepository;
+use Leap\PanelBundle\Repository\TestSessionLogRepository;
+use Leap\PanelBundle\Repository\TestRepository;
+use Leap\TestBundle\Service\ASessionRunnerService;
 use Psr\Log\LoggerInterface;
-use Concerto\PanelBundle\Entity\TestSessionLog;
+use Leap\PanelBundle\Entity\TestSessionLog;
 use Symfony\Component\Security\Core\Security;
 
 class TestSessionService

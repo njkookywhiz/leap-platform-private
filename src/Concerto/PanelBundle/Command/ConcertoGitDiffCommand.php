@@ -1,15 +1,15 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Service\GitService;
+use Leap\PanelBundle\Service\GitService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
-class ConcertoGitDiffCommand extends Command
+class LeapGitDiffCommand extends Command
 {
     const MAX_FILE_DIFF_LENGTH = 1000;
     const MAX_FILE_DIFF_NUM = 50;
@@ -29,7 +29,7 @@ class ConcertoGitDiffCommand extends Command
 
     protected function configure()
     {
-        $this->setName("concerto:git:diff")->setDescription("Performs git diff");
+        $this->setName("leap:git:diff")->setDescription("Performs git diff");
         $this->addOption("sha", null, InputOption::VALUE_OPTIONAL, "Commit to get a diff for", null);
     }
 

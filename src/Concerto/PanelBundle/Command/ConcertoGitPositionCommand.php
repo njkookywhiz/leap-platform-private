@@ -1,15 +1,15 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Service\GitService;
+use Leap\PanelBundle\Service\GitService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
-class ConcertoGitPositionCommand extends Command
+class LeapGitPositionCommand extends Command
 {
     private $gitService;
     private $localGitRepoPath;
@@ -26,7 +26,7 @@ class ConcertoGitPositionCommand extends Command
 
     protected function configure()
     {
-        $this->setName("concerto:git:position")->setDescription("Returns how many commits ahead or behind is local branch");
+        $this->setName("leap:git:position")->setDescription("Returns how many commits ahead or behind is local branch");
         $this->addArgument("direction", InputArgument::OPTIONAL, "One of the following: behind, ahead.", "behind");
     }
 

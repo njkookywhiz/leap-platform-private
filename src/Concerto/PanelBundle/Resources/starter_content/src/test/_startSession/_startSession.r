@@ -1,6 +1,6 @@
-concerto.log(user, "user")
+leap.log(user, "user")
 if(is.na(test_id) || test_id == "") {
-  test_id = concerto$mainTest$id
+  test_id = leap$mainTest$id
 }
 
 formatFields = function(user, extraFields) {
@@ -8,7 +8,7 @@ formatFields = function(user, extraFields) {
   if(!is.null(user) && !is.na(user)) { userId=user$id }
   fields = list(
     user_id=userId,
-    internal_id=concerto$session$id, 
+    internal_id=leap$session$id,
     test_id=test_id,
     finished=0
   )
@@ -40,15 +40,15 @@ insertSession = function(fields, tableMap) {
   sqlColumns = paste(getMappedColumns(ls(fields), tableMap), collapse=",")
   sqlValues = paste0("'{{",ls(fields),"}}'", collapse=",")
   sql = paste0("INSERT INTO {{table}} ({{startedTimeColumn}}, {{updateTimeColumn}}, ",sqlColumns,") VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ",sqlValues,")")
-  concerto.table.query(sql, params=append(fields, list(
+  leap.table.query(sql, params=append(fields, list(
     table=tableMap$table,
     startedTimeColumn=startedTimeColumn,
     updateTimeColumn=updateTimeColumn
   )))
-  id = concerto.table.lastInsertId()
+  id = leap.table.lastInsertId()
 
   sql = "SELECT * FROM {{table}} WHERE {{idColumn}}={{id}}"
-  session = concerto.table.query(sql, params=list(
+  session = leap.table.query(sql, params=list(
     table=tableMap$table,
     idColumn=tableMap$columns$id,
     id=id
@@ -62,7 +62,7 @@ insertSession = function(fields, tableMap) {
 resumeSession = function(user, tableMap) {
   if(is.null(user)) { return(NULL) }
 
-  session = concerto.table.query("
+  session = leap.table.query("
 SELECT * FROM {{table}} 
 WHERE 
 {{testIdColumn}} = {{testId}} AND 
@@ -82,18 +82,18 @@ ORDER BY id DESC", params=list(
 
   session = as.list(session)
   session$previousInternal_id = session$internal_id
-  session$internal_id = concerto$session$id
+  session$internal_id = leap$session$id
 
   timeLimit = as.numeric(resumableExpiration)
   if(timeLimit > 0) {
     timeDiff = as.numeric(Sys.time()) - as.numeric(strptime(session$updateTime, "%Y-%m-%d %H:%M:%S"))
     if(timeDiff > timeLimit) {
-      concerto.log("session resume time limit exceeded")
+      leap.log("session resume time limit exceeded")
       return(NULL)
     }
   }
 
-  concerto.table.query("
+  leap.table.query("
 UPDATE {{table}} 
 SET 
 {{internalIdColumn}}='{{internal_id}}', 
@@ -101,7 +101,7 @@ SET
 WHERE id={{id}}", params=list(
   table=tableMap$table,
   internalIdColumn=tableMap$columns$internal_id,
-  internal_id=concerto$session$id,
+  internal_id=leap$session$id,
   id=session$id,
   updateTimeColumn=tableMap$columns$updateTime
 ))
@@ -110,16 +110,16 @@ WHERE id={{id}}", params=list(
 }
 
 fields = formatFields(user, extraFields)
-concerto.log(fields, "fields")
+leap.log(fields, "fields")
 tableMap = fromJSON(sessionBankTable)
 
 session = NULL
 if(resumable == 1) {
   session = resumeSession(user, tableMap)
   if(restoreState == 1 && !is.null(session)) {
-    hash = concerto.table.query("SELECT hash FROM TestSession WHERE id={{id}}", list(id=session$previousInternal_id))
-    concerto.log(hash, "resuming session...")
-    if(!concerto.session.unserialize(hash=hash)) {
+    hash = leap.table.query("SELECT hash FROM TestSession WHERE id={{id}}", list(id=session$previousInternal_id))
+    leap.log(hash, "resuming session...")
+    if(!leap.session.unserialize(hash=hash)) {
       session = NULL
     }
   }
@@ -129,22 +129,22 @@ if(is.null(session)) {
 }
 
 if(preventParallelSessionUsage == 1) {
-  concerto.event.add("onTemplateSubmit", function(response) {
+  leap.event.add("onTemplateSubmit", function(response) {
     sql = "
 SELECT {{internalIdCol}}
 FROM {{table}} 
 WHERE id={{id}}"
-    internalId = concerto.table.query(sql, params=list(
+    internalId = leap.table.query(sql, params=list(
       table=tableMap$table,
       internalIdCol=tableMap$columns$internal_id,
       id=session$id
     ))[1,1]
     
-    if(internalId != concerto$session$id) {
-      concerto.log("detected parallel session usage")
-      concerto.session.stop(response=RESPONSE_SESSION_LOST)
+    if(internalId != leap$session$id) {
+      leap.log("detected parallel session usage")
+      leap.session.stop(response=RESPONSE_SESSION_LOST)
     }
   })
 }
 
-concerto.log(session, "session")
+leap.log(session, "session")

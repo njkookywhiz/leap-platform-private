@@ -1,5 +1,5 @@
-concerto.template.insertParams = function(html,params=list(),removeMissing=T){
-  params = concerto.template.makeParams(params)
+leap.template.insertParams = function(html,params=list(),removeMissing=T){
+  params = leap.template.makeParams(params)
 
   insertRegex = "\\{\\{[^(\\}\\})|(\\{\\{)]*\\}\\}"
   matches <- unlist(regmatches(html,gregexpr(insertRegex,html)))
@@ -10,10 +10,10 @@ concerto.template.insertParams = function(html,params=list(),removeMissing=T){
       value <- gsub("\\{\\{", "", matches[index])
       value <- gsub("\\}\\}", "", value)
       if(substring(value, 1, 9) == "template:") {
-        insert = concerto.directive.template(substring(value,10), params)
+        insert = leap.directive.template(substring(value,10), params)
         html <- gsub(matches[index], insert, html, fixed=TRUE)
       } else if(substring(value, 1, 6) == "trans:") {
-        insert = concerto.directive.trans(substring(value,7), params)
+        insert = leap.directive.trans(substring(value,7), params)
         html <- gsub(matches[index], insert, html, fixed=TRUE)
       } else if(!is.null(params[[value]]) && !is.na(params[[value]])){
         insert = as.character(params[[value]])

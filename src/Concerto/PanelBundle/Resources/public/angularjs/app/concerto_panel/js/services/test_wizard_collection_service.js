@@ -1,4 +1,4 @@
-concertoPanel.factory('TestWizardCollectionService', function (BaseCollectionService) {
+leapPanel.factory('TestWizardCollectionService', function (BaseCollectionService) {
     let collectionService = Object.create(BaseCollectionService);
     collectionService.collectionPath = Paths.TEST_WIZARD_COLLECTION;
     collectionService.userRoleRequired = "role_wizard";

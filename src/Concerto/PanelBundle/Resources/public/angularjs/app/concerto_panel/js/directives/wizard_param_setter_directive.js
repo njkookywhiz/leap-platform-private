@@ -1,4 +1,4 @@
-angular.module('concertoPanel').directive('wizardParamSetter', ["$compile", "$templateCache", "$uibModal", "TestWizardParam", function ($compile, $templateCache, $uibModal, TestWizardParam) {
+angular.module('leapPanel').directive('wizardParamSetter', ["$compile", "$templateCache", "$uibModal", "TestWizardParam", function ($compile, $templateCache, $uibModal, TestWizardParam) {
     return {
         restrict: 'E',
         scope: {

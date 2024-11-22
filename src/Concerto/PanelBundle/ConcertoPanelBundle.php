@@ -1,9 +1,9 @@
 <?php
 
-namespace Concerto\PanelBundle;
+namespace Leap\PanelBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ConcertoPanelBundle extends Bundle
+class LeapPanelBundle extends Bundle
 {
 }

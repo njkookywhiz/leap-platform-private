@@ -1,5 +1,5 @@
-concerto.db.connect = function(driver, username, password, dbname, host, unix_socket, port){
-    concerto.log(paste0("connecting with db using ",driver))
+leap.db.connect = function(driver, username, password, dbname, host, unix_socket, port){
+    leap.log(paste0("connecting with db using ",driver))
     con = NULL
     if (driver == "pdo_mysql") {
         require("RMySQL")

@@ -1,6 +1,6 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
@@ -123,7 +123,7 @@ class ImportService
         $extension = pathinfo($file)["extension"];
         $data = null;
         switch ($extension) {
-            case "concerto":
+            case "leap":
                 $data = json_decode(gzuncompress($file_content), true);
                 break;
             case "yml":
@@ -278,7 +278,7 @@ class ImportService
         $app = new Application($this->kernel);
         $app->setAutoExit(false);
         $in = new ArrayInput([
-            "command" => "concerto:task:content:import",
+            "command" => "leap:task:content:import",
             "input" => $file,
             "--instant-run" => !$scheduled,
             "--instructions" => $exportInstructions

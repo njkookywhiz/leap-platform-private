@@ -12,4 +12,4 @@ function MainController($scope, i18nService, RDocumentation, AdministrationSetti
     });
 }
 
-concertoPanel.controller('MainController', ["$scope", "i18nService", "RDocumentation", "AdministrationSettingsService", "DataTableCollectionService", "TestCollectionService", "TestWizardCollectionService", "UserCollectionService", "ViewTemplateCollectionService", "AuthService", MainController]);
+leapPanel.controller('MainController', ["$scope", "i18nService", "RDocumentation", "AdministrationSettingsService", "DataTableCollectionService", "TestCollectionService", "TestWizardCollectionService", "UserCollectionService", "ViewTemplateCollectionService", "AuthService", MainController]);

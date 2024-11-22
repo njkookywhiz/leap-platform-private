@@ -1,4 +1,4 @@
-concerto_test:
-    resource: "@ConcertoTestBundle/Controller/"
+leap_test:
+    resource: "@LeapTestBundle/Controller/"
     type:     annotation
     

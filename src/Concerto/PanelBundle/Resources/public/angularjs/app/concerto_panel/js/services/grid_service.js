@@ -1,4 +1,4 @@
-concertoPanel.factory('GridService', function ($uibModal, DialogsService) {
+leapPanel.factory('GridService', function ($uibModal, DialogsService) {
     CSV.error = function (err) {
         let msg = CSV.dump(err);
         CSV.reset();

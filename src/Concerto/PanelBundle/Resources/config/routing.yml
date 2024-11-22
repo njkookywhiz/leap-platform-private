@@ -1,5 +1,5 @@
-concerto_panel:
-    resource: "@ConcertoPanelBundle/Controller/"
+leap_panel:
+    resource: "@LeapPanelBundle/Controller/"
     type:     annotation
 
 login_check:

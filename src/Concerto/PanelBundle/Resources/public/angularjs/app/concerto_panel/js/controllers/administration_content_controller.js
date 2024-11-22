@@ -375,4 +375,4 @@ function AdministrationContentController($scope, $http, DialogsService, $window,
     };
 }
 
-concertoPanel.controller('AdministrationContentController', ["$scope", "$http", "DialogsService", "$window", "FileUploader", "$uibModal", "ScheduledTasksCollectionService", AdministrationContentController]);
+leapPanel.controller('AdministrationContentController', ["$scope", "$http", "DialogsService", "$window", "FileUploader", "$uibModal", "ScheduledTasksCollectionService", AdministrationContentController]);

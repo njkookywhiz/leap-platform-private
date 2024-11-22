@@ -1,5 +1,5 @@
-\name{concerto.var.get}
-\alias{concerto.var.get}
+\name{leap.var.get}
+\alias{leap.var.get}
 \alias{c.get}
 \title{
     Global variables
@@ -8,7 +8,7 @@
     Gets global variable value
 }
 \usage{
-    concerto.var.get(name)
+    leap.var.get(name)
 }
 \arguments{
     \item{name}{
@@ -43,7 +43,7 @@
 \seealso{
 }
 \examples{
-    score <- concerto.var.get("score")
+    score <- leap.var.get("score")
 }
 
 \keyword{variable}

@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Concerto\PanelBundle;
+namespace Tests\Leap\PanelBundle;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Concerto\PanelBundle\Entity\User;
-use Concerto\PanelBundle\Entity\Role;
+use Leap\PanelBundle\Entity\User;
+use Leap\PanelBundle\Entity\Role;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Doctrine\DBAL\Platforms\MySqlPlatform;
 use Doctrine\DBAL\Platforms\PostgreSqlPlatform;
@@ -19,18 +19,18 @@ abstract class AFunctionalTest extends WebTestCase {
     protected function setUp() {
         parent::setUp();
 
-        static::truncateClass("ConcertoPanelBundle:DataTable");
-        static::truncateClass("ConcertoPanelBundle:Test");
-        static::truncateClass("ConcertoPanelBundle:TestNode");
-        static::truncateClass("ConcertoPanelBundle:TestNodePort");
-        static::truncateClass("ConcertoPanelBundle:TestNodeConnection");
-        static::truncateClass("ConcertoPanelBundle:TestSession");
-        static::truncateClass("ConcertoPanelBundle:TestSessionLog");
-        static::truncateClass("ConcertoPanelBundle:TestWizardParam");
-        static::truncateClass("ConcertoPanelBundle:TestWizardStep");
-        static::truncateClass("ConcertoPanelBundle:TestWizard");
-        static::truncateClass("ConcertoPanelBundle:TestVariable");
-        static::truncateClass("ConcertoPanelBundle:ViewTemplate");
+        static::truncateClass("LeapPanelBundle:DataTable");
+        static::truncateClass("LeapPanelBundle:Test");
+        static::truncateClass("LeapPanelBundle:TestNode");
+        static::truncateClass("LeapPanelBundle:TestNodePort");
+        static::truncateClass("LeapPanelBundle:TestNodeConnection");
+        static::truncateClass("LeapPanelBundle:TestSession");
+        static::truncateClass("LeapPanelBundle:TestSessionLog");
+        static::truncateClass("LeapPanelBundle:TestWizardParam");
+        static::truncateClass("LeapPanelBundle:TestWizardStep");
+        static::truncateClass("LeapPanelBundle:TestWizard");
+        static::truncateClass("LeapPanelBundle:TestVariable");
+        static::truncateClass("LeapPanelBundle:ViewTemplate");
     }
 
     public static function setUpBeforeClass() {
@@ -39,13 +39,13 @@ abstract class AFunctionalTest extends WebTestCase {
         self::$encoderFactory = $client->getContainer()->get("test.security.encoder_factory");
         self::$entityManager = $client->getContainer()->get("doctrine")->getManager();
 
-        $repo = self::$entityManager->getRepository("ConcertoPanelBundle:User");
+        $repo = self::$entityManager->getRepository("LeapPanelBundle:User");
         foreach ($repo->findAll() as $user) {
             self::$entityManager->remove($user);
         }
         self::$entityManager->flush();
-        static::truncateClass("ConcertoPanelBundle:User");
-        static::truncateClass("ConcertoPanelBundle:Role");
+        static::truncateClass("LeapPanelBundle:User");
+        static::truncateClass("LeapPanelBundle:Role");
 
         $role = null;
         $roles = array(
@@ -114,7 +114,7 @@ abstract class AFunctionalTest extends WebTestCase {
         $client = static::createClient();
         $client->followRedirects();
         $session = $client->getContainer()->get('session');
-        $repo = $client->getContainer()->get("doctrine")->getRepository("ConcertoPanelBundle:User");
+        $repo = $client->getContainer()->get("doctrine")->getRepository("LeapPanelBundle:User");
         $user = $repo->findOneBy(array("username" => "admin"));
         $firewall = 'admin_area';
         $token = new UsernamePasswordToken($user, null, $firewall, $user->getRoles());

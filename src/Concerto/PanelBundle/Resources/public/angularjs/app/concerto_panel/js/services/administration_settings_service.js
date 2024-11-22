@@ -1,4 +1,4 @@
-concertoPanel.factory('AdministrationSettingsService', function ($http) {
+leapPanel.factory('AdministrationSettingsService', function ($http) {
     return {
         settingsMapInitialized: false,
         settingsMapPath: Paths.ADMINISTRATION_SETTINGS_MAP,

@@ -1,6 +1,6 @@
-concerto.table.insertParams <-
+leap.table.insertParams <-
 function(sql, params = list(), connection = NULL){
-  if(is.null(connection)) { connection = concerto$connection }
+  if(is.null(connection)) { connection = leap$connection }
   matches <- unlist(regmatches(sql, gregexpr("\\{\\{[^\\}\\}]*\\}\\}", sql)))
   while(length(matches) > 0){
     index <- 1

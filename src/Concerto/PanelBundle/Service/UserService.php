@@ -1,10 +1,10 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
-use Concerto\PanelBundle\Entity\User;
-use Concerto\PanelBundle\Repository\UserRepository;
-use Concerto\PanelBundle\Repository\RoleRepository;
+use Leap\PanelBundle\Entity\User;
+use Leap\PanelBundle\Repository\UserRepository;
+use Leap\PanelBundle\Repository\RoleRepository;
 use Psr\Log\LoggerInterface;
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Google\GoogleAuthenticatorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;

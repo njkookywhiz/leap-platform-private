@@ -1,19 +1,19 @@
-concerto.test.get = function(testId, cache=NULL, includeSubObjects=F){
+leap.test.get = function(testId, cache=NULL, includeSubObjects=F){
   if(is.null(cache)) {
-    cache = concerto$cacheEnabled
+    cache = leap$cacheEnabled
   }
 
-  test = concerto$cache$tests[[as.character(testId)]]
+  test = leap$cache$tests[[as.character(testId)]]
   if(!is.null(test)) {
     if(includeSubObjects && is.null(test$variables)) {
-      test$variables = concerto5:::concerto.test.getVariables(test$id)
+      test$variables = leap5:::leap.test.getVariables(test$id)
       if(test$type == 2) {
-        test$nodes <- concerto5:::concerto.test.getNodes(test$id)
-        test$connections <- concerto5:::concerto.test.getConnections(test$id)
-        test$ports <- concerto5:::concerto.test.getPorts(test$id)
+        test$nodes <- leap5:::leap.test.getNodes(test$id)
+        test$connections <- leap5:::leap.test.getConnections(test$id)
+        test$ports <- leap5:::leap.test.getPorts(test$id)
       }
-      concerto$cache$tests[[as.character(test$id)]] <<- test
-      concerto$cache$tests[[test$name]] <<- test
+      leap$cache$tests[[as.character(test$id)]] <<- test
+      leap$cache$tests[[test$name]] <<- test
     }
     return(test)
   }
@@ -23,8 +23,8 @@ concerto.test.get = function(testId, cache=NULL, includeSubObjects=F){
     idField <- "name"
   }
 
-  testID <- dbEscapeStrings(concerto$connection,toString(testId))
-  result <- dbSendQuery(concerto$connection,sprintf("
+  testID <- dbEscapeStrings(leap$connection,toString(testId))
+  result <- dbSendQuery(leap$connection,sprintf("
   SELECT
   id,
   name,
@@ -39,24 +39,24 @@ concerto.test.get = function(testId, cache=NULL, includeSubObjects=F){
   if(dim(response)[1] > 0) {
     test = as.list(response)
     if(includeSubObjects && is.null(test$variables)) {
-      test$variables <- concerto5:::concerto.test.getVariables(test$id)
+      test$variables <- leap5:::leap.test.getVariables(test$id)
       if(test$type == 1) {
-        result = dbSendQuery(concerto$connection, paste0("
-        SELECT test_id FROM TestWizard WHERE id=",dbEscapeStrings(concerto$connection,toString(test$sourceWizard_id)),"
+        result = dbSendQuery(leap$connection, paste0("
+        SELECT test_id FROM TestWizard WHERE id=",dbEscapeStrings(leap$connection,toString(test$sourceWizard_id)),"
         "))
         sourceTestId = fetch(result,n=-1)
-        test$sourceTest <- concerto.test.get(sourceTestId, cache, includeSubObjects)
+        test$sourceTest <- leap.test.get(sourceTestId, cache, includeSubObjects)
       }
       if(test$type == 2) {
-        test$nodes <- concerto5:::concerto.test.getNodes(test$id)
-        test$connections <- concerto5:::concerto.test.getConnections(test$id)
-        test$ports <- concerto5:::concerto.test.getPorts(test$id)
+        test$nodes <- leap5:::leap.test.getNodes(test$id)
+        test$connections <- leap5:::leap.test.getConnections(test$id)
+        test$ports <- leap5:::leap.test.getPorts(test$id)
       }
     }
 
     if(cache) {
-        concerto$cache$tests[[as.character(test$id)]] <<- test
-        concerto$cache$tests[[test$name]] <<- test
+        leap$cache$tests[[as.character(test$id)]] <<- test
+        leap$cache$tests[[test$name]] <<- test
     }
   }
 

@@ -171,9 +171,9 @@ completion:
             info: 
                 directory: > 
                     为生成此文件，你需要打开打开操作应用（Windows系统- “cmd”，Linux系统的“xterm”、“konsole”或“gnome-terminal”），并定位到康测通系统安装目录。
-                console: 在此目录下，你将可以使用Symfony控制板。你需要运行“concerto:r:cache”操作
+                console: 在此目录下，你将可以使用Symfony控制板。你需要运行“leap:r:cache”操作
                 console.more: 点击来获取更多关于Symfony控制板的信息
-                output: R运行此指令可显示你的系统中所有的R语言功能，并准备所需文件。编辑R语言资源时需重新加载或打开Concerto页面。
+                output: R运行此指令可显示你的系统中所有的R语言功能，并准备所需文件。编辑R语言资源时需重新加载或打开Leap页面。
  
 flow: 
     fieldset: 

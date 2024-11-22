@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\PanelBundle\Service;
+namespace Leap\PanelBundle\Service;
 
-use Concerto\PanelBundle\DAO\DBStructureDAO;
+use Leap\PanelBundle\DAO\DBStructureDAO;
 use Doctrine\DBAL\Schema\Column;
 use Psr\Log\LoggerInterface;
 

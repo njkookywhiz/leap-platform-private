@@ -1,8 +1,8 @@
 <?php
 
-namespace Concerto\PanelBundle\Command;
+namespace Leap\PanelBundle\Command;
 
-use Concerto\PanelBundle\Service\GitService;
+use Leap\PanelBundle\Service\GitService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 
-class ConcertoGitCommitCommand extends Command
+class LeapGitCommitCommand extends Command
 {
     private $gitService;
     private $localGitRepoPath;
@@ -29,7 +29,7 @@ class ConcertoGitCommitCommand extends Command
 
     protected function configure()
     {
-        $this->setName("concerto:git:commit")->setDescription("Performs git commit");
+        $this->setName("leap:git:commit")->setDescription("Performs git commit");
         $this->addArgument("message", InputArgument::REQUIRED, "Commit message");
         $this->addArgument("username", InputArgument::REQUIRED, "Commit username");
         $this->addArgument("email", InputArgument::REQUIRED, "Commit email");

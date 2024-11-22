@@ -1,13 +1,13 @@
 <?php
 
-namespace Concerto\TestBundle\Service;
+namespace Leap\TestBundle\Service;
 
-use Concerto\PanelBundle\Entity\TestSession;
-use Concerto\PanelBundle\Repository\TestSessionRepository;
-use Concerto\PanelBundle\Service\AdministrationService;
+use Leap\PanelBundle\Entity\TestSession;
+use Leap\PanelBundle\Repository\TestSessionRepository;
+use Leap\PanelBundle\Service\AdministrationService;
 use Psr\Log\LoggerInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Concerto\PanelBundle\Service\TestSessionService;
+use Leap\PanelBundle\Service\TestSessionService;
 use Symfony\Component\Process\Process;
 
 abstract class ASessionRunnerService
@@ -86,7 +86,7 @@ abstract class ASessionRunnerService
 
     public function getRDir()
     {
-        return realpath($this->projectDir . "/src/Concerto/TestBundle/Resources/R") . "/";
+        return realpath($this->projectDir . "/src/Leap/TestBundle/Resources/R") . "/";
     }
 
     public function getROutputFilePath($session_hash)
@@ -97,7 +97,7 @@ abstract class ASessionRunnerService
 
     public function getPublicDirPath()
     {
-        return realpath($this->projectDir . "/src/Concerto/PanelBundle/Resources/public/files") . "/";
+        return realpath($this->projectDir . "/src/Leap/PanelBundle/Resources/public/files") . "/";
     }
 
     public function getPlatformUrl()
@@ -116,9 +116,9 @@ abstract class ASessionRunnerService
     {
         $path = null;
         if ($session_hash === null) {
-            $path = $this->projectDir . "/src/Concerto/TestBundle/Resources/sessions/";
+            $path = $this->projectDir . "/src/Leap/TestBundle/Resources/sessions/";
         } else {
-            $path = $this->projectDir . "/src/Concerto/TestBundle/Resources/sessions/$session_hash/";
+            $path = $this->projectDir . "/src/Leap/TestBundle/Resources/sessions/$session_hash/";
             if ($create && !file_exists($path)) {
                 mkdir($path, 0755, true);
                 mkdir($path . "files", 0755, true);
@@ -437,22 +437,22 @@ abstract class ASessionRunnerService
         $process->inheritEnvironmentVariables(true);
 
         $env = array(
-            "CONCERTO_R_APP_URL" => $appUrl,
-            "CONCERTO_R_CLIENT" => $client,
-            "CONCERTO_R_DB_CONNECTION" => $dbConnection,
-            "CONCERTO_R_MAX_EXEC_TIME" => $maxExecTime,
-            "CONCERTO_R_MAX_IDLE_TIME" => $maxIdleTime,
-            "CONCERTO_R_KEEP_ALIVE_TOLERANCE_TIME" => $keepAliveToleranceTime,
-            "CONCERTO_R_PLATFORM_URL" => $platformUrl,
-            "CONCERTO_R_INITIAL_PORT" => $initialPort,
-            "CONCERTO_R_PUBLIC_DIR" => $publicDir,
-            "CONCERTO_R_REDIS_CONNECTION" => $redisConnection,
-            "CONCERTO_R_REQUEST" => $request,
-            "CONCERTO_R_RUNNER_TYPE" => $this->runnerType,
-            "CONCERTO_R_SESSION_HASH" => $sessionHash,
-            "CONCERTO_R_SESSION_STORAGE" => $sessionStorage,
-            "CONCERTO_R_WORKING_DIR" => $workingDir,
-            "CONCERTO_R_SESSION_FILES_EXPIRATION" => $sessionFilesExpiration,
+            "LEAP_R_APP_URL" => $appUrl,
+            "LEAP_R_CLIENT" => $client,
+            "LEAP_R_DB_CONNECTION" => $dbConnection,
+            "LEAP_R_MAX_EXEC_TIME" => $maxExecTime,
+            "LEAP_R_MAX_IDLE_TIME" => $maxIdleTime,
+            "LEAP_R_KEEP_ALIVE_TOLERANCE_TIME" => $keepAliveToleranceTime,
+            "LEAP_R_PLATFORM_URL" => $platformUrl,
+            "LEAP_R_INITIAL_PORT" => $initialPort,
+            "LEAP_R_PUBLIC_DIR" => $publicDir,
+            "LEAP_R_REDIS_CONNECTION" => $redisConnection,
+            "LEAP_R_REQUEST" => $request,
+            "LEAP_R_RUNNER_TYPE" => $this->runnerType,
+            "LEAP_R_SESSION_HASH" => $sessionHash,
+            "LEAP_R_SESSION_STORAGE" => $sessionStorage,
+            "LEAP_R_WORKING_DIR" => $workingDir,
+            "LEAP_R_SESSION_FILES_EXPIRATION" => $sessionFilesExpiration,
             "R_GC_MEM_GROW" => 0
         );
         if ($this->testRunnerSettings["r_environ_path"] != null) $env["R_ENVIRON"] = $this->testRunnerSettings["r_environ_path"];

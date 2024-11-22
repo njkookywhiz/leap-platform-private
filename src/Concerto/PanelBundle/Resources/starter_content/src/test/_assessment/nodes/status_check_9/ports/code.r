@@ -47,7 +47,7 @@ stopReason = getStopReason(
   excludedItems
 )
 if(!is.na(settings$stopCheckModule) && settings$stopCheckModule != "") {
-  stopReason = concerto.test.run(settings$stopCheckModule, params=list(
+  stopReason = leap.test.run(settings$stopCheckModule, params=list(
     stopReason = stopReason,
     settings = settings,
     theta = theta,
@@ -62,7 +62,7 @@ if(!is.na(settings$stopCheckModule) && settings$stopCheckModule != "") {
   ))$stopReason
 }
 
-concerto.log(stopReason, "stopReason")
+leap.log(stopReason, "stopReason")
 
 if(is.null(stopReason)) {
   .branch = "continue"

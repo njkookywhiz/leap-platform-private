@@ -1,4 +1,4 @@
-var concertoPanel = angular.module('concertoPanel', [
+var leapPanel = angular.module('leapPanel', [
     'ngAnimate',
     'ui.bootstrap',
     'ui.grid',
@@ -25,7 +25,7 @@ var concertoPanel = angular.module('concertoPanel', [
     "ja.qr"
 ]);
 
-concertoPanel.config(function ($interpolateProvider) {
+leapPanel.config(function ($interpolateProvider) {
     //$interpolateProvider.startSymbol('//');
     //$interpolateProvider.endSymbol('//');
 }).config(function (blockUIConfig) {
@@ -250,10 +250,10 @@ angular.module('FileManagerApp').config(["fileManagerConfigProvider", function (
             pickFolders: false
         },
 
-        multipleDownloadFileName: 'concerto-files.zip',
+        multipleDownloadFileName: 'leap-files.zip',
         showExtensionIcons: true,
         isEditableFilePattern: /\.(csv|txt|diff?|patch|svg|asc|cnf|cfg|conf|html?|.html|cfm|cgi|aspx?|ini|pl|py|md|css|cs|js|jsp|log|htaccess|htpasswd|gitignore|gitattributes|env|json|atom|eml|rss|markdown|sql|xml|xslt?|sh|rb|as|bat|cmd|cob|for|ftn|frm|frx|inc|lisp|scm|coffee|php[3-6]?|java|c|cbl|go|h|scala|vb|tmpl|lock|go|yml|yaml|tsv|lst)$/i,
-        //tplPath: '/bundles/concertopanel/js/angular-filemanager/templates',
+        //tplPath: '/bundles/leappanel/js/angular-filemanager/templates',
 
         pickCallback: function (item) {
             let url = "/files" + item.fullPath();
@@ -266,7 +266,7 @@ angular.module('FileManagerApp').config(["fileManagerConfigProvider", function (
 }]);
 
 //fix for initial state on page load
-concertoPanel.run(['$state', function ($state) {
+leapPanel.run(['$state', function ($state) {
 }]);
 
 jsPlumb.importDefaults({

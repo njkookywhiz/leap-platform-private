@@ -1,9 +1,9 @@
 <?php
 
-namespace Concerto\TestBundle;
+namespace Leap\TestBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ConcertoTestBundle extends Bundle
+class LeapTestBundle extends Bundle
 {
 }

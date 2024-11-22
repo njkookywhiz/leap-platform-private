@@ -1,11 +1,11 @@
 <?php
 
-namespace Concerto\TestBundle\Service;
+namespace Leap\TestBundle\Service;
 
-use Concerto\PanelBundle\Entity\TestSession;
-use Concerto\PanelBundle\Repository\TestSessionRepository;
-use Concerto\PanelBundle\Service\AdministrationService;
-use Concerto\PanelBundle\Service\TestSessionService;
+use Leap\PanelBundle\Entity\TestSession;
+use Leap\PanelBundle\Repository\TestSessionRepository;
+use Leap\PanelBundle\Service\AdministrationService;
+use Leap\PanelBundle\Service\TestSessionService;
 use Psr\Log\LoggerInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Process\Process;

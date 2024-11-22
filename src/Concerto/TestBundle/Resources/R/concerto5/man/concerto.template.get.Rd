@@ -1,5 +1,5 @@
-\name{concerto.template.get}
-\alias{concerto.template.get}
+\name{leap.template.get}
+\alias{leap.template.get}
 \title{
     Template object retrieval
 }
@@ -7,14 +7,14 @@
     Gets template object.
 }
 \usage{
-    concerto.template.get(templateID, workspaceID = concerto$workspaceID)
+    leap.template.get(templateID, workspaceID = leap$workspaceID)
 }
 \arguments{
     \item{templateID}{
         Template ID or name.
     }
     \item{workspaceID}{
-        Concerto workspace ID where template is located.
+        Leap workspace ID where template is located.
     }
 }
 \details{
@@ -41,8 +41,8 @@
 \seealso{
 }
 \examples{
-    template1 <- concerto.template.get(1)
-    template2 <- concerto.template.get("some_other_template")
+    template1 <- leap.template.get(1)
+    template2 <- leap.template.get("some_other_template")
 }
 
 \keyword{template}

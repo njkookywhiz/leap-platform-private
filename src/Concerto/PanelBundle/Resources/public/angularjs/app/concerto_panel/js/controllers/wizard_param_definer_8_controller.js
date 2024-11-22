@@ -9,4 +9,4 @@ function WizardParamDefiner8Controller($scope, TestCollectionService, Administra
   $scope.administrationSettingsService = AdministrationSettingsService;
 };
 
-concertoPanel.controller('WizardParamDefiner8Controller', ["$scope", "TestCollectionService", "AdministrationSettingsService", WizardParamDefiner8Controller]);
+leapPanel.controller('WizardParamDefiner8Controller', ["$scope", "TestCollectionService", "AdministrationSettingsService", WizardParamDefiner8Controller]);

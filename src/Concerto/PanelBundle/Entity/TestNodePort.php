@@ -1,19 +1,19 @@
 <?php
 
-namespace Concerto\PanelBundle\Entity;
+namespace Leap\PanelBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Concerto\PanelBundle\Entity\TestNode;
-use Concerto\PanelBundle\Entity\TestVariable;
-use Concerto\PanelBundle\Entity\TestNodeConnection;
-use Concerto\PanelBundle\Entity\TestWizardParam;
+use Leap\PanelBundle\Entity\TestNode;
+use Leap\PanelBundle\Entity\TestVariable;
+use Leap\PanelBundle\Entity\TestNodeConnection;
+use Leap\PanelBundle\Entity\TestWizardParam;
 use \Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table
- * @ORM\Entity(repositoryClass="Concerto\PanelBundle\Repository\TestNodePortRepository")
+ * @ORM\Entity(repositoryClass="Leap\PanelBundle\Repository\TestNodePortRepository")
  * @UniqueEntity(fields={"node","type","name"}, ignoreNull="node", message="validate.test.ports.unique")
  * @ORM\HasLifecycleCallbacks
  */

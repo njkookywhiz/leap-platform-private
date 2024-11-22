@@ -1,14 +1,14 @@
-concerto.worker.getTemplate = function(response) {
-    template <- concerto.template.get(response$templateId)
+leap.worker.getTemplate = function(response) {
+    template <- leap.template.get(response$templateId)
     if (is.null(template)) return(NA)
 
-    concerto.log(template)
+    leap.log(template)
 
     content = list(
-        head=concerto.template.insertParams(template$head, response$params),
-        css=concerto.template.insertParams(template$css, response$params),
-        js=concerto.template.insertParams(template$js, response$params),
-        html=concerto.template.insertParams(template$html, response$params)
+        head=leap.template.insertParams(template$head, response$params),
+        css=leap.template.insertParams(template$css, response$params),
+        js=leap.template.insertParams(template$js, response$params),
+        html=leap.template.insertParams(template$html, response$params)
     )
     return(content)
 }
