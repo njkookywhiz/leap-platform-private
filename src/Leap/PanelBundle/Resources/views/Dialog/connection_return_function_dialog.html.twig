@@ -1,0 +1,20 @@
+{% trans_default_domain "Test" %}
+<div type="text/ng-template" id="connection_return_function_dialog.html">
+    <div class="modal-body">
+    {% embed "LeapPanelBundle::form_v_single.html.twig" %}
+        {% trans_default_domain "panel" %}
+        {% block legend %}{%verbatim%}{{title}}{%endverbatim%}{% endblock %}
+        {% block legend_tooltip %}{{ "flow.fieldset.return_function.tooltip"|trans({},"Test") }}{% endblock %}
+        {% block control %}
+            {{ include("LeapPanelBundle::code_mirror_header.html.twig", {mode: 'R'} ) }}
+            <ui-codemirror ng-model="object.returnFunction" ui-codemirror-opts="codeOptions" ui-refresh='codemirrorForceRefresh'></ui-codemirror>
+        {% endblock %}
+    {% endembed %}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="change()" ng-disabled="!editable">{{ 'form.button.save'|trans({},"panel") }}</button>
+        <button class="btn btn-danger" ng-click="reset()" ng-disabled="!editable">{{ 'flow.buttons.reset_to_default'|trans }}</button>
+        <button class="btn btn-danger" ng-click="delete()" ng-disabled="!editable">{{ 'flow.buttons.remove_connection'|trans }}</button>
+        <button class="btn btn-warning" ng-click="cancel()">{{ 'form.button.cancel'|trans({},"panel") }}</button>
+    </div>
+</div>

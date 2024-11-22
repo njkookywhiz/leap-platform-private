@@ -1,0 +1,259 @@
+breadcrumb: Administracja
+form:
+    title: Ustawienia
+    settings:
+        home_test: Domowy test
+        home_test.tooltip: Test, który należy uruchomić używając głównego URL aplikacji.
+        session_limit: Limit sesji
+        session_limit.tooltip: Maksymalna dostępna liczba równoczesnych sesji testów.
+        api_enabled: API włączone
+        api_enabled.tooltip: Włącz API
+        session_runner_service: Serwis sesji
+        session_runner_service.tooltip: |
+            Może być jednym z dwojga:
+            <ul>
+                <li>
+                    Stały
+                    <ul>
+                        <li><strong>bardzo wysokie</strong> zużycie RAM</li>
+                        <li>nieco zmniejszone zużycie CPU</li>
+                        <li>nieco szybszy</li>
+                        <li>zezwala na testy czysto-kodowe z wysyłaniem stron</li>
+                    </ul>
+                </li>
+                <li>
+                    Zserializowany (zalecany)
+                    <ul>
+                        <li><strong>bardzo niskie</strong> zużycie RAM</li>
+                        <li>nieco zwiększone zużycie CPU</li>
+                        <li>nieco wolniejszy</li>
+                        <li>wymusza wyświetlanie szablonów poprzez węzły</li>
+                    </ul>
+                </li>
+            </ul>
+        
+messages:
+    fieldset:
+        legend: Wiadomości
+        legend.tooltip: Wiadomości
+    list:
+        fields: 
+            time: Czas
+            category: Kategoria
+            category.system: Systemowe
+            category.test: Testu
+            category.global: Globalne
+            category.local: Localne
+            category.changelog: Changelog
+            subject: Temat
+            message: Wiadomość
+        buttons:
+            refresh: Odśwież
+            delete_selected: Usuń wybrane
+            clear: Wyczyść wszystkie
+            delete: Usuń
+    dialogs:
+        title:
+            delete: Usuwanie wiadomości
+            clear: Usuwanie wszystkich wiadomości
+        message:
+            delete: Jesteś pewien, że chcesz usunąć wybrane wiadomości?
+            clear: Jesteś pewien, że chcesz usunąć wszystkie wiadomości?
+
+content:
+    fieldset:
+        legend: Zawartość
+        legend.tooltip: Import i eksport zawartości
+    import: Import
+    export: Eksport
+    last_import_time: Czas ostatniego importu
+    url: URL
+    url.tooltip: |
+        URL z którego należy pobrać zawartość do pobrania. Może być jednym z:
+        <ul>
+            <li>zdalny URL wskazujący na jedno-plikowy eksport (może być zip); jedynie protokoły HTTP i HTTPS są dozwolone</li>
+            <li>ścieżka plików; może wskazywać na katalog lub plik eksportu (zip dozwolony); <strong>.</strong> wskaże na katalog z domyślną startową zawartością</li>
+        </ul>
+    file: Plik
+    file.tooltip: Wysyłalny plik eksportu. Gdy zostanie wysłany, pole \'URL\' będzie ignorowane.
+    clear: usuń
+    transfer_options: Opcje transferu
+    transfer_options.tooltip: |
+        Zawiera specyficzne dla obiektu opcje transferu. Np. aby podmienić dane w tabeli danych na te z pliku importu / zawrzeć dane tabeli w pliku eksportu:
+        <pre>[
+            {
+                "class_name": "DataTable",
+                "name": "MyTableName",
+                "data": 2
+            }
+        ]</pre>
+    import_from_file: Zawartość zostanie zaimportowana z wysłanego pliku w polu 'Plik'.
+    import_from_url: Zawartość zostanie zaimportowana z pola 'URL'.
+    importing_content: Importowanie zawartości
+    import_prompt: Jesteś pewien, że chcesz zaimportować zawartość? Tej operacji nie można cofnąć. Upewnij się, że posiadasz kopie zapasową swojej obecnej zawartości zanim kontynuujesz.
+    import_failure: Import nie powiódł się
+
+git:
+    status:
+        behind: "Commity do tyłu:"
+        ahead: "Commity do przodu:"
+        local_changes: "Lokalne zmiany:"
+        local_changes.no_changes: "Brak zmian"
+        local_changes.uncommitted_changes: "Nie zcommitowane zmiany"
+    history:
+        title: Historia
+        no_commits: Brak commitów na ten moment
+        list:
+            sha: SHA
+            committer: Commitujący
+            time_ago: Czas temu
+            subject: Temat
+            ref: Ref
+    enable:
+        title: Włączenie Git
+        title.tooltip: Włącza integracje Git i klonuje repozytorium Git. Włączenie Git nie zmodyfikuje jeszcze twojej zawartości.
+        url: "URL Git:"
+        url.tooltip: URL repozytorium Git
+        branch: "Gałąź Git:"
+        branch.tooltip: Nazwa gałęzi repozytorium Git
+        login: "Login Git:"
+        login.tooltip: Login użytkownika Git
+        password: "Hasło Git:"
+        password.tooltip: Hasło użytkownika Git
+        button: Włącz Git
+    disable:
+        title: Wyłączania Git
+        confirm: Napewno wyłączyć integracje Git?
+        button: Wyłącz Git
+    diff:
+        sha: "{0} diff"
+        local: Diff kopii roboczej
+    refresh:
+        title: Odświeżanie statusu Git
+        button: Odśwież
+    commit:
+        title: Commitowanie zmian
+        title.tooltip: Commituje lokalne zmiany
+        message: Wiadomość
+        message.tooltip: Wiadomość commitu Git, która będzie widoczna w historii.
+        success: Zmiany commitowane
+        failure: Commit Git się nie powiódł
+        button: Commit
+    reset:
+        title: Reset kopii roboczej
+        confirm: Zresetuje to twoją kopię roboczą do ostatniego commitu. Nie usunię to nowo dodanych najwyższych obiektów. Napewno kontynuować?
+        button: Reset
+    push:
+        title: Pchnięcie lokalnych commitów do zdalnego repozytorium
+        confirm: Napewno pchać lokalne commity do zdalnego repozytorium?
+        failure: Nie udało się pchnąc lokalnych commitów
+        button: Pchnij
+    pull:
+        title: Pobieranie commitów ze zdalnego repozytorium
+        confirm: Napewno pobrać commity ze zdalnego repozytorium?
+        button: Pobierz
+    update:
+        title: Aktualizacja lokalnych zmian
+        button: Zaktualizuj lokalne zmiany
+    latest_operation: "Ostatnia operacja Git:"
+    no_git_task: Żadne zadanie Git nie zostało jeszcze uruchomione.
+    task:
+        started: Rozpoczęte
+        description: Opis
+        output: Wyjście
+        status: Status
+        
+usage_charts:
+    fieldset:
+        legend: Wykresy użycia
+        legend.tooltip: Wykresy użycia
+    buttons: 
+        refresh: Odśwież
+        clear: Wyczyść dane
+    dialog:
+        title:
+            clear: Usuwanie danych użycia
+        confirm:
+            clear: Jesteś pewien, że chcesz usunąć wszystkie dane użycia?
+    filter:
+        today: Dzisiaj
+        specific_date: Wybrana data
+        date_range: Zakres dat
+        
+packages:
+    fieldset:
+        legend: Pakiety R
+        legend.tooltip: Pakiety R
+    list:
+        buttons:
+            refresh: Odśwież
+            report: Raport pakietów
+            install: Instalacja
+    dialog:
+        title: 
+            report: Raport pakietów R
+            report_tooltip: Raport pakietów R
+            installation: Instalacja pakietu R
+            installation.tooltip: Instalacja pakietu R
+            installation_failed: Instalacja pakietu R nie powiodła się
+        content:
+            report_failed: Raport pakietów R nie powiódł się.
+        fields:
+            method: Metoda
+            method.tooltip: Metoda instalacji pakietu R
+            method.latest: Najnowsza wersja
+            method.specific: Konkretna wersja
+            name: Nazwa
+            name.tooltip: Nazwa pakietu R
+            mirror: URL lustra
+            mirror.tooltip: URL serweru lustra pakietu R
+            url: URL pakietu
+            url.tooltip: URL źródła pakietu R
+        buttons:
+            install: Instaluj
+            cancel: Anuluj
+        
+tasks:
+    list:
+        fields:
+            updated: Zaktualizowane
+            status: Status
+            status.pending: W kolejce
+            status.ongoing: Trwa
+            status.completed: Zakończone
+            status.failed: Nieudane
+            status.canceled: Anulowane
+            description: Opis
+            output: Wyjście
+    ongoing_dialog:
+        title: Trwają zaplanowane zadania
+        refresh_prompt: Wszystkie zaplanowane zadania zostały zakończone. Odśwież w dogodnym momencie.
+        button:
+            return: Powrót
+            refresh: Odśwież
+        
+api_clients:
+    fieldset:
+        legend: klienci API
+        legend.tooltip: klienci API
+    list: 
+        fields: 
+            id: Id
+            secret: Sekret
+        buttons:
+            refresh: Odśwież
+            add: Dodaj nowego
+            delete_selected: Usuń wybrane
+            clear: Wczyść klientów
+            delete: Usuń
+    dialogs:
+        title:
+            delete: Usuwanie klienta API
+            clear: Usuwanie wszystkich klientów API
+        message:
+            delete: Jesteś pewien, że chcesz usunąć wybranych klientów API?
+            clear: Jesteś pewien, że chcesz usunąc wszystkich klientów API?
+
+alerts:
+    no_usage_data: Obecnie brak danych użycia.
+    api_disabled: API jest obecnie wyłączone.

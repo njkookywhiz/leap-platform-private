@@ -1,0 +1,189 @@
+header:
+  logged.user: 'Zalogowany użytkownik: {0}'
+  logout: Wyloguj
+  enableMFA: Włącz MFA
+  disableMFA: Wyłącz MFA
+
+tab:
+  wizards: Kreatory testów
+  wizards.tooltip: To jest okno z kreatorami testów
+  tests: Testy
+  tests.tooltip: To jest okno z testami
+  templates: Szablony widoków
+  templates.tooltip: To jest okno z szablonami widoków
+  tables: Tabele danych
+  tables.tooltip: To jest okno z tabelami danych
+  users: Użytkownicy
+  users.tooltip: To jest okno z użytkownikami
+  files: Pliki
+  files.tooltip: Okno z menadżerem plików
+  administration: Administracja
+  administration.tooltip: To jest okno administracyjne
+
+list:
+  accessibility:
+    public: publiczna
+    group: grupowa
+    private: prywatna
+  field:
+    id: Id
+    info: Info
+    updated.on: Ost. akt. w
+    updated.by: Ost. akt. przez
+    type: Typ
+    exists: Istnieje
+    action: Akcja
+    data: Dane
+    data.not_applicable: Nie dotyczy
+    data.leave: Zostaw
+    data.include: Dołącz
+    data.ignore: Ignoruj
+    data.replace: Zamień
+    data_num: Il. danych
+    rename: Zm. nazwy
+    safe: Bezpieczne
+  filter:
+    starter_content: Zawartość startowa
+    user_made: Użytkownika
+  edit: Edytuj
+  delete: Usuń
+  export: Eksportuj
+  button:
+    toggle_filters: Przełącz filtry
+    refresh: Odśwież
+    delete.checked: Usuń zaznaczone
+    export.checked: Eksportuj zaznaczone
+    add: Dodaj nowy
+    import: Importuj
+    download: Pobierz
+    upload: Wyślij CSV
+  locked.tooltip: "Przejęte przez: {0}"
+
+form:
+  validation.failed: Walidacja nie powiodła się
+  button:
+    save.new: Kopiuj
+    delete: Usuń
+    export: Eksportuj
+    save: Zapisz
+    cancel: Anuluj
+    yes: Tak
+    no: Nie
+    ok: Ok
+    apply: Zastosuj
+    upload: Wyślij
+    add: Dodaj
+    lock: Zajmij
+    unlock: Zwolnij
+
+dialog:
+  title:
+    save: Zapisywanie obiektu
+    delete: Usuwanie obiektu
+    csv: CSV
+    lock: Zmiana zamka na obiekcie
+  message:
+    failed: Operacja nie powiodła się. Sprawdź dane i spróbuj jeszcze raz.
+    saved: Obiekt został zapisany
+    confirm.delete: Jesteś pewien, że chcesz usunąć wybrane obiekt(y)?
+    confirm.unsafe_import: Są zaplanowane niebezpieczne operacje importu, które mogą prowadzić do utraty danych. Jest mocno zalecany by zrobić kopię danych przed kontynuowaniem. Czy chcesz kontynuować?
+    leaving: Jesteś pewien, że chcesz kontynuować? Wszystkie niezapisane zmiany zostaną utracone.
+
+please.wait: Proszę czekać...
+none.choosen: Nie wybrano
+none: Żadne
+
+description:
+  tooltip: Zmień opis
+  fieldset:
+    legend: Opis
+    legend.tooltip: Opis obiektu
+
+save_new:
+  dialog:
+    title: Nazwa nowego obiektu
+    title_main: Kopiowanie obiektu
+    message.copied: Obiekt skopiowany
+  fieldset:
+    legend.tooltip: >
+      "Wprowadź nazwę dla skopiowanego obiektu. Zostaw puste pole dla by zachować orginalną. Możesz umieścić orginalną nazwę lub id poprzez: \\{\\{id\\}\\} lub \\{\\{name\\}\\}."
+
+import:
+  action:
+    new: Nowy
+    convert: Skonwertuj
+    ignore: Ignoruj
+  dialog:
+    title: Importowanie obiektu
+    description_warning: Konwersja obecnego obiektu na importowany jest uznawana wciąż za ekperymentalną i może prowadzić do utraty danych. Różnice pomiędzy wersją obecną i importowaną mogą również prowadzić do nieuniknionej utraty danych. Bardzo mocno zaleca się zrobienie kopii zapasowej bazy danych przed kontynuowaniem.
+  fieldset:
+    legend.tooltip: Zaimportuj obiekt z wcześniej wyeksportowanego pliku
+  form:
+    field:
+      file: Plik
+      file.tooltip: Wybierz plik do zaimportowania
+      instructions: Instrukcje
+      instructions.tooltip: "Instrukcje importu. Gdy się zmienia nazwy można umieścić pewne zmienne w nowej nazwie, takie jak: <b>\\{\\{name\\}\\}, \\{\\{id\\}\\}, \\{\\{user_username\\}\\}, \\{\\{user_id\\}\\}</b> dla kolejno: nazwy importowanego obiektu, id importowanego obiektu, nazwy własciciela importowanego obiektu i id właściciela importowanego obiektu."
+
+export:
+  dialog:
+    title: Eksportowanie obiektu
+    error:
+      empty.content: Wybierz proszę przynajmniej jeden wiersz z tabeli poniżej aby go wyeksportować.
+  fieldset:
+    legend.tooltip: Eksport obiektów do pliku
+  form:
+    field:
+      format: Format
+      format.tooltip: Format pliku
+      format.json: JSON
+      format.yml: YAML
+      format.compressed: skompresowany
+
+download_list:
+  dialog:
+    title: Pobieranie listy
+    tooltip: Wybierz opcje listy
+    field:
+      format: Format
+      format.tooltip: Format pobieranej listy
+      format.csv: CSV
+      format.pdf: PDF
+      cols: Kolumny
+      cols.tooltip: Kolumny do pokazania
+      cols.all: Wszystkie
+      cols.visible: Widoczne
+      rows: Rzędy
+      rows.tooltip: Rzędy do pokazania
+      rows.all: Wszystkie
+      rows.visible: Widoczne
+      rows.selected: Wybrane
+
+upload_list:
+  dialog:
+    title: Wysyłanie CSV
+    tooltip: Wybierz plik CSV listy
+    description: Nowe dane zostaną dopisane do obecnie istniejących danych.
+    fields:
+      file: Plik
+      file.tooltip: Wybierz plik który chcesz wysłać
+
+code:
+  F11: tryb pełno-ekranowy
+  shift.tab: formatuj zaznaczony kod
+  ctrl.space: autouzupełnianie kodu
+  documentation:
+    error.info: Nie można załadować danych do autouzupełnienia kodu!
+    error.solve: Rozwiąż
+
+mfa:
+  disable_dialog:
+    title: Wyłączanie MFA
+    content: Napewno wyłączyć MFA?
+
+  enable_dialog:
+    title: MFA włączone
+    tooltip: Zarejestruj aplikacje w swoim Google Authenticator
+    paragraph: "Aby dodać aplikacje do Google Authenticator, należy zrobić jedno z:"
+    qr: "a) zeskanuj kod QR:"
+    secret: "b) dodaj sekretny kod ręcznie:"

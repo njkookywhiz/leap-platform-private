@@ -1,0 +1,13 @@
+ignition.noscript: Mesin Perambah (browser) Anda tidak mendukung javascript. Mohon sesuaikan pengaturannya agar mengijinkan javascript lalu refresh mesin penjelajah Anda.
+ignition.ip: "IP:"
+ignition.browser: "Mesin Penjelajah:"
+ignition.time: "Waktu:"
+ignition.browser.notsupported: Versi Mesin Perambah Anda tidak sesuai untuk Tes ini. Silakan perbaharui ke versi terkini atau gunakan alternatif lain seperti Chrome atau Firefox.
+ignition.browser.potentiallynotsupported: Jika pesan ini tidak hilang sendiri setelah beberapa waktu, Anda harus menggunakan Mesin Perambah lain.
+default.template:
+    finished: Test Anda sudah selesai.
+    loading: Mohon menunggu...
+    session_limit_reached: Maaf, saat ini tes diakses oleh terlalu banyak pengguna sekaligus. Mohon coba lagi setelah beberapa saat.
+    test_not_found: Tes tidak dapat ditemukan.
+    session_lost: Sesi terputus. Silakan panggil ulang tes.
+    connection_retry: Ada masalah koneksi internet. Mencoba lagi dalam [[retryTimeLeft]] detik. Mohon tunggu...

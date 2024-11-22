@@ -1,0 +1,150 @@
+header:
+  logged.user: 'Aktif Kullanıcı: {0}'
+  logout: Çıkış
+
+tab:
+  wizards: Test sihirbazı
+  wizards.tooltip: Test sihirbazı sekmesi
+  tests: Testler
+  tests.tooltip: Test sekmesi
+  templates: Şablonlar
+  templates.tooltip: Şablon görüntüleme sekmesi
+  tables: Veri Tabloları
+  tables.tooltip: Veri tabloları sekmesi
+  files: Dosyalar
+  files.tooltip: Dosya yöneticisi sekmesi
+  users: Kullanıcılar
+  users.tooltip: Kullanıcı sekmesi
+
+list:
+  accessibility:
+      public: Herkes
+      group: grup
+      private: özel
+  field:
+    id: Id
+    info: Bilgi
+    updated.on: Son güncelleme
+    updated.by: Son güncelleme
+    type: Tür
+    exists: Varolan
+    action: Eylem
+    rename: Yeniden adlandır
+    safe: Safe
+  edit: Düzenle
+  delete: Sil
+  export: Dışa aktar
+  button:
+    toggle_filters: Filtrele
+    refresh: Yinele
+    delete.checked: Seçilenleri sil
+    export.checked: Seçilenleri dışarı aktar
+    add: Yeni ekle
+    import: İçe aktar
+    download: İndir
+    upload: CSV yükle
+
+form:
+  validation.failed: Doğrulama başarısız
+  button:
+    save.new: Kopyala
+    delete: Sil
+    export: Dışa Aktar
+    save: Kaydet
+    cancel: İptal
+    yes: Evet
+    no: Hayır
+    ok: Tamam
+    apply: Uygula
+    upload: Yükle
+
+dialog:
+  title:
+    save: Nesne kaydediliyor
+    delete: Nesne siliniyor
+    csv: CSV
+  message:
+    failed: Çalıştırılamadı. Verinizi doğrulayın ve tekrar deneyin.
+    saved: Nesne kaydedildi
+    confirm.delete: Seçili nesne(leri) silmek istediğinizden emin misiniz?
+    confirm.unsafe_import: Veri kaybına neden olacak güvenli olmayan aktarımlar yapılacak. Devam etmeden önce veritabanını yedeklemenizi öneriririz. Devam etmek istediğinizden emin misiniz?
+    leaving: Devam etmek istediğinizden emin misiniz? Kaydetmediğiniz veriler kaybolabilir.
+
+please.wait: Lütfen Bekleyin...
+none.choosen: Hiçbiri seçilmedi
+none: Hiçbiri
+
+description:
+    tooltip: Tanımı değiştir
+    fieldset:
+        legend: Tanım
+        legend.tooltip: Nesne tanımı
+        
+save_new:
+    dialog:
+        title: Yeni nesnenin ismi
+        title_main: Nesne kopyalanıyor
+        message.copied: Nesne kopyalandı
+    fieldset:
+        legend.tooltip: >
+            Kopyalanan nesne için isim giriniz. Orjinal adını korumak için boş bırakın. You can insert original object id or name by using: \{\{id\}\} or \{\{name\}\}.
+
+import:
+    action:
+        new: Yeni
+        convert: Dönüştür
+        ignore: Yoksay
+    dialog:
+        title: Nesne içe aktarılıyor
+        description_warning: Seçili nesneleri yeni içeri aktarılanlarla değiştirme özelliği henüz deneysel olarak çalışmaktadır ve veri kaybına yol açabilir. İki nesne arasındaki farkları kaçınılmaz bir veri kaybına neden olması olasıdır. Devam etmeden veritabanınızı yedeklemeniz önemle tavsiye edilir.
+        message:
+            imported: Nesne içe aktarıldı
+    fieldset:
+        legend.tooltip: Daha önce dışa aktarılmış dosyadan yeni nesneler içe aktarın.
+    form:
+        field:
+            file: Dosya
+            file.tooltip: İçeri aktarılacak dosyayı seçin
+            instructions: Talimatlar
+            instructions.tooltip: "Talimatları içeri aktar.Yeniden adlandırma yaparken buna benzer değişkenler kullanabilirsiniz: <b>\\{\\{name\\}\\}, \\{\\{id\\}\\}, \\{\\{user_username\\}\\}, \\{\\{user_id\\}\\}</b> sırasıyla içeri aktarılan nesne adı, içeri aktarılan nesne idsi, içeri aktarılan nesne sahibi adı ve içeri aktarılan nesne sahibi idsi."
+
+export:
+    dialog:
+        error:
+            empty.content: Lütfen, dışarı aktarmak için aşağıdaki tablodan en az bir girdiyi işaretleyin.
+     
+download_list:
+    dialog:
+        title: Izgara indiriliyor
+        tooltip: Izgara seçeneklerini belirleyin
+        field:
+            format: Biçim
+            format.tooltip: İndirilen dosya biçmi
+            format.csv: CSV
+            format.pdf: PDF
+            cols: Sütun
+            cols.tooltip: Gösterilecek sütunlar
+            cols.all: Tümü
+            cols.visible: Görünür
+            rows: Satırlar
+            rows.tooltip: Gösterilecek satırlar
+            rows.all: Tümü
+            rows.visible: Görünür
+            rows.selected: Seçili
+            
+upload_list:
+    dialog:
+        title: CSV ızgarası içe aktarılıyor
+        tooltip: Izgara CSV dosyasını seçin
+        description: Yeni data var olan dataya eklenecek
+        fields:
+            file: Dosya
+            file.tooltip: Yüklemek istediğiniz dosyaları seçin
+    
+code:
+    F11: tam-ekran modu
+    shift.tab: seçilen kodu biçimlendir
+    ctrl.space: oto-tamamla
+    documentation:
+        error.info: Oto-tamamlama verisi yüklenemedi!
+        error.solve: Çöz

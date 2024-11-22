@@ -1,0 +1,345 @@
+html, body {
+    height: 100%;
+}
+
+fieldset {
+    padding: 5px;
+    margin: 5px;
+}
+
+.mainLayoutElement {
+    min-width: 970px;
+}
+
+.horizontalElement {
+    float: left;
+    width: 33%;
+    height: 40px;
+}
+
+.horizontalElement > table {
+    width: 100%;
+}
+
+td.formLabel {
+    white-space: nowrap;
+    padding-left: 5px;
+    font-style: italic;
+    width: 100px;
+}
+
+td.formInfo {
+    width: 48px;
+    margin-top: 2px;
+}
+
+td.formControl {
+    margin: 0px 5px 0px 12px;
+    height: 48px;
+}
+
+td.formControl > div.formInnerControl {
+    width: 100%;
+}
+
+.formRowV > td {
+    padding-bottom: 22px;
+}
+
+.moduleForm, .moduleList {
+    text-align: left;
+    height: calc(100% - 60px);
+}
+
+fieldset > legend {
+    font-weight: bold;
+    margin-top: 30px;
+    float: left;
+}
+
+.moduleList > .grid {
+    height: calc(100% - 90px) !important;
+}
+
+.grid {
+    margin: 10px 0;
+}
+
+.grid-row-locked-by-other .ui-grid-cell, .grid-row-locked-by-other .ui-grid-cell .glyphicon {
+    color: pink;
+}
+
+.ui-grid-cell-contents {
+    position: relative;
+}
+
+.ui-grid-cell-contents .nullable-checkbox {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: pink;
+}
+
+.ui-grid-cell-contents-null {
+    background-color: pink;
+}
+
+.formFloatingBar {
+    position: fixed;
+    bottom: 25px;
+    right: 0%;
+    right: 25px;
+    opacity: 0.75;
+    z-index: 12;
+    display: table;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+table.listPanel {
+    width: 100%;
+}
+
+.tab-content {
+    height: calc(100% - 50px);
+    padding: 8px;
+}
+
+.tab-content > .tab-pane {
+    height: 100%;
+}
+
+.tab-content > .tab-pane > div {
+    height: 100%;
+}
+
+.mainContentContainer {
+    height: calc(100% - 60px);
+}
+
+.divButtonContainer {
+    padding: 8px;
+}
+
+.CodeMirror-hints {
+    z-index: 2000;
+}
+
+/** R documentation box**/
+.codemirrorRDocsWindow {
+    background-color: #ffffff;
+    border: 1px solid;
+    height: 500px;
+    overflow: scroll;
+    padding: 10px;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 50%;
+    opacity: 0.90;
+    z-index: 2001;
+}
+
+
+/** R documentation wizards**/
+.completion-wizard-sql .wizard-row-value {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.completion-wizard-sql .wizard-row-value td {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.completion-wizard-sql .wizard-row-value .btn-group {
+    width: 200px;
+}
+
+.completion-wizard-sql .wizard-add-button-wrapper {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.completion-wizard-sql .completion-sql-wizard-section {
+    padding: 10px;
+    border: 1px solid #ddd;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.completion-wizard-sql .completion-sql-wizard-section + .completion-sql-wizard-section {
+    margin-top: 0;
+}
+
+pre.console {
+    background: black;
+    color: white;
+}
+
+.glyphicon {
+    width: 17px;
+    font-size: 14px;
+    margin: 0px 2px;
+    color: #999;
+}
+
+.subHeading {
+    border: none;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+.loginPageLogo {
+    text-align: center;
+}
+
+.logiinPageLogo .logoTxt {
+    font-weight: bold;
+}
+
+.loginContainer {
+    margin: 50px auto;
+    width: 400px;
+}
+
+.loginContainer td {
+    margin: 6px 5px;
+}
+
+.loginContainer legend {
+    padding: 18px 0px 8px 25px;
+    font-size: 19px;
+    color: #BDBDBD;
+    font-weight: normal;
+    margin: 10px 0px;
+}
+
+.loginContainer legend .glyphicon-question-sign {
+    margin: 3px;
+    display: none;
+}
+
+.bs-callout {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+
+.bs-callout-info h3 {
+    color: #5bc0de;
+}
+
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+
+.carouselParamHeader {
+}
+
+.c-breadcrumb {
+    font-size: 1.2em;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+    border-left-color: #337ab7;
+    background-color: #ffffff !important;
+    margin-bottom: 10px !important;
+}
+
+ul.c-breadcrumb li {
+    background-color: #ffffff !important;
+    margin: 0px !important;
+}
+
+.headerElement {
+    background: #FAFAFA;
+    padding: 10px 25px;
+    border-bottom: 1px solid #DDD;
+    margin-bottom: 5px;
+}
+
+.wizardParamSummary {
+    margin-left: 10px;
+    color: #BDBDBD;
+    font-style: italic;
+}
+
+.code-mirror-info {
+    font-size: 0.8em;
+}
+
+.padded {
+    padding: 5px;
+}
+
+.tasks-info-table {
+
+}
+
+.tasks-info-table td {
+    height: 40px;
+    padding-right: 25px;
+}
+
+.changelog {
+    margin-bottom: 32px;
+}
+
+.port-list-container {
+    width: 100%;
+    padding: 8px;
+    max-height: 400px;
+}
+
+.port-list-element {
+    width: 200px;
+    float: left;
+    overflow: hidden;
+    padding: 8px;
+    margin: 0px 8px 8px 0px;
+    border: 1px #eee solid;
+}
+
+.control-button-group {
+    text-align: right;
+    margin: 8px 0px 8px 0px;
+}
+
+.tooltip-inner {
+    text-align: left;
+    max-width: 600px;
+}
+
+angular-filemanager > div {
+    height: auto;
+}
+
+.table-lite {
+    width: 100%;
+}
+
+.table-lite th, .table-lite td {
+    padding-right: 8px;
+}
+
+.git-history-head {
+    font-weight: bold;
+    border: 1px solid #ddd;
+}
