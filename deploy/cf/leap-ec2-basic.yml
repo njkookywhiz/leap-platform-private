@@ -51,7 +51,7 @@ Metadata:
 
 Parameters:
   LeapVersion:
-    Description: Leap version to use. Can be any tag from https://github.com/campsych/leap-platform
+    Description: Leap version to use. Can be any tag from https://github.com/njkookywhiz/leap-platform
     Type: String
     Default: 5.0
   LeapPassword:
@@ -413,7 +413,7 @@ Resources:
                         - TZ=${LeapTimezone}
 
                     leap:
-                      image: campsych/leap-platform:${LeapVersion}
+                      image: njkookywhiz/leap-platform:${LeapVersion}
                       container_name: leap
                       restart: unless-stopped
                       volumes:

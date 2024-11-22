@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
         - name: leap
-          image: campsych/leap-platform
+          image: njkookywhiz/leap-platform
           ports:
             - containerPort: 80
           readinessProbe:
