@@ -1,5 +1,5 @@
-FROM campsych/concerto-platform:test
-MAINTAINER Przemyslaw Lis <przemek@concertoplatform.com>
+FROM njkookywhiz/leap-platform:test
+MAINTAINER Kooky Whiz <kookywhiz@gmail.com>
 
 RUN apt-get update -y \
  && apt-get install composer -y

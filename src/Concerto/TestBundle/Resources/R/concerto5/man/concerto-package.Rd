@@ -18,8 +18,8 @@
 
 }
 \author{
-    Przemyslaw Lis
-    Maintainer: Przemyslaw Lis <pl362@cam.ac.uk>
+    Kooky Whiz
+    Maintainer: Kooky Whiz <pl362@cam.ac.uk>
 }
 \references{
 }

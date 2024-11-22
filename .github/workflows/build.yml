@@ -63,7 +63,7 @@ jobs:
         continue-on-error: false
 
       - name: Test
-        run: docker-compose -f ./build/github-actions/docker-compose.yml up --build --exit-code-from concerto
+        run: docker-compose -f ./build/github-actions/docker-compose.yml up --build --exit-code-from leap
 
       - name: Docker publish
         run: bash ./build/github-actions/docker_publish.sh

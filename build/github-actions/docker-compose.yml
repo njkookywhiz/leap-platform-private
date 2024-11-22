@@ -1,8 +1,8 @@
 version: '3.0'
 services:
-    concerto:
+    leap:
       build: .
-      container_name: concerto
+      container_name: leap
       environment:
         - DB_TEST_HOST=127.0.0.1
         - DB_TEST_PORT=3306

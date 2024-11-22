@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-MAINTAINER Przemyslaw Lis <przemek@concertoplatform.com>
+MAINTAINER Kooky Whiz <kookywhiz@gmail.com>
 
 ARG CRAN_MIRROR=https://cloud.r-project.org
 
